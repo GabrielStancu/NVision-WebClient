@@ -1,0 +1,59 @@
+.page-body {
+    display: flex;
+    justify-items: center;
+    font-family: 'Genos', sans-serif;
+}
+
+.text-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.form-signin {
+    width: 100%;
+    padding: 15px;
+    margin: auto;
+}
+.form-signin .checkbox {
+    font-weight: 400;
+}
+.form-signin .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+}
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+
+.login-label {
+    color: white;
+}
+
+.screen-container {
+    background-color: white;
+    padding-right: 40px;
+    padding-left: 40px;
+    max-width: 400px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+#appNameLogin1 {
+    color: #cd2026;
+    font-size: 80px;
+    font-family: 'Genos', sans-serif;
+}
+
+#appNameLogin2 {
+    color: #2f1210;
+    font-size: 80px;
+    font-family: 'Genos', sans-serif;
+}
+  
