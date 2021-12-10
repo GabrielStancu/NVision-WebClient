@@ -1,19 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, isDevMode } from '@angular/core';
 import { Observable } from 'rxjs';
-import { LoggedUserDto } from '../dtos/logged-user.dto';
-import { LoginUserDto } from '../dtos/login-user.dto';
-import { RegisterSubjectDto } from '../dtos/register-subject.dto';
-import { RegisterWatcherDto } from '../dtos/register-watcher.dto';
+import { LoggedUser } from '../models/logged-user.model';
+import { LoginUser } from '../models/login-user.model';
+import { RegisterSubject } from '../models/register-subject.model';
+import { RegisterWatcher } from '../models/register-watcher.model';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
-    readonly APIUrlDev = 'https://localhost:5001/api/authentication';
-    readonly APIUrlProd = '';
+    private readonly APIUrlDev = 'https://localhost:5001/api/authentication';
+    private readonly APIUrlProd = '';
 
-    getApiUrl(): string {
+    private getApiUrl(): string {
         if (isDevMode()) {
             return this.APIUrlDev;
         } else {
@@ -23,15 +23,15 @@ export class AuthService {
 
     constructor(private http: HttpClient) {}
 
-    loginUser(loginUserInformation: LoginUserDto): Observable<LoggedUserDto> {
-        return this.http.post<LoggedUserDto>(this.getApiUrl() + '/login', loginUserInformation);
+    loginUser(loginUserInformation: LoginUser): Observable<LoggedUser> {
+        return this.http.post<LoggedUser>(this.getApiUrl() + '/login', loginUserInformation);
     }
 
-    registerWatcher(registerWatcher: RegisterWatcherDto): Observable<boolean> {
+    registerWatcher(registerWatcher: RegisterWatcher): Observable<boolean> {
         return this.http.post<boolean>(this.getApiUrl() + '/register-watcher', registerWatcher);
     }
 
-    registerSubject(registerSubject: RegisterSubjectDto): Observable<boolean> {
+    registerSubject(registerSubject: RegisterSubject): Observable<boolean> {
         return this.http.post<boolean>(this.getApiUrl() + '/register-subject', registerSubject);
     }
 }

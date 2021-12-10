@@ -1,6 +1,6 @@
-import { UserType } from '../models/user-type.model';
+import { UserType } from './user-type.model';
 
-export class LoggedUserDto {
+export class LoggedUser {
     constructor() { }
 
     public id: number;

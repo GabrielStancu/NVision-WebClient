@@ -1,4 +1,4 @@
-export class RegisterUserDto {
+export class RegisterUser {
     constructor() { }
 
     public username: string;

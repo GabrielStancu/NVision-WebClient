@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoggedUserDto } from 'src/app/dtos/logged-user.dto';
-import { LoginUserDto } from 'src/app/dtos/login-user.dto';
+import { LoggedUser } from 'src/app/models/logged-user.model';
+import { LoginUser } from 'src/app/models/login-user.model';
 import { UserType } from 'src/app/models/user-type.model';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router) { }
 
-  loginUser: LoginUserDto = new LoginUserDto();
+  loginUser: LoginUser = new LoginUser();
 
   ngOnInit(): void {
   }
@@ -31,14 +31,16 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  private loginWatcher(loggedUser: LoggedUserDto): void {
+  private loginWatcher(loggedUser: LoggedUser): void {
     localStorage.setItem('nvision-user', loggedUser.username);
+    localStorage.setItem('nvision-userId', loggedUser.id.toString());
     localStorage.setItem('nvision-userType', UserType[loggedUser.userType].toString());
     this.router.navigate(['watcher']);
   }
 
-  private loginSubject(loggedUser: LoggedUserDto): void {
+  private loginSubject(loggedUser: LoggedUser): void {
     localStorage.setItem('nvision-user', loggedUser.username);
+    localStorage.setItem('nvision-userId', loggedUser.id.toString());
     localStorage.setItem('nvision-userType', UserType[loggedUser.userType].toString());
     this.router.navigate(['subject']);
   }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { RegisterSubjectDto } from 'src/app/dtos/register-subject.dto';
-import { RegisterUserDto } from 'src/app/dtos/register-user.dto';
-import { RegisterWatcherDto } from 'src/app/dtos/register-watcher.dto';
+import { RegisterSubject } from 'src/app/models/register-subject.model';
+import { RegisterUser } from 'src/app/models/register-user.model';
+import { RegisterWatcher } from 'src/app/models/register-watcher.model';
 import { UserType } from 'src/app/models/user-type.model';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router) { }
 
-  registerUser = new RegisterUserDto();
+  registerUser = new RegisterUser();
   userType: UserType = undefined;
 
   watcherId: number;
@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
   }
 
   registerWatcher(): void {
-    const watcher = new RegisterWatcherDto()
+    const watcher = new RegisterWatcher()
       .fromUser(this.registerUser, this.phoneNumber);
 
     this.authService.registerWatcher(watcher).subscribe(registrationResult => {
@@ -53,7 +53,7 @@ export class RegisterComponent implements OnInit {
   }
 
   registerSubject(): void {
-    const subject = new RegisterSubjectDto()
+    const subject = new RegisterSubject()
       .fromUser(this.registerUser, this.watcherId, this.address, this.isPatient);
 
     this.authService.registerSubject(subject).subscribe(registrationResult => {

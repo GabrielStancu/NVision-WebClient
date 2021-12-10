@@ -1,7 +1,7 @@
-import { UserType } from '../models/user-type.model';
-import { RegisterUserDto } from './register-user.dto';
+import { UserType } from './user-type.model';
+import { RegisterUser } from './register-user.model';
 
-export class RegisterSubjectDto extends RegisterUserDto{
+export class RegisterSubject extends RegisterUser{
     constructor() {
         super();
     }
@@ -11,7 +11,7 @@ export class RegisterSubjectDto extends RegisterUserDto{
     public address: string;
     public isPatient: boolean;
 
-    fromUser(user: RegisterUserDto, watcherId: number, address: string, isPatient: boolean): RegisterSubjectDto {
+    fromUser(user: RegisterUser, watcherId: number, address: string, isPatient: boolean): RegisterSubject {
         this.username = user.username;
         this.password = user.password;
         this.repeatedPassword = user.repeatedPassword;

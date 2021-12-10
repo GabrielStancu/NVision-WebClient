@@ -1,4 +1,4 @@
-export class LoginUserDto {
+export class LoginUser {
     constructor() { }
 
     public username: string;
