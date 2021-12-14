@@ -43,6 +43,7 @@
     height: 100%;
     display: flex;
     align-items: center;
+    float: right;
 }
 
 #appNameLogin1 {

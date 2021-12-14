@@ -21,6 +21,7 @@ export class RegisterComponent implements OnInit {
   watcherId: number;
   address: string;
   isPatient: boolean;
+  sex: string;
 
   phoneNumber: string;
 
@@ -39,10 +40,13 @@ export class RegisterComponent implements OnInit {
     this.userType = userType;
   }
 
+  onSexSelected(sex: string): void {
+    this.sex = sex;
+  }
+
   registerWatcher(): void {
     const watcher = new RegisterWatcher()
       .fromUser(this.registerUser, this.phoneNumber);
-
     this.authService.registerWatcher(watcher).subscribe(registrationResult => {
       this.alertRegistrationResult(registrationResult);
     }, _ => {
@@ -54,7 +58,7 @@ export class RegisterComponent implements OnInit {
 
   registerSubject(): void {
     const subject = new RegisterSubject()
-      .fromUser(this.registerUser, this.watcherId, this.address, this.isPatient);
+      .fromUser(this.registerUser, this.watcherId, this.address, this.isPatient, this.sex);
 
     this.authService.registerSubject(subject).subscribe(registrationResult => {
       this.alertRegistrationResult(registrationResult);

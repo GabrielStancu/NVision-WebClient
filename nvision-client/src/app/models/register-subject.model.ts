@@ -1,4 +1,3 @@
-import { UserType } from './user-type.model';
 import { RegisterUser } from './register-user.model';
 
 export class RegisterSubject extends RegisterUser{
@@ -6,12 +5,18 @@ export class RegisterSubject extends RegisterUser{
         super();
     }
 
-    public readonly userType = UserType.Watcher;
+    public username: string;
+    public password: string;
+    public repeatedPassword: string;
+    public firstName: string;
+    public lastName: string;
+    public birthday: Date;
     public watcherId: number;
     public address: string;
     public isPatient: boolean;
+    public sex: string;
 
-    fromUser(user: RegisterUser, watcherId: number, address: string, isPatient: boolean): RegisterSubject {
+    fromUser(user: RegisterUser, watcherId: number, address: string, isPatient: boolean, sex: string): RegisterSubject {
         this.username = user.username;
         this.password = user.password;
         this.repeatedPassword = user.repeatedPassword;
@@ -21,6 +26,7 @@ export class RegisterSubject extends RegisterUser{
         this.watcherId = watcherId;
         this.address = address;
         this.isPatient = isPatient;
+        this.sex = sex;
 
         return this;
     }

@@ -10,6 +10,6 @@ export class SubjectWithoutMeasurements{
     public watcherId: number;
     public address: string;
     public isPatient: boolean;
-    public healthStatus: string;
     public sex: string;
+    public healthStatus: string;
 }

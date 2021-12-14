@@ -3,6 +3,7 @@ import { Injectable, isDevMode } from '@angular/core';
 import { Observable } from 'rxjs';
 import { SubjectWithMeasurements } from '../models/subject-with-measurements.model';
 import { SubjectWithoutMeasurements } from '../models/subject-without-measurements.model';
+import { WatcherHomepageData } from '../models/watcher-homepage-data.model';
 
 @Injectable({
     providedIn: 'root'
@@ -21,8 +22,8 @@ export class WatcherSubjectsService {
 
     constructor(private http: HttpClient) {}
 
-    getSubjectsWithoutMeasurements(watcherId: number): Observable<SubjectWithoutMeasurements[]> {
-        return this.http.get<SubjectWithoutMeasurements[]>(this.getApiUrl() + '/subjects/' + watcherId.toString());
+    getWatcherHomepageData(watcherId: number): Observable<WatcherHomepageData> {
+        return this.http.get<WatcherHomepageData>(this.getApiUrl() + '/' + watcherId.toString());
     }
 
     getSubjectWithMeasurements(subjectId: number): Observable<SubjectWithMeasurements> {

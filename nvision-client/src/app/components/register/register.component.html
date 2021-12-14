@@ -44,6 +44,16 @@
             <div *ngIf="userType === 1">
                 <mat-checkbox class="example-margin patient-cb" [(ngModel)]="isPatient" name="isPatient">Patient</mat-checkbox>
             </div>
+            <div class="btn-group" id="subjectSexOptions">
+                <button type="button" class="dropdown-toggle btn-secondary animate__animated animate__fadeInUp scrollto" 
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="userType">
+                    Sex       
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" (click)="onSexSelected('M')">Male</a>
+                    <a class="dropdown-item" (click)="onSexSelected('F')">Female</a>
+                </div>
+            </div>
 
             <a class="btn-main my-2" type="submit" (click)="onRegisterClicked()">Register</a>
             <br/>

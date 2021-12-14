@@ -15,13 +15,15 @@ export class NavigationComponent implements OnInit {
   }
 
   showNavbar(): boolean {
-    const username = localStorage.getItem('nvision-user');
-    return username !== undefined && username !== '' && username !== null;
+    const crtRoute = this.router.url;
+    const hideNavbar = crtRoute.includes('login') || crtRoute.includes('register');
+
+    return !hideNavbar;
   }
 
   myHomeRoute(): string {
     const userType = localStorage.getItem('nvision-userType');
-    return userType.toLowerCase();
+    return userType?.toLowerCase();
   }
 
   getUsername(): string {

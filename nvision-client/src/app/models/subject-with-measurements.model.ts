@@ -13,4 +13,5 @@ export class SubjectWithMeasurements{
     public address: string;
     public isPatient: boolean;
     public sensorMeasurements: SensorMeasurement[];
+    public healthStatus: string;
 }

@@ -13,8 +13,7 @@ const routes: Routes = [
   { path: 'watcher', component: WatcherComponent },
   { path: 'subject', component: SubjectComponent },
   { path: 'watcher-account', component: WatcherAccountComponent },
-  { path: 'subject-account', component: SubjectAccountComponent },
-  { path: '', component: LoginComponent }
+  { path: 'subject-account', component: SubjectAccountComponent }
 ];
 
 @NgModule({
