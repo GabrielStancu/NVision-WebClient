@@ -1,15 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, isDevMode } from '@angular/core';
 import { Observable } from 'rxjs';
-import { SubjectWithMeasurements } from '../models/subject-with-measurements.model';
-import { SubjectWithoutMeasurements } from '../models/subject-without-measurements.model';
-import { WatcherHomepageData } from '../models/watcher-homepage-data.model';
+import { Alert } from '../models/alert.model';
+import { SubjectDataReply } from '../replies/subject-data.reply';
+import { WatcherHomepageDataReply } from '../replies/watcher-homepage-data.reply';
+import { AlertAnswerRequest } from '../requests/alert-answer.request';
+import { SubjectDataRequest } from '../requests/subject-data.request';
+import { WatcherHomepageDataRequest } from '../requests/watcher-homepage-data-request.model';
 
 @Injectable({
     providedIn: 'root'
 })
 export class WatcherSubjectsService {
-    private readonly APIUrlDev = 'https://localhost:5001/api/watcher';
+    private readonly APIUrlDev = 'https://localhost:5001/api/data';
     private readonly APIUrlProd = '';
 
     private getApiUrl(): string {
@@ -22,11 +25,15 @@ export class WatcherSubjectsService {
 
     constructor(private http: HttpClient) {}
 
-    getWatcherHomepageData(watcherId: number): Observable<WatcherHomepageData> {
-        return this.http.get<WatcherHomepageData>(this.getApiUrl() + '/' + watcherId.toString());
+    getWatcherHomepageData(watcherDataRequest: WatcherHomepageDataRequest): Observable<WatcherHomepageDataReply> {
+        return this.http.post<WatcherHomepageDataReply>(this.getApiUrl() + '/watcher', watcherDataRequest);
     }
 
-    getSubjectWithMeasurements(subjectId: number): Observable<SubjectWithMeasurements> {
-        return this.http.get<SubjectWithMeasurements>(this.getApiUrl() + '/subject/' + subjectId.toString());
+    getSubjectWithMeasurements(subjectDataRequest: SubjectDataRequest): Observable<SubjectDataReply> {
+        return this.http.post<SubjectDataReply>(this.getApiUrl() + '/subject', subjectDataRequest);
+    }
+
+    answerAlert(alertAnswerRequest: AlertAnswerRequest): Observable<Alert> {
+        return this.http.post<Alert>(this.getApiUrl() + '/alert', alertAnswerRequest);
     }
 }

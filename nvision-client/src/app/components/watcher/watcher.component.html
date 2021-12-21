@@ -8,7 +8,7 @@
             <div class="patients-search-wrapper">
                 <i class="fa fa-search search-icon" aria-hidden="true"></i>
                 <input type="text" id="inputName" class="form-control text-input patients-search" placeholder="Name" required="" autofocus=""
-                    name="name" [(ngModel)]="subjectName"> 
+                    name="name" [(ngModel)]="dataRequest.subjectSpecificationDto.subjectName"> 
             </div>
 
             <div class="card" *ngFor="let subject of subjects">
@@ -25,21 +25,19 @@
         
             <nav class="pagination-outer" aria-label="Page navigation">
                 <div class="pagination-header">
-                    Showing 9-12 of {{subjectsCount}} subjects
+                    Showing {{pageStartNumber()}}-{{pageEndNumber()}} of {{subjectsCount}} subjects
                 </div>
                 <ul class="pagination">
                     <li class="page-item">
-                        <a href="#" class="page-link" aria-label="Previous">
+                        <a class="page-link" aria-label="Previous" (click)="prevPage()" [attr.disabled]="disabledPrevPage()">
                             <span aria-hidden="true">«</span>
                         </a>
                     </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item active"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                    <li class="page-item"><a class="page-link" href="#">5</a></li>
+                    <li class="page-item" *ngFor="let in of counter(subjectTotalPages()); let i = index">
+                        <a class="page-link" href="#" [ngClass]="isCrtPage(i) ? 'active' : ''">{{i + 1}}</a>
+                    </li>
                     <li class="page-item">
-                        <a href="#" class="page-link" aria-label="Next">
+                        <a class="page-link" aria-label="Next" (click)="nextPage()" [attr.disabled]="disabledNextPage()">
                             <span aria-hidden="true">»</span>
                         </a>
                     </li>

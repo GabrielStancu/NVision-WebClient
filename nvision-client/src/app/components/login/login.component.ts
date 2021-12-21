@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoggedUser } from 'src/app/models/logged-user.model';
+import { LoginUserReply } from 'src/app/replies/login-user.reply';
 import { LoginUser } from 'src/app/models/login-user.model';
 import { UserType } from 'src/app/models/user-type.model';
 import { AuthService } from 'src/app/services/auth.service';
@@ -31,14 +31,14 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  private loginWatcher(loggedUser: LoggedUser): void {
+  private loginWatcher(loggedUser: LoginUserReply): void {
     localStorage.setItem('nvision-user', loggedUser.username);
     localStorage.setItem('nvision-userId', loggedUser.id.toString());
     localStorage.setItem('nvision-userType', UserType[loggedUser.userType].toString());
     this.router.navigate(['watcher']);
   }
 
-  private loginSubject(loggedUser: LoggedUser): void {
+  private loginSubject(loggedUser: LoginUserReply): void {
     localStorage.setItem('nvision-user', loggedUser.username);
     localStorage.setItem('nvision-userId', loggedUser.id.toString());
     localStorage.setItem('nvision-userType', UserType[loggedUser.userType].toString());

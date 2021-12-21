@@ -1,6 +1,6 @@
-import { UserType } from './user-type.model';
+import { UserType } from '../models/user-type.model';
 
-export class LoggedUser {
+export class LoginUserReply {
     constructor() { }
 
     public id: number;

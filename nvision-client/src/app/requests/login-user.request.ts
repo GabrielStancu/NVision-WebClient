@@ -1,4 +1,4 @@
-export class LoginUser {
+export class LoginUserRequest {
     constructor() { }
 
     public username: string;

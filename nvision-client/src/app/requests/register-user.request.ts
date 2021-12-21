@@ -1,4 +1,4 @@
-export class RegisterUser {
+export class RegisterUserRequest {
     constructor() { }
 
     public username: string;

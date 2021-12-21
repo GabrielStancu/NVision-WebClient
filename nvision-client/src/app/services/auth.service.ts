@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, isDevMode } from '@angular/core';
 import { Observable } from 'rxjs';
-import { LoggedUser } from '../models/logged-user.model';
-import { LoginUser } from '../models/login-user.model';
-import { RegisterSubject } from '../models/register-subject.model';
-import { RegisterWatcher } from '../models/register-watcher.model';
+import { LoginUserReply } from '../replies/login-user.reply';
+import { LoginUserRequest } from '../requests/login-user.request';
+import { RegisterSubjectRequest } from '../requests/register-subject.request';
+import { RegisterWatcherRequest } from '../requests/register-watcher.request';
 
 @Injectable({
     providedIn: 'root'
@@ -23,15 +23,15 @@ export class AuthService {
 
     constructor(private http: HttpClient) {}
 
-    loginUser(loginUserInformation: LoginUser): Observable<LoggedUser> {
-        return this.http.post<LoggedUser>(this.getApiUrl() + '/login', loginUserInformation);
+    loginUser(loginUserInformation: LoginUserRequest): Observable<LoginUserReply> {
+        return this.http.post<LoginUserReply>(this.getApiUrl() + '/login', loginUserInformation);
     }
 
-    registerWatcher(registerWatcher: RegisterWatcher): Observable<boolean> {
+    registerWatcher(registerWatcher: RegisterWatcherRequest): Observable<boolean> {
         return this.http.post<boolean>(this.getApiUrl() + '/register-watcher', registerWatcher);
     }
 
-    registerSubject(registerSubject: RegisterSubject): Observable<boolean> {
+    registerSubject(registerSubject: RegisterSubjectRequest): Observable<boolean> {
         return this.http.post<boolean>(this.getApiUrl() + '/register-subject', registerSubject);
     }
 }
