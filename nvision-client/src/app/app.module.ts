@@ -26,6 +26,8 @@ import { SubjectComponent } from './components/subject/subject.component';
 import { AuthService } from './services/auth.service';
 import { SubjectAccountComponent } from './components/subject/subject-account/subject-account.component';
 import { WatcherAccountComponent } from './components/watcher/watcher-account/watcher-account.component';
+import { WatcherDashboardComponent } from './components/watcher-dashboard/watcher-dashboard.component';
+import { IonicModule } from '@ionic/angular';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { WatcherAccountComponent } from './components/watcher/watcher-account/wa
     WatcherComponent,
     SubjectComponent,
     SubjectAccountComponent,
-    WatcherAccountComponent
+    WatcherAccountComponent,
+    WatcherDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +57,8 @@ import { WatcherAccountComponent } from './components/watcher/watcher-account/wa
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    IonicModule.forRoot()
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

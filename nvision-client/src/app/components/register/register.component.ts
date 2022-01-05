@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { RegisterSubject } from 'src/app/models/register-subject.model';
-import { RegisterUser } from 'src/app/models/register-user.model';
-import { RegisterWatcher } from 'src/app/models/register-watcher.model';
 import { UserType } from 'src/app/models/user-type.model';
+import { RegisterSubjectRequest } from 'src/app/requests/register-subject.request';
+import { RegisterUserRequest } from 'src/app/requests/register-user.request';
+import { RegisterWatcherRequest } from 'src/app/requests/register-watcher.request';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router) { }
 
-  registerUser = new RegisterUser();
+  registerUser = new RegisterUserRequest();
   userType: UserType = undefined;
 
   watcherId: number;
@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit {
   }
 
   registerWatcher(): void {
-    const watcher = new RegisterWatcher()
+    const watcher = new RegisterWatcherRequest()
       .fromUser(this.registerUser, this.phoneNumber);
     this.authService.registerWatcher(watcher).subscribe(registrationResult => {
       this.alertRegistrationResult(registrationResult);
@@ -57,7 +57,7 @@ export class RegisterComponent implements OnInit {
   }
 
   registerSubject(): void {
-    const subject = new RegisterSubject()
+    const subject = new RegisterSubjectRequest()
       .fromUser(this.registerUser, this.watcherId, this.address, this.isPatient, this.sex);
 
     this.authService.registerSubject(subject).subscribe(registrationResult => {
