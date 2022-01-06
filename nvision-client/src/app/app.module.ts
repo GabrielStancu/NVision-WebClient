@@ -20,14 +20,17 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { NavigationComponent } from './components/navigation/navigation.component';
 import { WatcherComponent } from './components/watcher/watcher.component';
 import { SubjectComponent } from './components/subject/subject.component';
 import { AuthService } from './services/auth.service';
 import { SubjectAccountComponent } from './components/subject/subject-account/subject-account.component';
 import { WatcherAccountComponent } from './components/watcher/watcher-account/watcher-account.component';
-import { WatcherDashboardComponent } from './components/watcher-dashboard/watcher-dashboard.component';
 import { IonicModule } from '@ionic/angular';
+import { CardboxComponent } from './components/shared/cardbox/cardbox.component';
+import { NavigationComponent } from './components/shared/navigation/navigation.component';
+import { TopbarComponent } from './components/shared/topbar/topbar.component';
+import { CustomersComponent } from './components/shared/customers/customers.component';
+import { OrdersComponent } from './components/shared/orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,10 @@ import { IonicModule } from '@ionic/angular';
     SubjectComponent,
     SubjectAccountComponent,
     WatcherAccountComponent,
-    WatcherDashboardComponent
+    TopbarComponent,
+    CardboxComponent,
+    OrdersComponent,
+    CustomersComponent
   ],
   imports: [
     BrowserModule,
