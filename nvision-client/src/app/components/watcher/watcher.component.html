@@ -1,72 +1,11 @@
-<div class="row">
-    <div class="col-9 cards-wrapper">
-        <div class="cards-container">
-            <!-- patients -->
-            <div class="column-header">
-                    Patients            
-            </div>
-            <div class="patients-search-wrapper">
-                <i class="fa fa-search search-icon" aria-hidden="true"></i>
-                <input type="text" id="inputName" class="form-control text-input patients-search" placeholder="Name" required="" autofocus=""
-                    name="name" [(ngModel)]="dataRequest.subjectSpecificationDto.subjectName"> 
-            </div>
-
-            <div class="card" *ngFor="let subject of subjects">
-                <img src="{{getCardImage(subject)}}" class="card-img-top" alt="avatar">
-                <div class="card-body">
-                    <h5 class="card-title">{{subject.firstName}} {{subject.lastName}}</h5>
-                    <p class="card-text">{{subject.healthStatus}}</p>
-                    <p class="card-text card-address">{{subject.address}}</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn-main">View details</a>
-                </div>
-            </div>
-        
-            <nav class="pagination-outer" aria-label="Page navigation">
-                <div class="pagination-header">
-                    Showing {{pageStartNumber()}}-{{pageEndNumber()}} of {{subjectsCount}} subjects
-                </div>
-                <ul class="pagination">
-                    <li class="page-item">
-                        <a class="page-link" aria-label="Previous" (click)="prevPage()" [attr.disabled]="disabledPrevPage()">
-                            <span aria-hidden="true">«</span>
-                        </a>
-                    </li>
-                    <li class="page-item" *ngFor="let in of counter(subjectTotalPages()); let i = index">
-                        <a class="page-link" href="#" [ngClass]="isCrtPage(i) ? 'active' : ''">{{i + 1}}</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" aria-label="Next" (click)="nextPage()" [attr.disabled]="disabledNextPage()">
-                            <span aria-hidden="true">»</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+<div class="screen-container">
+    <app-navigation [collapsed]="collapsedSidebar"></app-navigation>
+    <div class="main" [ngClass]="{active: collapsedSidebar}">
+        <app-topbar (sidebarChanged)="onSidebarChanged($event)"></app-topbar>
+        <app-cardbox></app-cardbox>
+        <div class="details">
+            <app-orders></app-orders>
+            <app-customers></app-customers>
         </div>
-    </div>
-    <div class="col-3 cards-wrapper alert-cards-wrapper">
-        <div class="alert-cards-container">
-            <!-- alerts -->
-            <div class="column-header alert-column-header">
-                Alerts
-            </div>
-            <div class="card alert-card" *ngFor="let alert of alerts">
-                <img src="./assets/siren.png" class="card-img-top" alt="avatar" style="max-width: 80px; max-height: 80px;">
-                <div class="alert-card-body">
-                    <p class="alert-text">{{alert.message}}</p>
-                </div>
-                <div class="alert-card-footer">
-                    <div>
-                        <a href="#" class="btn-main btn-alert">
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                        </a>
-                        <a href="#" class="btn-secondary btn-alert">
-                            <i class="fa fa-times" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div> 
     </div>
 </div>

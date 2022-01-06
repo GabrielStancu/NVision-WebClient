@@ -1,0 +1,11 @@
+<div class="navigation" [ngClass]="{active: collapsed}">
+    <ul>
+        <li (mouseover)="onOptionMouseOver(sidebarOption)" *ngFor="let sidebarOption of sidebarOptions"
+            [ngClass]="{hovered : sidebarOption.isActive}"> 
+            <a href="#">
+                <span class="icon"><ion-icon name="{{sidebarOption.iconName}}"></ion-icon></span>
+                <span class="title">{{sidebarOption.title}}</span>
+            </a>
+        </li>
+    </ul>
+</div>

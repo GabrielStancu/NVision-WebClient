@@ -1,0 +1,11 @@
+<div class="recentCustomers">
+    <div class="cardHeader">
+        <h2>Recent Customers</h2>
+    </div>
+    <table>
+        <tr *ngFor="let person of people">
+            <td width="60px"><div class="imgBx"><img src="./../../../assets/patient.png"/></div></td>
+            <td><h4>{{person.name}}<br><span>{{person.country}}</span></h4></td>
+        </tr>
+    </table>
+</div>
