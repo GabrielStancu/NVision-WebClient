@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { NumericCard } from '../display-models/numeric-card.model';
+import { Component, Input, OnInit } from '@angular/core';
+import { WatcherDashboardCardReply } from 'src/app/replies/watcher-dashboard-data.reply';
+import { DashboardCard } from '../display-models/dashboard-card.model';
 
 @Component({
   selector: 'app-cardbox',
@@ -10,18 +11,22 @@ export class CardboxComponent implements OnInit {
 
   constructor() { }
 
-  public numericCards: NumericCard[] = [];
+  public dashboardCards: DashboardCard[] = [];
+  @Input() cards: WatcherDashboardCardReply[];
+  private iconNames = [
+    'eye-outline', 'thermometer-outline', 'alert-circle-outline', 'calendar-outline'
+  ];
 
   ngOnInit(): void {
     this.initNumericCards();
   }
 
   initNumericCards(): void {
-    this.numericCards = [
-      new NumericCard('1,504', 'Daily Views', 'eye-outline'),
-      new NumericCard('80', 'Sales', 'cart-outline'),
-      new NumericCard('284', 'Comments', 'chatbubbles-outline'),
-      new NumericCard('$7,842', 'Earning', 'cash-outline')
-    ];
+    this.cards.forEach(card => {
+      const index = this.cards.indexOf(card);
+      const iconName = this.iconNames[index];
+      this.dashboardCards.push(new DashboardCard(card.numericValue, card.propertyName, iconName));
+    });
+    this.dashboardCards.sort((a, b) => b.numericValue - a.numericValue);
   }
 }

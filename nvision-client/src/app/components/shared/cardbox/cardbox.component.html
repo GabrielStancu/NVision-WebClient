@@ -1,11 +1,11 @@
 <div class="cardBox">
-    <div class="card" *ngFor="let numericCard of numericCards">
+    <div class="card" *ngFor="let dashboardCard of dashboardCards">
         <div>
-            <div class="numbers">{{numericCard.numericValue}}</div>
-            <div class="cardName">{{numericCard.cardName}}</div>
+            <div class="numbers">{{dashboardCard.numericValue}}</div>
+            <div class="cardName">{{dashboardCard.cardName}}</div>
         </div>
         <div class="iconBx">
-            <ion-icon name="{{numericCard.iconName}}"></ion-icon>
+            <ion-icon name="{{dashboardCard.iconName}}"></ion-icon>
         </div>
     </div>
 </div>

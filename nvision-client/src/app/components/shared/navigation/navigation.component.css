@@ -33,6 +33,10 @@
 }
 
 .navigation ul li:nth-child(1) {
+    visibility: hidden;
+}
+
+.navigation ul li:nth-child(1) {
     margin-bottom: 40px;
 }
 
@@ -103,6 +107,33 @@
     box-shadow: 35px -35px 0 10px var(--white);
     pointer-events: none;
 } 
+
+.logo-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.logo {
+    max-width: 60px;
+    max-height: 60px;
+    margin-right: 12px;
+}
+
+.logo-name {
+    color: white;
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.first-word {
+    color: black;
+}
+
+.second-word {
+    color: black;
+}
 
 @media (max-width: 991px) {
     .navigation {

@@ -2,10 +2,10 @@
     <app-navigation [collapsed]="collapsedSidebar"></app-navigation>
     <div class="main" [ngClass]="{active: collapsedSidebar}">
         <app-topbar (sidebarChanged)="onSidebarChanged($event)"></app-topbar>
-        <app-cardbox></app-cardbox>
+        <app-cardbox [cards]="watcherDashboardData.cards"></app-cardbox>
         <div class="details">
-            <app-orders></app-orders>
-            <app-customers></app-customers>
+            <app-alerts [alerts]="watcherDashboardData.alerts"></app-alerts>
+            <app-subjects [subjects]="watcherDashboardData.subjects"></app-subjects>
         </div>
     </div>
 </div>

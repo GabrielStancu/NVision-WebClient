@@ -1,0 +1,24 @@
+<div class="recentOrders">
+    <div class="cardHeader">
+        <h2>Alerts</h2>
+        <a href="#" class="btn">View All</a>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <td>Subject Name</td>
+                <td>Message</td>
+                <td>Date</td>
+                <td>Was Accurate</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let dashboardAlert of dashboardAlerts">
+                <td>{{dashboardAlert.name}}</td>
+                <td>{{dashboardAlert.message}}</td>
+                <td>{{dashboardAlert.timestamp | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
+                <td><span class="status {{dashboardAlert.className}}">{{dashboardAlert.wasAccurate}}</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

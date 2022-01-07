@@ -1,4 +1,12 @@
 <div class="navigation" [ngClass]="{active: collapsed}">
+    <div class="logo-wrapper">
+        <img src="./../../../../assets/NVisionLogo.png" class="logo"/>
+        <div>
+            <span class="logo-name first-word">N</span>
+        <span class="logo-name second-word">Vision</span>
+        </div>      
+    </div>
+    
     <ul>
         <li (mouseover)="onOptionMouseOver(sidebarOption)" *ngFor="let sidebarOption of sidebarOptions"
             [ngClass]="{hovered : sidebarOption.isActive}"> 

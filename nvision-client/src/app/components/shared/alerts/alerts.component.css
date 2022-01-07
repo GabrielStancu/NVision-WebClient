@@ -1,8 +1,8 @@
 .recentOrders {
     position: relative;
     display: grid;
-    min-height: 500px;
-    background: var(--white);
+    min-height: 600px; 
+    background: var(--gray);
     padding: 20px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
     border-radius: 20px
@@ -17,6 +17,7 @@
 .cardHeader h2 {
     font-weight: 600;
     color: var(--blue);
+    font-size: 30px;
 }
 
 .btn {
@@ -26,6 +27,7 @@
     text-decoration: none;
     color: var(--white);
     border-radius: 6px;
+    font-size: 20px;
 }
 
 table {
@@ -36,11 +38,12 @@ table {
 
 table thead td {
     font-weight: 600;
+    font-size: 20px;
 }
 
 .recentOrders table tr {
-    color: var(--black1);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    color: var(--black2);
+    border-bottom: 1px solid rgba(248, 243, 243, 0.431);
 }
 
 .recentOrders table tr:last-child {
@@ -57,11 +60,15 @@ table thead td {
 }
 
 .recentOrders table tr td:last-child {
-    text-align: end;
+    text-align: center;
+}
+
+.recentOrders table tr td:nth-child(1) {
+    text-align: center;
 }
 
 .recentOrders table tr td:nth-child(2) {
-    text-align: end;
+    text-align: center;
 }
 
 .recentOrders table tr td:nth-child(3) {
@@ -70,10 +77,10 @@ table thead td {
 
 .status.delivered {
     padding: 2px 4px;
-    background: #8de02c;
+    background: var(--green);
     color: var(--white);
     border-radius: 4px;
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 500;
 }
 
@@ -82,16 +89,16 @@ table thead td {
     background: #f9ca3f;
     color: var(--white);
     border-radius: 4px;
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 500;
 }
 
 .status.return {
     padding: 2px 4px;
-    background: #f00;
+    background: var(--blue);
     color: var(--white);
     border-radius: 4px;
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 500;
 }
 

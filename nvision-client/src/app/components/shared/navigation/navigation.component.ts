@@ -21,12 +21,10 @@ export class NavigationComponent implements OnInit {
     this.sidebarOptions = [
       new SidebarOption('NVision', 'logo-apple', true),
       new SidebarOption('Dashboard', 'home-outline'),
-      new SidebarOption('Customers', 'people-outline'),
-      new SidebarOption('Message', 'chatbubble-outline'),
-      new SidebarOption('Help', 'help-outline'),
-      new SidebarOption('Settings', 'settings-outline'),
-      new SidebarOption('Password', 'lock-closed-outline'),
-      new SidebarOption('Sign Out', 'log-out-outline')
+      new SidebarOption('Account', 'person-outline'),
+      new SidebarOption('Subjects', 'people-outline'),
+      new SidebarOption('Alerts', 'call-outline'),
+      new SidebarOption('Log Out', 'log-out-outline')
     ];
   }
 

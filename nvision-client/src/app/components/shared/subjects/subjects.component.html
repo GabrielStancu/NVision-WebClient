@@ -1,11 +1,12 @@
 <div class="recentCustomers">
     <div class="cardHeader">
-        <h2>Recent Customers</h2>
+        <h2>Subjects</h2>
     </div>
     <table>
-        <tr *ngFor="let person of people">
+        <tr *ngFor="let dashboardSubject of dashboardSubjects">
             <td width="60px"><div class="imgBx"><img src="./../../../assets/patient.png"/></div></td>
-            <td><h4>{{person.name}}<br><span>{{person.country}}</span></h4></td>
+            <td><h4>{{dashboardSubject.name}}<br><span>{{dashboardSubject.healthStatus}}</span></h4></td>
         </tr>
     </table>
 </div>
+

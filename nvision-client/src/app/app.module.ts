@@ -29,8 +29,8 @@ import { IonicModule } from '@ionic/angular';
 import { CardboxComponent } from './components/shared/cardbox/cardbox.component';
 import { NavigationComponent } from './components/shared/navigation/navigation.component';
 import { TopbarComponent } from './components/shared/topbar/topbar.component';
-import { CustomersComponent } from './components/shared/customers/customers.component';
-import { OrdersComponent } from './components/shared/orders/orders.component';
+import { SubjectsComponent } from './components/shared/subjects/subjects.component';
+import { AlertsComponent } from './components/shared/alerts/alerts.component';
 
 @NgModule({
   declarations: [
@@ -44,8 +44,8 @@ import { OrdersComponent } from './components/shared/orders/orders.component';
     WatcherAccountComponent,
     TopbarComponent,
     CardboxComponent,
-    OrdersComponent,
-    CustomersComponent
+    SubjectsComponent,
+    AlertsComponent
   ],
   imports: [
     BrowserModule,

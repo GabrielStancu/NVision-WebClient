@@ -9,7 +9,7 @@
 
 .cardBox .card {
     position: relative;
-    background: var(--white);
+    background: var(--gray);
     padding: 30px;
     border-radius: 20px;
     display: flex;
