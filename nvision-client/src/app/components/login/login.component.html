@@ -1,22 +1,39 @@
-<div class="hero-container">
-  <div class="screen-container text-center">
-    <form class="form-signin">
-      <img class="mt-1 mb-3" src="./../../../assets/NVisionLogo.png" alt="" width="95" height="95">
-      <span id="appNameLogin1">N</span>
-      <span id="appNameLogin2">Vision</span>  
-      <h1 class="h3 my-3 font-weight-normal overlay-label card-title">Login</h1>
-      <input type="text" id="inputUsername" class="form-control text-input" placeholder="Username" required="" autofocus=""
-          [(ngModel)]="loginUser.username" name="username"> 
-      <input type="password" id="inputPassword" class="form-control text-input" placeholder="Password" required="" autofocus=""
-          [(ngModel)]="loginUser.password" name="password"> 
-      <a class="btn-main my-4" type="submit" (click)="onLoginClicked()">Sign in</a>
-      <div class="mt-3">
-        <div class="overlay-label text-muted">Don't have an account?</div>
-        <a class="btn-secondary" [routerLink]="'/register'">Register</a> 
-      </div>
-    </form>
+<section>
+  <div class="imgBx">
+    <img src="./../../../assets/hero.jpg">
   </div>
-</div>
+  <div class="contentBx">
+    <div class="formBx">
+      <div class="header">
+        <img src="./../../../assets/NVisionLogo.png">
+        <div class="title">
+          <p class="p1">N</p><p class="p2">Vision</p>
+        </div>     
+        <h2>Login</h2>
+      </div>
+      <form>
+        <div class="inputBx">
+          <span>Username</span>
+          <input type="text" name="username" [(ngModel)]="loginUser.username">
+        </div>
+        <div class="inputBx">
+          <span>Password</span>
+          <input type="password" name="password" [(ngModel)]="loginUser.password">
+        </div>
+        <div class="remember">
+          <mat-checkbox class="example-margin">Remember me</mat-checkbox> 
+        </div>
+        <div class="inputBx">
+          <input type="submit" value="Log In" name="" (click)="onLoginClicked()">
+        </div>
+        <div class="inputBx register">
+          <p>Don't have an account? <a routerLink="register">Sign Up</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
 
       
 
