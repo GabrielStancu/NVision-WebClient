@@ -1,3 +1,5 @@
+import { UserType } from '../models/user-type.model';
+
 export class RegisterUserRequest {
     constructor() { }
 
@@ -7,4 +9,5 @@ export class RegisterUserRequest {
     public firstName: string;
     public lastName: string;
     public birthday: Date;
+    public userType: UserType;
 }

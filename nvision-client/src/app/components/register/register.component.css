@@ -1,85 +1,225 @@
-.page-body {
-    display: flex;
-    justify-items: center;
-    font-family: 'Genos', sans-serif;
-}
-
-.text-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.form-signin {
-    width: 100%;
-    padding: 15px;
-}
-.form-signin .checkbox {
-    font-weight: 400;
-}
-.form-signin .form-control {
+section {
     position: relative;
-    box-sizing: border-box;
-    height: auto;
-    padding: 10px;
-    font-size: 16px;
-}
-.form-signin .form-control:focus {
-    z-index: 2;
-}
-
-.login-label {
-    color: white;
-}
-
-.screen-container {
-    background-color: white;
-    height: 100%;
+    width: 100%;
+    height: 100vh;
     display: flex;
+}
+
+section .imgBx {
+    width: 90%;
+    height: 100%;
+}
+
+section .imgBx:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    mix-blend-mode: screen;
+    background: radial-gradient( circle farthest-corner at -4.5% 34.3%,  rgba(13,20,174,1) 0%, rgba(243,165,140,1) 90% );
+}
+
+section .imgBx img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+section .contentBx {
+    display: flex;
+    justify-content: center;
     align-items: center;
-    max-width: 400px;
-    padding: 20px;
+    width: 50%;
+    height: 100%;
+    background-color: var(--white);
+    z-index: 1;
 }
 
-#appNameLogin1 {
-    color: #cd2026;
-    font-size: 80px;
-    font-family: 'Genos', sans-serif;
+section .contentBx .formBx {
+    width: 50%;
+    margin-bottom: 0;
 }
 
-#appNameLogin2 {
-    color: #2f1210;
-    font-size: 80px;
-    font-family: 'Genos', sans-serif;
-}
-  
-.datepicker-label {
-    font-family: 'Genos', sans-serif;
-    font-size: 20px;
+section .contentBx .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.patient-cb {
-    font-family: 'Genos', sans-serif;
-    font-size: 20px;
+section .contentBx .header img {
+    height: 80px;
+    width: 80px;
 }
 
-.dropdown-menu {
-    width: 93%;
+section .contentBx .header .title {
+    display: flex;
+    flex-direction: row;
+    font-size: 30px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+section .contentBx .header .title .p1 {
+    color: var(--primary);
+}
+
+section .contentBx .header .title .p2 {
+    color: var(--secondary);
+}
+
+section .contentBx .formBx img {
+    display: block;
+}
+
+section .contentBx .formBx h2 {
+    color: var(--secondary);
+    font-weight: 600;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    border-bottom: 4px solid var(--primary);
+    display: inline-block;
+    letter-spacing: 1px;
+    font-size: 22px;
+    padding-bottom: 2px;
+}
+
+section .contentBx .formBx .inputBx {
+    margin-bottom: 4px;
+}
+
+section .contentBx .formBx div span {
+    margin-bottom: 8px;
+    display: inline-block;
+    color: var(--secondary);
+    font-weight: 300;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+section .contentBx .formBx .inputBx input {
+    width: 100%;
+    padding: 10px 20px;
+    outline: none;
+    font-weight: 400;
+    border: 1px solid var(--secondary);
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: var(--secondary);
+    background: transparent;
+    border-radius: 30px;
+    height: 50px;
+}
+
+section .contentBx .formBx .inputBx input[type="submit"]{
+    background: var(--primary);
+    color: #fff;
+    outline: none;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 26px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-top: 5px;
+}
+
+section .contentBx .formBx .inputBx input[type="submit"]:hover {
+    background: var(--primary-acc);
+}
+
+section .contentBx .formBx .remember {
+    margin-bottom: 10px;
+    color: var(--secondary);
+    font-weight: 400;
+    font-size: 18px;
     text-align: center;
-    font-size: 40px;
-    font-family: 'Genos', sans-serif;
 }
 
-.dropdown-item {
+section .contentBx .formBx .register {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}   
+
+section .contentBx .formBx .inputBx a {
+    color: var(--primary);
+    font-size: 20px;
     cursor: pointer;
 }
 
-.card-title {
-    font-size: 35px !important;
+::ng-deep .mat-form-field {
+    width: 100% !important;
 }
 
-.text-muted {
-    font-size: 22px !important;
-    text-decoration: none;
+::ng-deep .mat-form-field-flex {
+    background-color: transparent !important;
+    border: 1px solid var(--secondary) !important;
+    border-radius: 30px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    padding-left: 20px !important;
+    height: 50px !important;
+    margin-bottom: -10px !important;
+}
+
+::ng-deep .mat-form-field-infix {
+    font-size: 18px !important;
+    border: 0 !important;
+}
+
+::ng-deep .mat-datepicker-toggle-default-icon {
+    margin-top: 10px !important;
+}
+
+::ng-deep .mat-select-arrow {
+    margin-top: 20px !important;
+}
+
+::ng-deep .mat-select-trigger {
+    margin-top: 10px !important;
+}
+
+::ng-deep .mat-form-field-underline {
+    visibility: hidden !important;
+}
+
+@media (max-width: 768px) {
+    section .imgBx {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    section .contentBx {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    section .contentBx .formBx {
+        width: 100%;
+        padding: 40px;
+        background: rgb(255 255 255 / 0.7);
+        margin: 50px;
+    }
+
+    section .contentBx .formBx h3 {
+        color: #607d8b;
+        text-align: center;
+        margin: 30px 0 10px;
+        font-weight: 500;
+    }
 }

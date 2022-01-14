@@ -3,8 +3,7 @@ import { Injectable, isDevMode } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LoginUserReply } from '../replies/login-user.reply';
 import { LoginUserRequest } from '../requests/login-user.request';
-import { RegisterSubjectRequest } from '../requests/register-subject.request';
-import { RegisterWatcherRequest } from '../requests/register-watcher.request';
+import { RegisterUserRequest } from '../requests/register-user.request';
 
 @Injectable({
     providedIn: 'root'
@@ -27,11 +26,7 @@ export class AuthService {
         return this.http.post<LoginUserReply>(this.getApiUrl() + '/login', loginUserInformation);
     }
 
-    registerWatcher(registerWatcher: RegisterWatcherRequest): Observable<boolean> {
-        return this.http.post<boolean>(this.getApiUrl() + '/register-watcher', registerWatcher);
-    }
-
-    registerSubject(registerSubject: RegisterSubjectRequest): Observable<boolean> {
-        return this.http.post<boolean>(this.getApiUrl() + '/register-subject', registerSubject);
+    registerUser(registerUser: RegisterUserRequest): Observable<boolean> {
+        return this.http.post<boolean>(this.getApiUrl() + '/register', registerUser);
     }
 }
