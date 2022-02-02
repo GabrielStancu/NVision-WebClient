@@ -1,4 +1,4 @@
-.recentOrders {
+.alerts {
     position: relative;
     display: grid;
     min-height: 600px; 
@@ -41,37 +41,37 @@ table thead td {
     font-size: 20px;
 }
 
-.recentOrders table tr {
+.alerts table tr {
     color: var(--black2);
     border-bottom: 1px solid rgba(248, 243, 243, 0.431);
 }
 
-.recentOrders table tr:last-child {
+.alerts table tr:last-child {
     border-bottom: none;
 }
 
-.recentOrders table tbody tr:hover {
+.alerts table tbody tr:hover {
     background: var(--blue);
     color: var(--white);
 }
 
-.recentOrders table tr td {
+.alerts table tr td {
     padding: 10px;
 }
 
-.recentOrders table tr td:last-child {
+.alerts table tr td:last-child {
     text-align: center;
 }
 
-.recentOrders table tr td:nth-child(1) {
+.alerts table tr td:nth-child(1) {
     text-align: center;
 }
 
-.recentOrders table tr td:nth-child(2) {
+.alerts table tr td:nth-child(2) {
     text-align: center;
 }
 
-.recentOrders table tr td:nth-child(3) {
+.alerts table tr td:nth-child(3) {
     text-align: center;
 }
 
@@ -112,7 +112,7 @@ table thead td {
 }
 
 @media (max-width: 768px) {
-    .recentOrders {
+    .alerts {
         overflow-x: auto;
     }
 

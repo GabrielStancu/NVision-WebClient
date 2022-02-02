@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { WatcherDashboardCardReply } from 'src/app/replies/watcher-dashboard-data.reply';
-import { DashboardCard } from '../display-models/dashboard-card.model';
+import { WatcherCardReply } from 'src/app/replies/watcher-data.reply';
+import { DashboardCard } from '../display-models/display-card.model';
 
 @Component({
   selector: 'app-cardbox',
@@ -12,7 +12,7 @@ export class CardboxComponent implements OnInit {
   constructor() { }
 
   public dashboardCards: DashboardCard[] = [];
-  @Input() cards: WatcherDashboardCardReply[];
+  @Input() cards: WatcherCardReply[];
   private iconNames = [
     'eye-outline', 'thermometer-outline', 'alert-circle-outline', 'calendar-outline'
   ];

@@ -17,6 +17,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatTableModule } from '@angular/material/table';
 
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -31,6 +32,8 @@ import { NavigationComponent } from './components/shared/navigation/navigation.c
 import { TopbarComponent } from './components/shared/topbar/topbar.component';
 import { SubjectsComponent } from './components/shared/subjects/subjects.component';
 import { AlertsComponent } from './components/shared/alerts/alerts.component';
+import { WatcherSubjectsComponent } from './components/watcher/watcher-subjects/watcher-subjects.component';
+import { WatcherAlertsComponent } from './components/watcher/watcher-alerts/watcher-alerts.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +48,9 @@ import { AlertsComponent } from './components/shared/alerts/alerts.component';
     TopbarComponent,
     CardboxComponent,
     SubjectsComponent,
-    AlertsComponent
+    AlertsComponent,
+    WatcherSubjectsComponent,
+    WatcherAlertsComponent
   ],
   imports: [
     BrowserModule,
@@ -64,6 +69,7 @@ import { AlertsComponent } from './components/shared/alerts/alerts.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatCheckboxModule,
+    MatTableModule,
     IonicModule.forRoot()
   ],
   providers: [AuthService],

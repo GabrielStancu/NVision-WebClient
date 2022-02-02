@@ -5,6 +5,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { SubjectAccountComponent } from './components/subject/subject-account/subject-account.component';
 import { SubjectComponent } from './components/subject/subject.component';
 import { WatcherAccountComponent } from './components/watcher/watcher-account/watcher-account.component';
+import { WatcherAlertsComponent } from './components/watcher/watcher-alerts/watcher-alerts.component';
+import { WatcherSubjectsComponent } from './components/watcher/watcher-subjects/watcher-subjects.component';
 import { WatcherComponent } from './components/watcher/watcher.component';
 
 const routes: Routes = [
@@ -13,7 +15,9 @@ const routes: Routes = [
   { path: 'watcher', component: WatcherComponent },
   { path: 'subject', component: SubjectComponent },
   { path: 'watcher-account', component: WatcherAccountComponent },
-  { path: 'subject-account', component: SubjectAccountComponent }
+  { path: 'subject-account', component: SubjectAccountComponent },
+  { path: 'watcher-subjects', component: WatcherSubjectsComponent},
+  { path: 'watcher-alerts', component: WatcherAlertsComponent}
 ];
 
 @NgModule({

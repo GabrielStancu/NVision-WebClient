@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { WatcherDashboardSubjectReply } from 'src/app/replies/watcher-dashboard-data.reply';
-import { DashboardSubject } from '../display-models/dashboard-subject.model';
+import { WatcherSubjectReply } from 'src/app/replies/watcher-data.reply';
+import { DashboardSubject } from '../display-models/display-subject.model';
 
 @Component({
   selector: 'app-subjects',
@@ -11,7 +11,7 @@ export class SubjectsComponent implements OnInit {
 
   constructor() { }
 
-  @Input() subjects: WatcherDashboardSubjectReply[];
+  @Input() subjects: WatcherSubjectReply[];
   public dashboardSubjects: DashboardSubject[] = [];
 
   ngOnInit(): void {
@@ -20,11 +20,9 @@ export class SubjectsComponent implements OnInit {
 
   initPeople(): void {
     this.subjects.forEach(s => {
-      for (let i = 0; i < 5; i++) {
         this.dashboardSubjects.push(
           new DashboardSubject(s.name, s.healthStatus)
         );
-      }
     });
     this.dashboardSubjects = this.dashboardSubjects.reverse();
   }

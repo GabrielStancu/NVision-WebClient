@@ -1,0 +1,11 @@
+<div class="screen-container">
+    <app-navigation [collapsed]="collapsedSidebar"></app-navigation>
+    <div class="main" [ngClass]="{active: collapsedSidebar}">
+        <app-topbar (sidebarChanged)="onSidebarChanged($event)"></app-topbar>
+        <div class="alerts-container">
+          <ng-container *ngIf="!!alerts">
+            <app-alerts [alerts]="alerts" [displayHeader]="false"></app-alerts>
+          </ng-container>
+        </div>
+    </div>
+</div>

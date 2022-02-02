@@ -19,12 +19,12 @@ export class NavigationComponent implements OnInit {
 
   initSidebarOptions(): void {
     this.sidebarOptions = [
-      new SidebarOption('NVision', 'logo-apple', true),
-      new SidebarOption('Dashboard', 'home-outline'),
-      new SidebarOption('Account', 'person-outline'),
-      new SidebarOption('Subjects', 'people-outline'),
-      new SidebarOption('Alerts', 'call-outline'),
-      new SidebarOption('Log Out', 'log-out-outline')
+      new SidebarOption('NVision', 'logo-apple', '/watcher', true),
+      new SidebarOption('Dashboard', 'home-outline', '/watcher'),
+      new SidebarOption('Account', 'person-outline', '/watcher-account'),
+      new SidebarOption('Subjects', 'people-outline', '/watcher-subjects'),
+      new SidebarOption('Alerts', 'call-outline', '/watcher-alerts'),
+      new SidebarOption('Log Out', 'log-out-outline', '/login')
     ];
   }
 

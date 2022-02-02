@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { WatcherDashboardAlertReply } from 'src/app/replies/watcher-dashboard-data.reply';
-import { DashboardAlert } from '../display-models/dashboard-alert.model';
+import { WatcherAlertReply } from 'src/app/replies/watcher-data.reply';
+import { DisplayAlert } from '../display-models/display-alert.model';
 
 @Component({
   selector: 'app-alerts',
@@ -11,8 +11,9 @@ export class AlertsComponent implements OnInit {
 
   constructor() { }
 
-  @Input() alerts: WatcherDashboardAlertReply[];
-  public dashboardAlerts: DashboardAlert[] = [];
+  @Input() alerts: WatcherAlertReply[];
+  @Input() displayHeader = true;
+  public displayAlerts: DisplayAlert[] = [];
 
   ngOnInit(): void {
     this.initTable();
@@ -20,16 +21,24 @@ export class AlertsComponent implements OnInit {
 
   initTable(): void {
     this.alerts.forEach(a => {
-      for (let i = 0; i < 5; i++) {
-        this.dashboardAlerts.push(
-          new DashboardAlert(a.subjectName, a.message, a.timestamp,
-                             a.wasAccurate, this.getClassNameByAccuracy(a.wasAccurate))
+        this.displayAlerts.push(
+          new DisplayAlert(a.subjectName, a.message, a.timestamp,
+                             this.getAlertStatus(a.wasTrueAlert), this.getClassNameByAccuracy(a.wasTrueAlert))
         );
-      }
     });
   }
 
-  private getClassNameByAccuracy(wasAccurate: boolean): string {
-    return wasAccurate ? 'delivered' : 'return';
+  private getAlertStatus(wasTrueAlert: boolean|undefined): string {
+    if (wasTrueAlert === null) {
+      return 'N/A';
+    }
+    return wasTrueAlert ? 'Yes' : 'No';
+  }
+
+  private getClassNameByAccuracy(wasTrueAlert: boolean|undefined): string {
+    if (wasTrueAlert === null) {
+      return 'pending';
+    }
+    return wasTrueAlert ? 'delivered' : 'return';
   }
 }
