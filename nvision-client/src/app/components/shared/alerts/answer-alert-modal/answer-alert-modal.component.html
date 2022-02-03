@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Alert Accuracy</h1>
+<div mat-dialog-content>
+    <p>Was the alert accurate?</p>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="onAnswerAlert(true)" [mat-dialog-close]="data" cdkFocusInitial>Yes</button>
+    <button mat-raised-button color="warn" (click)="onAnswerAlert(false)" [mat-dialog-close]="data" cdkFocusInitial>No</button>
+    <button mat-button (click)="onCancelClick()">Cancel</button>
+</div>

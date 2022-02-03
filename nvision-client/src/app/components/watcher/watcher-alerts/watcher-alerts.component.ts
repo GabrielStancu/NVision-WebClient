@@ -27,7 +27,7 @@ export class WatcherAlertsComponent implements OnInit {
   }
 
   private alertToDisplayAlert(alert: Alert): WatcherAlertReply {
-    return new WatcherAlertReply(alert.subjectId, alert.subjectName, alert.message,
+    return new WatcherAlertReply(alert.id, alert.subjectId, alert.subjectName, alert.message,
       alert.timestamp, alert.wasTrueAlert);
   }
 }

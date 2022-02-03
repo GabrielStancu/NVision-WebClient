@@ -3,6 +3,7 @@ import { Injectable, isDevMode } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Alert } from '../models/alert.model';
 import { WatcherDataReply } from '../replies/watcher-data.reply';
+import { AlertAnswer } from '../requests/alert-answer.request';
 
 @Injectable({
     providedIn: 'root'
@@ -27,5 +28,9 @@ export class WatcherDataService {
 
     getWatcherAlerts(watcherId: number): Observable<Alert[]> {
         return this.http.get<Alert[]>(this.getApiUrl() + '/' + 'alerts' + '/' + watcherId.toString());
+    }
+
+    answerAlert(alertAnswer: AlertAnswer): Observable<boolean> {
+        return this.http.post<boolean>(this.getApiUrl() + '/' + 'answer-alert', alertAnswer);
     }
 }

@@ -13,6 +13,6 @@ export class WatcherSubjectReply {
 }
 
 export class WatcherAlertReply {
-    constructor(public subjectId: number, public subjectName: string, public message: string,
-                public timestamp: Date, public wasTrueAlert: boolean) { }
+    constructor(public id: number, public subjectId: number, public subjectName: string,
+                public message: string, public timestamp: Date, public wasTrueAlert: boolean) { }
 }
