@@ -14,6 +14,37 @@ export class WatcherAlertsComponent implements OnInit {
 
   collapsedSidebar = true;
   alerts: WatcherAlertReply[];
+  public chartType: string = 'polarArea';
+
+  public chartDatasets: Array<any> = [
+    { data: [65, 59, 80, 81, 56], label: 'My First dataset' }
+  ];
+
+  public chartLabels: Array<any> = ['Red', 'Green', 'Yellow', 'Grey', 'Dark Grey'];
+
+  public chartColors: Array<any> = [
+    {
+      backgroundColor: [
+        'rgba(219, 0, 0, 1)',
+        'rgba(0, 165, 2, 1)',
+        'rgba(255, 195, 15, 1)',
+        'rgba(55, 59, 66, 1)',
+        'rgba(0, 0, 0, 1)'
+      ],
+      hoverBackgroundColor: [
+        'rgba(219, 0, 0, 1)',
+        'rgba(0, 165, 2, 1)',
+        'rgba(255, 195, 15, 1)',
+        'rgba(55, 59, 66, 1)',
+        'rgba(0, 0, 0, 1)'
+      ],
+      borderWidth: 2,
+    }
+  ];
+
+  public chartOptions: any = {
+    responsive: true
+  };
 
   ngOnInit(): void {
     this.watcherDataService.getWatcherAlerts(1).subscribe(alerts => {
@@ -25,6 +56,9 @@ export class WatcherAlertsComponent implements OnInit {
   onSidebarChanged(sidebarOption: {collapsed: boolean}): void {
     this.collapsedSidebar = sidebarOption.collapsed;
   }
+
+  public chartClicked(e: any): void { }
+  public chartHovered(e: any): void { }
 
   private alertToDisplayAlert(alert: Alert): WatcherAlertReply {
     return new WatcherAlertReply(alert.id, alert.subjectId, alert.subjectName, alert.message,

@@ -32,6 +32,25 @@
     padding: 25px !important;
 }
 
+.graphBox {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 30px;
+    min-height: 200px;
+}
+
+.graphBox .box {
+    position: relative;
+    background: #fff;
+    padding: 20px;
+    width: 100%;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+}
+
 /* responsiveness */
 @media (max-width: 991px) {
     .main {
@@ -41,6 +60,11 @@
 
     .main.active {
         left: 300px;
+    }
+
+    .graphBox {
+        grid-template-columns: 1fr;
+        height: auto;
     }
 }
 

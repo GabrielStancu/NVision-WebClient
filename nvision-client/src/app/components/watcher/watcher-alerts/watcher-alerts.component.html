@@ -2,10 +2,27 @@
     <app-navigation [collapsed]="collapsedSidebar"></app-navigation>
     <div class="main" [ngClass]="{active: collapsedSidebar}">
         <app-topbar (sidebarChanged)="onSidebarChanged($event)"></app-topbar>
-        <div class="alerts-container">
-          <ng-container *ngIf="!!alerts">
-            <app-alerts [alerts]="alerts" [displayHeader]="false"></app-alerts>
-          </ng-container>
-        </div>
+          
+  
+          <div class="graphBox">
+            <div class="box">
+              <canvas mdbChart
+                  [chartType]="chartType"
+                  [datasets]="chartDatasets"
+                  [labels]="chartLabels"
+                  [colors]="chartColors"
+                  [options]="chartOptions"
+                  [legend]="true"
+                  (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)">
+              </canvas>
+            </div>
+            <div class="box" style="padding: 0px;">
+                <ng-container *ngIf="!!alerts">
+                  <app-alerts [alerts]="alerts" [displayHeader]="false"></app-alerts>
+                </ng-container>
+            </div>
+          </div>
+        
     </div>
 </div>

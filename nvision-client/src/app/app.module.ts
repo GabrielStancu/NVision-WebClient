@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -74,7 +75,8 @@ import { AnswerAlertModalComponent } from './components/shared/alerts/answer-ale
     MatCheckboxModule,
     MatTableModule,
     MatDialogModule,
-    IonicModule.forRoot()
+    IonicModule.forRoot(),
+    MDBBootstrapModule.forRoot()
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

@@ -3,7 +3,18 @@
     <p>Was the alert accurate?</p>
 </div>
 <div mat-dialog-actions>
-    <button mat-raised-button color="primary" (click)="onAnswerAlert(true)" [mat-dialog-close]="data" cdkFocusInitial>Yes</button>
-    <button mat-raised-button color="warn" (click)="onAnswerAlert(false)" [mat-dialog-close]="data" cdkFocusInitial>No</button>
-    <button mat-button (click)="onCancelClick()">Cancel</button>
+    <!-- <div class="example-button-container"> -->
+    <div class="buttons-container row">
+        <div class="options-buttons-container">
+            <button mat-flat-button color="primary" aria-label="Example icon button with a check icon"
+                (click)="onAnswerAlert(true)" [mat-dialog-close]="data" cdkFocusInitial>
+                <mat-icon>check</mat-icon>
+            </button>
+            <button mat-flat-button color="warn" aria-label="Example icon button with a close icon"
+                    (click)="onAnswerAlert(false)" [mat-dialog-close]="data" cdkFocusInitial>
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+        <button mat-button (click)="onCancelClick()" class="cancel-button">Cancel</button>
+    </div>
 </div>

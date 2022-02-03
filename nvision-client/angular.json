@@ -32,6 +32,8 @@
               "src/theme.scss",
               "src/styles.css",
               "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/angular-bootstrap-md/assets/scss/mdb.scss",
+              "node_modules/animate.css/animate.css",
               {
                 "input": "node_modules/@ionic/angular/css/core.css"
               },
@@ -66,7 +68,10 @@
                 "input": "src/theme/variables.css"
               }
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/chart.js/dist/Chart.js",
+              "node_modules/hammerjs/hammer.min.js"
+            ]
           },
           "configurations": {
             "production": {
