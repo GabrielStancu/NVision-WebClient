@@ -20,6 +20,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -75,6 +76,7 @@ import { AnswerAlertModalComponent } from './components/shared/alerts/answer-ale
     MatCheckboxModule,
     MatTableModule,
     MatDialogModule,
+    ReactiveFormsModule,
     IonicModule.forRoot(),
     MDBBootstrapModule.forRoot()
   ],

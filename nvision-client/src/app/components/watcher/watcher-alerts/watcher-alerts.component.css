@@ -51,6 +51,12 @@
     border-radius: 20px;
 }
 
+.datepicker-container {
+    display: flex;
+    justify-content: center !important;
+    margin-top: 20px;
+}
+
 /* responsiveness */
 @media (max-width: 991px) {
     .main {

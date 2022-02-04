@@ -2,8 +2,6 @@
     <app-navigation [collapsed]="collapsedSidebar"></app-navigation>
     <div class="main" [ngClass]="{active: collapsedSidebar}">
         <app-topbar (sidebarChanged)="onSidebarChanged($event)"></app-topbar>
-          
-  
           <div class="graphBox">
             <div class="box">
               <canvas mdbChart
@@ -16,6 +14,20 @@
                   (chartHover)="chartHovered($event)"
                   (chartClick)="chartClicked($event)">
               </canvas>
+              <div class="datepicker-container">
+                <mat-form-field class="example-form-field" appearance="fill">
+                  <mat-label>Date range</mat-label>
+                  <mat-date-range-input
+                    [formGroup]="dateRangeForm"
+                    [rangePicker]="dateRangePicker">
+                    <input matStartDate placeholder="Start date" formControlName="start" #dateRangeStart>
+                    <input matEndDate placeholder="End date" formControlName="end" #dateRangeEnd
+                           (dateChange)="dateRangeChange(dateRangeStart, dateRangeEnd)">
+                  </mat-date-range-input>
+                  <mat-datepicker-toggle matSuffix [for]="dateRangePicker"></mat-datepicker-toggle>
+                  <mat-date-range-picker #dateRangePicker></mat-date-range-picker>
+                </mat-form-field>
+              </div>
             </div>
             <div class="box" style="padding: 0px;">
                 <ng-container *ngIf="!!alerts">
