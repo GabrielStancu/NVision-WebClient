@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { WatcherCardReply } from 'src/app/replies/watcher-data.reply';
-import { DashboardCard } from '../display-models/display-card.model';
+import { DashboardCard } from '../display-models/display-numeric-card.model';
 
 @Component({
   selector: 'app-cardbox',

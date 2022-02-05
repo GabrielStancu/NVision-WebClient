@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserType } from 'src/app/models/user-type.model';
+import { UserType } from 'src/app/models/user-type.enum';
 import { RegisterUserRequest } from 'src/app/requests/register-user.request';
 import { AuthService } from 'src/app/services/auth.service';
 

@@ -21,6 +21,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -38,6 +40,8 @@ import { AlertsComponent } from './components/shared/alerts/alerts.component';
 import { WatcherSubjectsComponent } from './components/watcher/watcher-subjects/watcher-subjects.component';
 import { WatcherAlertsComponent } from './components/watcher/watcher-alerts/watcher-alerts.component';
 import { AnswerAlertModalComponent } from './components/shared/alerts/answer-alert-modal/answer-alert-modal.component';
+import { SubjectCardComponent } from './components/shared/subject-card/subject-card.component';
+import { SubjectDataComponent } from './components/shared/subject-data/subject-data.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +59,9 @@ import { AnswerAlertModalComponent } from './components/shared/alerts/answer-ale
     AlertsComponent,
     WatcherSubjectsComponent,
     WatcherAlertsComponent,
-    AnswerAlertModalComponent
+    AnswerAlertModalComponent,
+    SubjectCardComponent,
+    SubjectDataComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +82,9 @@ import { AnswerAlertModalComponent } from './components/shared/alerts/answer-ale
     MatCheckboxModule,
     MatTableModule,
     MatDialogModule,
+    MatCardModule,
     ReactiveFormsModule,
+    MatAutocompleteModule,
     IonicModule.forRoot(),
     MDBBootstrapModule.forRoot()
   ],

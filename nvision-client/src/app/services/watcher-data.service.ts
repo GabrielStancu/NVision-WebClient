@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, isDevMode } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Alert } from '../models/alert.model';
+import { Subject } from '../models/subject.model';
 import { WatcherDataReply } from '../replies/watcher-data.reply';
 import { AlertAnswer } from '../requests/alert-answer.request';
 
@@ -32,5 +33,9 @@ export class WatcherDataService {
 
     answerAlert(alertAnswer: AlertAnswer): Observable<boolean> {
         return this.http.post<boolean>(this.getApiUrl() + '/' + 'answer-alert', alertAnswer);
+    }
+
+    getWatcherSubjects(watcherId: number): Observable<Subject[]> {
+        return this.http.get<Subject[]>(this.getApiUrl() + '/' + 'subjects' + '/' + watcherId.toString());
     }
 }

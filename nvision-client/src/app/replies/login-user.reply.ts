@@ -1,4 +1,4 @@
-import { UserType } from '../models/user-type.model';
+import { UserType } from '../models/user-type.enum';
 
 export class LoginUserReply {
     constructor() { }
