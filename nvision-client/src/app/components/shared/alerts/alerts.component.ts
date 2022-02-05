@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { WatcherAlertReply } from 'src/app/replies/watcher-data.reply';
 import { AlertAnswer } from 'src/app/requests/alert-answer.request';
@@ -11,7 +11,7 @@ import { AnswerAlertModalComponent } from './answer-alert-modal/answer-alert-mod
   templateUrl: './alerts.component.html',
   styleUrls: ['./alerts.component.css']
 })
-export class AlertsComponent implements OnInit {
+export class AlertsComponent implements OnInit, OnChanges {
 
   constructor(public dialog: MatDialog, private watcherDataService: WatcherDataService) { }
 
@@ -23,7 +23,12 @@ export class AlertsComponent implements OnInit {
     this.initTable();
   }
 
+  ngOnChanges(): void {
+    this.initTable();
+  }
+
   initTable(): void {
+    this.displayAlerts = [];
     this.alerts.forEach(a => {
         this.displayAlerts.push(
           new DisplayAlert(a.id, a.subjectName, a.message, a.timestamp,

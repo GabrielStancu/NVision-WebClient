@@ -2,6 +2,30 @@
     <app-navigation [collapsed]="collapsedSidebar"></app-navigation>
     <div class="main" [ngClass]="{active: collapsedSidebar}">
         <app-topbar (sidebarChanged)="onSidebarChanged($event)"></app-topbar>
+        <div class="filters-container">
+          <div>
+            <mat-form-field class="example-form-field" appearance="fill">
+              <mat-label>Date range</mat-label>
+              <mat-date-range-input [rangePicker]="dateRangePicker">
+                <input matStartDate placeholder="Start date" [(ngModel)]="startDate">
+                <input matEndDate placeholder="End date" [(ngModel)]="endDate"
+                       (dateChange)="dateRangeChange()">
+              </mat-date-range-input>
+              <mat-datepicker-toggle matSuffix [for]="dateRangePicker"></mat-datepicker-toggle>
+              <mat-date-range-picker #dateRangePicker></mat-date-range-picker>
+            </mat-form-field>
+            <button mat-flat-button color="warn" (click)="onDateRangeReset()">
+              <mat-icon>replay</mat-icon>
+            </button>
+          </div>
+          <mat-form-field appearance="fill">
+            <mat-label>Alert Types</mat-label>
+            <mat-select [formControl]="alertTypesFilter" multiple (openedChange)="comboChange($event)">
+              <mat-option *ngFor="let alertType of alertTypes" [value]="alertType.backValue">{{alertType.displayValue}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+        </div>
           <div class="graphBox">
             <div class="box">
               <canvas mdbChart
@@ -12,22 +36,9 @@
                   [options]="chartOptions"
                   [legend]="true"
                   (chartHover)="chartHovered($event)"
-                  (chartClick)="chartClicked($event)">
+                  (chartClick)="chartClicked($event)"
+                  *ngIf="alertsDataReady">
               </canvas>
-              <div class="datepicker-container">
-                <mat-form-field class="example-form-field" appearance="fill">
-                  <mat-label>Date range</mat-label>
-                  <mat-date-range-input
-                    [formGroup]="dateRangeForm"
-                    [rangePicker]="dateRangePicker">
-                    <input matStartDate placeholder="Start date" formControlName="start" #dateRangeStart>
-                    <input matEndDate placeholder="End date" formControlName="end" #dateRangeEnd
-                           (dateChange)="dateRangeChange(dateRangeStart, dateRangeEnd)">
-                  </mat-date-range-input>
-                  <mat-datepicker-toggle matSuffix [for]="dateRangePicker"></mat-datepicker-toggle>
-                  <mat-date-range-picker #dateRangePicker></mat-date-range-picker>
-                </mat-form-field>
-              </div>
             </div>
             <div class="box" style="padding: 0px;">
                 <ng-container *ngIf="!!alerts">

@@ -3,6 +3,11 @@ import { Alert } from 'src/app/models/alert.model';
 import { WatcherAlertReply } from 'src/app/replies/watcher-data.reply';
 import { WatcherDataService } from 'src/app/services/watcher-data.service';
 import {FormGroup, FormControl} from '@angular/forms';
+import { Filter } from 'src/app/helpers/filters/filter.implem';
+import { MultiFieldSpecification } from 'src/app/helpers/specifications/multi-field.specification';
+import { ISpecification } from 'src/app/helpers/specifications/specification.interface';
+import { AlertDateSpecification } from 'src/app/helpers/specifications/alerts-specification/alert-date.specification';
+import { AlertTypeSpecification } from 'src/app/helpers/specifications/alerts-specification/alert-type.specification';
 
 @Component({
   selector: 'app-watcher-alerts',
@@ -14,8 +19,8 @@ export class WatcherAlertsComponent implements OnInit {
   constructor(private watcherDataService: WatcherDataService) { }
 
   collapsedSidebar = true;
-  unfilteredAlerts: WatcherAlertReply[];
-  alerts: WatcherAlertReply[];
+  unfilteredAlerts: Alert[];
+  alerts: Alert[];
   public chartType: string = 'polarArea';
   public chartDatasets: Array<any> = [];
   public chartLabels: Array<any> = [];
@@ -29,20 +34,32 @@ export class WatcherAlertsComponent implements OnInit {
     responsive: true
   };
 
-  dateRangeForm: FormGroup;
-  private readonly millisecondsInDay = 86400000;
+  public startDate = "";
+  public endDate = "";
+  alertTypesFilter = new FormControl();
+  public openAlertsFilterSelect: boolean;
+  public alertsDataReady = false;
+
+  private alertsFilter = new Filter<Alert>();
+
+  public alertTypes = [
+    { displayValue: 'All Alerts', backValue: 'all'},
+    { displayValue: 'Positive Alerts', backValue: 'yes'},
+    { displayValue: 'Negative Alerts', backValue: 'no'},
+    { displayValue: 'Not Known Alerts', backValue: 'na'}
+  ]
 
   ngOnInit(): void {
     this.watcherDataService.getWatcherAlerts(1).subscribe(alerts => {
       this.unfilteredAlerts = [];
       this.alerts = [];
       alerts.forEach(a => {
-        const displayAlert = this.alertToDisplayAlert(a);
-        this.unfilteredAlerts.push(displayAlert);
-        this.alerts.push(displayAlert);
+        this.unfilteredAlerts.push(a);
+        this.alerts.push(a);
       });
       this.initChartData();
     });
+    console.log(this.startDate);
   }
 
   onSidebarChanged(sidebarOption: {collapsed: boolean}): void {
@@ -52,28 +69,29 @@ export class WatcherAlertsComponent implements OnInit {
   public chartClicked(e: any): void { }
   public chartHovered(e: any): void { }
 
-  public dateRangeChange(dateRangeStart: HTMLInputElement, dateRangeEnd: HTMLInputElement) {
-    console.log(dateRangeStart.value);
-    console.log(dateRangeEnd.value);
-    const startDate = Date.parse(dateRangeStart.value);
-    const endDate = Date.parse(dateRangeEnd.value) + this.millisecondsInDay;
-
-    this.alerts = this.unfilteredAlerts.filter(a => 
-      Date.parse(a.timestamp.toString()) >= startDate && Date.parse(a.timestamp.toString()) <= endDate);
-    this.unfilteredAlerts.forEach(ua => console.log(ua.timestamp));
+  public dateRangeChange() {
+    this.alerts = this.alertsFilter.filter(this.unfilteredAlerts, this.buildAlertSpecification())
     this.initChartData();
   }
 
-  private alertToDisplayAlert(alert: Alert): WatcherAlertReply {
-    return new WatcherAlertReply(alert.id, alert.subjectId, alert.subjectName, alert.message,
-      alert.timestamp, alert.wasTrueAlert);
+  public onDateRangeReset(): void {
+    this.startDate = "";
+    this.endDate = "";
+  }
+
+  comboChange(event) {
+    this.openAlertsFilterSelect = false;
+    if(!event) {
+      this.openAlertsFilterSelect = true;
+      this.alerts = this.alertsFilter.filter(this.unfilteredAlerts, this.buildAlertSpecification());
+    }
   }
 
   private initChartData(): void {
     this.initLabels();
     this.initValues();
     this.initColors();
-    this.initDateRange();
+    this.alertsDataReady = true;
   }
 
   private initLabels(): void {
@@ -114,15 +132,25 @@ export class WatcherAlertsComponent implements OnInit {
     return Math.floor((Math.random() * (max - min) + min));
   }
 
-  private initDateRange(): void {
-    const today = new Date();
-    const day = today.getDay();
-    const month = today.getMonth();
-    const year = today.getFullYear();
+  private buildAlertSpecification(): MultiFieldSpecification<Alert> {
+    const specifications: ISpecification<Alert>[] = [];
 
-    this.dateRangeForm = new FormGroup({
-      start: new FormControl(new Date(year, month, day)),
-      end: new FormControl(new Date(year, month, day)),
-    });
+    if (this.startDate !== null && this.endDate !== null) {
+      const parsedStartDate = new Date(this.startDate);
+      const parsedEndDate = new Date(new Date(this.endDate).getTime() + (1000 * 60 * 60 * 24));
+      specifications.push(new AlertDateSpecification(parsedStartDate, parsedEndDate));
+    }
+
+    if (this.alertTypesFilter.value !== null) {
+      const selectedValues = (this.alertTypesFilter.value && this.alertTypesFilter.value.toString()).toString();
+      if (selectedValues.includes('all')) {
+        specifications.push(new AlertTypeSpecification('all'))
+      } else {
+        specifications.push(new AlertTypeSpecification(selectedValues));
+      }
+    }
+    
+        
+    return new MultiFieldSpecification(specifications);
   }
 }
