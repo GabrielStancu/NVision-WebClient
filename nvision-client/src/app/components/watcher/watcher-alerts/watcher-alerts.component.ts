@@ -8,6 +8,7 @@ import { MultiFieldSpecification } from 'src/app/helpers/specifications/multi-fi
 import { ISpecification } from 'src/app/helpers/specifications/specification.interface';
 import { AlertDateSpecification } from 'src/app/helpers/specifications/alerts-specification/alert-date.specification';
 import { AlertTypeSpecification } from 'src/app/helpers/specifications/alerts-specification/alert-type.specification';
+import { AlertSubjectSpecification } from 'src/app/helpers/specifications/alerts-specification/alert-subject.specification';
 
 @Component({
   selector: 'app-watcher-alerts',
@@ -37,7 +38,9 @@ export class WatcherAlertsComponent implements OnInit {
   public startDate = "";
   public endDate = "";
   alertTypesFilter = new FormControl();
-  public openAlertsFilterSelect: boolean;
+  subjectNamesFilter = new FormControl();
+  public openAlertTypesFilterSelect: boolean;
+  public openSubjectNamesFilterSelect: boolean;
   public alertsDataReady = false;
 
   private alertsFilter = new Filter<Alert>();
@@ -49,6 +52,8 @@ export class WatcherAlertsComponent implements OnInit {
     { displayValue: 'Not Known Alerts', backValue: 'na'}
   ]
 
+  public subjectNames: string[] = ['All Subjects'];
+
   ngOnInit(): void {
     this.watcherDataService.getWatcherAlerts(1).subscribe(alerts => {
       this.unfilteredAlerts = [];
@@ -57,9 +62,9 @@ export class WatcherAlertsComponent implements OnInit {
         this.unfilteredAlerts.push(a);
         this.alerts.push(a);
       });
+      this.subjectNames = this.subjectNames.concat(this.getSubjectNames());
       this.initChartData();
     });
-    console.log(this.startDate);
   }
 
   onSidebarChanged(sidebarOption: {collapsed: boolean}): void {
@@ -75,15 +80,27 @@ export class WatcherAlertsComponent implements OnInit {
   }
 
   public onDateRangeReset(): void {
-    this.startDate = "";
-    this.endDate = "";
+    this.startDate = null;
+    this.endDate = null;
+    this.alerts = this.alertsFilter.filter(this.unfilteredAlerts, this.buildAlertSpecification());
+    this.initChartData();
   }
 
-  comboChange(event) {
-    this.openAlertsFilterSelect = false;
+  subjectNameComboChange(event) {
+    this.openSubjectNamesFilterSelect = false;
     if(!event) {
-      this.openAlertsFilterSelect = true;
+      this.openSubjectNamesFilterSelect = true;
       this.alerts = this.alertsFilter.filter(this.unfilteredAlerts, this.buildAlertSpecification());
+      this.initChartData();
+    }
+  }
+
+  alertTypeComboChange(event) {
+    this.openAlertTypesFilterSelect = false;
+    if(!event) {
+      this.openAlertTypesFilterSelect = true;
+      this.alerts = this.alertsFilter.filter(this.unfilteredAlerts, this.buildAlertSpecification());
+      this.initChartData();
     }
   }
 
@@ -150,6 +167,14 @@ export class WatcherAlertsComponent implements OnInit {
       }
     }
     
+    if (this.subjectNamesFilter.value !== null) {
+      const selectedValues = (this.subjectNamesFilter.value && this.subjectNamesFilter.value.toString()).toString();
+      if (selectedValues.includes('All')) {
+        specifications.push(new AlertSubjectSpecification('all'))
+      } else {
+        specifications.push(new AlertSubjectSpecification(selectedValues));
+      }
+    }
         
     return new MultiFieldSpecification(specifications);
   }

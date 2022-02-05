@@ -19,12 +19,17 @@
             </button>
           </div>
           <mat-form-field appearance="fill">
+            <mat-label>Subjects</mat-label>
+            <mat-select [formControl]="subjectNamesFilter" multiple (openedChange)="subjectNameComboChange($event)">
+              <mat-option *ngFor="let subjectName of subjectNames" [value]="subjectName">{{subjectName}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
             <mat-label>Alert Types</mat-label>
-            <mat-select [formControl]="alertTypesFilter" multiple (openedChange)="comboChange($event)">
+            <mat-select [formControl]="alertTypesFilter" multiple (openedChange)="alertTypeComboChange($event)">
               <mat-option *ngFor="let alertType of alertTypes" [value]="alertType.backValue">{{alertType.displayValue}}</mat-option>
             </mat-select>
           </mat-form-field>
-          
         </div>
           <div class="graphBox">
             <div class="box">
