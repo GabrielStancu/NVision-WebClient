@@ -21,9 +21,10 @@ export class WatcherSubjectsComponent implements OnInit {
   public displaySubjects: DisplaySubjectCard[] = [];
   public filteredSubjects: Observable<DisplaySubjectCard[]>;
   public subjectsFilter = new FormControl();
+  private readonly watcherId = Number(localStorage.getItem('nvision-userId'));
 
   ngOnInit(): void {
-    this.watcherDataService.getWatcherSubjects(1).subscribe(subjects => {
+    this.watcherDataService.getWatcherSubjects(this.watcherId).subscribe(subjects => {
       subjects.forEach(subject => {
         const displaySubjectCard = new DisplaySubjectCard().fromSubject(subject);
         this.subjects.push(displaySubjectCard);
@@ -36,8 +37,6 @@ export class WatcherSubjectsComponent implements OnInit {
       map(value => (typeof value === 'string' ? value : value.name)),
       map(name => this._filter(name))
     );
-
-    
   }
 
   onSidebarChanged(sidebarOption: {collapsed: boolean}): void {

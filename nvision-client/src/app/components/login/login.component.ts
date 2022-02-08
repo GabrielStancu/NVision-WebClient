@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
   private loginWatcher(loggedUser: LoginUserReply): void {
     localStorage.setItem('nvision-user', loggedUser.username);
     localStorage.setItem('nvision-userId', loggedUser.id.toString());
+    localStorage.setItem('nvision-jwt', loggedUser.token);
     localStorage.setItem('nvision-userType', UserType[loggedUser.userType].toString());
     this.router.navigate(['watcher']);
   }
@@ -41,6 +42,7 @@ export class LoginComponent implements OnInit {
   private loginSubject(loggedUser: LoginUserReply): void {
     localStorage.setItem('nvision-user', loggedUser.username);
     localStorage.setItem('nvision-userId', loggedUser.id.toString());
+    localStorage.setItem('nvision-jwt', loggedUser.token);
     localStorage.setItem('nvision-userType', UserType[loggedUser.userType].toString());
     this.router.navigate(['subject']);
   }

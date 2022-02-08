@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SidebarOption } from '../display-models/sidebar-option.model';
 
 @Component({
@@ -8,7 +9,7 @@ import { SidebarOption } from '../display-models/sidebar-option.model';
 })
 export class NavigationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   @Input() collapsed: boolean;
   public sidebarOptions: SidebarOption[] = [];
@@ -19,17 +20,27 @@ export class NavigationComponent implements OnInit {
 
   initSidebarOptions(): void {
     this.sidebarOptions = [
-      new SidebarOption('NVision', 'logo-apple', '/watcher', true),
-      new SidebarOption('Dashboard', 'home-outline', '/watcher'),
+      new SidebarOption('NVision', 'logo-apple', '/watcher'),
+      new SidebarOption('Dashboard', 'home-outline', '/watcher', false, true),
       new SidebarOption('Account', 'person-outline', '/watcher-account'),
       new SidebarOption('Subjects', 'people-outline', '/watcher-subjects'),
       new SidebarOption('Alerts', 'call-outline', '/watcher-alerts'),
-      new SidebarOption('Log Out', 'log-out-outline', '/login')
+      new SidebarOption('Log Out', 'log-out-outline', '/login', true)
     ];
   }
 
   onOptionMouseOver(sidebarOption: SidebarOption): void {
     this.sidebarOptions.forEach(option => option.isActive = false);
     sidebarOption.isActive = true;
+  }
+
+  onOptionClick(sidebarOption: SidebarOption): void {
+    if (sidebarOption.isLogOutOption) {
+      localStorage.removeItem('nvision-user');
+      localStorage.removeItem('nvision-userId');
+      localStorage.removeItem('nvision-jwt');
+      localStorage.removeItem('nvision-userType');
+    } 
+    this.router.navigate([sidebarOption.componentName]);
   }
 }

@@ -13,9 +13,10 @@ export class WatcherComponent implements OnInit {
   collapsedSidebar = true;
   activeOptionId: string;
   watcherData: WatcherDataReply;
+  private readonly watcherId = Number(localStorage.getItem('nvision-userId'));
 
   ngOnInit(): void {
-    this.watcherDataService.getWatcherData(1).subscribe(res => {
+    this.watcherDataService.getWatcherData(this.watcherId).subscribe(res => {
       this.watcherData = res;
     });
   }

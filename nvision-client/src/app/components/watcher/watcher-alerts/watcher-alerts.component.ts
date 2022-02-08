@@ -53,9 +53,10 @@ export class WatcherAlertsComponent implements OnInit {
   ]
 
   public subjectNames: string[] = ['All Subjects'];
+  private readonly watcherId = Number(localStorage.getItem('nvision-userId'));
 
   ngOnInit(): void {
-    this.watcherDataService.getWatcherAlerts(1).subscribe(alerts => {
+    this.watcherDataService.getWatcherAlerts(this.watcherId).subscribe(alerts => {
       this.unfilteredAlerts = [];
       this.alerts = [];
       alerts.forEach(a => {

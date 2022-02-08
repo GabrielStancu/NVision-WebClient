@@ -9,17 +9,18 @@ import { WatcherAccountComponent } from './components/watcher/watcher-account/wa
 import { WatcherAlertsComponent } from './components/watcher/watcher-alerts/watcher-alerts.component';
 import { WatcherSubjectsComponent } from './components/watcher/watcher-subjects/watcher-subjects.component';
 import { WatcherComponent } from './components/watcher/watcher.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'watcher', component: WatcherComponent },
-  { path: 'subject', component: SubjectComponent },
-  { path: 'watcher-account', component: WatcherAccountComponent },
-  { path: 'subject-account', component: SubjectAccountComponent },
-  { path: 'watcher-subjects', component: WatcherSubjectsComponent},
-  { path: 'watcher-alerts', component: WatcherAlertsComponent},
-  { path: 'subject-data/:id', component: SubjectDataComponent}
+  { path: 'watcher', component: WatcherComponent, canActivate: [AuthGuard], data: { roles: 'Watcher' }},
+  { path: 'subject', component: SubjectComponent, canActivate: [AuthGuard], data: { roles: 'Subject' } },
+  { path: 'watcher-account', component: WatcherAccountComponent, canActivate: [AuthGuard], data: { roles: 'Watcher' } },
+  { path: 'subject-account', component: SubjectAccountComponent, canActivate: [AuthGuard], data: { roles: 'Subject' } },
+  { path: 'watcher-subjects', component: WatcherSubjectsComponent, canActivate: [AuthGuard], data: { roles: 'Watcher' }},
+  { path: 'watcher-alerts', component: WatcherAlertsComponent, canActivate: [AuthGuard], data: { roles: 'Watcher' }},
+  { path: 'subject-data/:id', component: SubjectDataComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

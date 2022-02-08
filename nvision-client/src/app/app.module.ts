@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { JwtModule } from "@auth0/angular-jwt";
 
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -42,6 +43,12 @@ import { WatcherAlertsComponent } from './components/watcher/watcher-alerts/watc
 import { AnswerAlertModalComponent } from './components/shared/alerts/answer-alert-modal/answer-alert-modal.component';
 import { SubjectCardComponent } from './components/shared/subject-card/subject-card.component';
 import { SubjectDataComponent } from './components/shared/subject-data/subject-data.component';
+import { WatcherDataService } from './services/watcher-data.service';
+import { AuthGuard } from './guards/auth.guard';
+
+export function tokenGetter() {
+  return localStorage.getItem("nvision-jwt");
+}
 
 @NgModule({
   declarations: [
@@ -86,9 +93,16 @@ import { SubjectDataComponent } from './components/shared/subject-data/subject-d
     ReactiveFormsModule,
     MatAutocompleteModule,
     IonicModule.forRoot(),
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ["localhost:5001"],
+        blacklistedRoutes: []
+      }
+    })
   ],
-  providers: [AccountService],
+  providers: [AccountService, WatcherDataService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

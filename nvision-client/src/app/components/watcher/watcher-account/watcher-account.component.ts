@@ -10,6 +10,7 @@ export class WatcherAccountComponent implements OnInit {
 
   public photoFilePath = "";
   public collapsedSidebar = true;
+  private readonly watcherId = Number(localStorage.getItem('nvision-userId'));
 
   constructor(private accountService: AccountService) { }
 

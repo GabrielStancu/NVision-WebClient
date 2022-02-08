@@ -10,7 +10,7 @@
     <ul>
         <li (mouseover)="onOptionMouseOver(sidebarOption)" *ngFor="let sidebarOption of sidebarOptions"
             [ngClass]="{hovered : sidebarOption.isActive}"> 
-            <a routerLink="{{sidebarOption.componentName}}">
+            <a (click)="onOptionClick(sidebarOption)">
                 <span class="icon"><ion-icon name="{{sidebarOption.iconName}}"></ion-icon></span>
                 <span class="title">{{sidebarOption.title}}</span>
             </a>
