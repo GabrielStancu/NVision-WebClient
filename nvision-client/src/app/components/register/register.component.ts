@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { UserType } from 'src/app/models/user-type.enum';
 import { RegisterUserRequest } from 'src/app/requests/register-user.request';
 import { AccountService } from 'src/app/services/account.service';
@@ -11,7 +12,7 @@ import { AccountService } from 'src/app/services/account.service';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private authService: AccountService, private router: Router) { }
+  constructor(private authService: AccountService, private router: Router, private toastr: ToastrService) { }
 
   registerUser = new RegisterUserRequest();
   userTypes: any[] = [];
@@ -33,14 +34,14 @@ export class RegisterComponent implements OnInit {
 
   alertRegistrationResult(registrationResult: boolean): void {
     if (registrationResult === true) {
-      alert('Registration successful, please login.');
+      this.toastr.success('Registration successful, please login.');
       this.router.navigate(['login']);
     } else if (registrationResult === false) {
-      alert ('The user already exists, please try again.');
+      this.toastr.error('The user already exists, please try again.');
     }
   }
 
   alertRegistrationError(): void {
-    alert('Bad credentials, please try again.');
+    this.toastr.error('Invalid data submitted, please try again.');
   }
 }

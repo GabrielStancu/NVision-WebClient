@@ -4,6 +4,7 @@ import { LoginUserReply } from 'src/app/replies/login-user.reply';
 import { UserType } from 'src/app/models/user-type.enum';
 import { AccountService } from 'src/app/services/account.service';
 import { LoginUserRequest } from 'src/app/requests/login-user.request';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ import { LoginUserRequest } from 'src/app/requests/login-user.request';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AccountService, private router: Router) { }
+  constructor(private authService: AccountService, private router: Router, private toastr: ToastrService) { }
 
   loginUser = new LoginUserRequest();
 
@@ -21,13 +22,13 @@ export class LoginComponent implements OnInit {
 
   onLoginClicked(): void {
     this.authService.loginUser(this.loginUser).subscribe(res => {
-      if (res === null) {
-        alert('Bad credentials!');
-      } else if (res.userType === UserType.Watcher) {
+      if (res.userType === UserType.Watcher) {
         this.loginWatcher(res);
       } else if (res.userType === UserType.Subject) {
         this.loginSubject(res);
       }
+    }, _ => {
+      this.toastr.error('Bad credentials, please try again.');
     });
   }
 

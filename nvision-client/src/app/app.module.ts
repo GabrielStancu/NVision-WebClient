@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { JwtModule } from "@auth0/angular-jwt";
+import { ToastrModule } from 'ngx-toastr';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -100,7 +101,8 @@ export function tokenGetter() {
         whitelistedDomains: ["localhost:5001"],
         blacklistedRoutes: []
       }
-    })
+    }),
+    ToastrModule.forRoot()
   ],
   providers: [AccountService, WatcherDataService, AuthGuard],
   bootstrap: [AppComponent]
