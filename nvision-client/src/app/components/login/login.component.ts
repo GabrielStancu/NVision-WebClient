@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginUserReply } from 'src/app/replies/login-user.reply';
 import { UserType } from 'src/app/models/user-type.enum';
-import { AuthService } from 'src/app/services/auth.service';
+import { AccountService } from 'src/app/services/account.service';
 import { LoginUserRequest } from 'src/app/requests/login-user.request';
 
 @Component({
@@ -12,7 +12,7 @@ import { LoginUserRequest } from 'src/app/requests/login-user.request';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AccountService, private router: Router) { }
 
   loginUser = new LoginUserRequest();
 

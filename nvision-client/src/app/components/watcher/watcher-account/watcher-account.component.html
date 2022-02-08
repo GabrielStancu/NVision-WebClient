@@ -1,3 +1,11 @@
-<div class="main-container">
-    Watcher Account
+<div class="screen-container">
+    <app-navigation [collapsed]="collapsedSidebar"></app-navigation>
+    <div class="main" [ngClass]="{active: collapsedSidebar}">
+        <app-topbar (sidebarChanged)="onSidebarChanged($event)"></app-topbar>
+
+        <div class="ml-3 bd-highlight" style="width: 40%;">
+            <img [src]=photoFilePath height="250px;" width="200px;">
+            <input type="file" (change)="uploadPhoto($event)" class="mt-2"/>
+        </div>
+    </div>
 </div>

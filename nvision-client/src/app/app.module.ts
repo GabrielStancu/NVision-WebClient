@@ -28,7 +28,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { WatcherComponent } from './components/watcher/watcher.component';
 import { SubjectComponent } from './components/subject/subject.component';
-import { AuthService } from './services/auth.service';
+import { AccountService } from './services/account.service';
 import { SubjectAccountComponent } from './components/subject/subject-account/subject-account.component';
 import { WatcherAccountComponent } from './components/watcher/watcher-account/watcher-account.component';
 import { IonicModule } from '@ionic/angular';
@@ -88,7 +88,7 @@ import { SubjectDataComponent } from './components/shared/subject-data/subject-d
     IonicModule.forRoot(),
     MDBBootstrapModule.forRoot()
   ],
-  providers: [AuthService],
+  providers: [AccountService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

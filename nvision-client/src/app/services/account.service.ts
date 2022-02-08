@@ -8,8 +8,8 @@ import { RegisterUserRequest } from '../requests/register-user.request';
 @Injectable({
     providedIn: 'root'
 })
-export class AuthService {
-    private readonly APIUrlDev = 'https://localhost:5001/api/authentication';
+export class AccountService {
+    private readonly APIUrlDev = 'https://localhost:5001/api/account';
     private readonly APIUrlProd = '';
 
     private getApiUrl(): string {
@@ -28,5 +28,21 @@ export class AuthService {
 
     registerUser(registerUser: RegisterUserRequest): Observable<boolean> {
         return this.http.post<boolean>(this.getApiUrl() + '/register', registerUser);
+    }
+
+    updateWatcherData(): void {
+        // receive all data about watcher
+    }
+
+    updateSujectData(): void {
+        // receive all data about subject
+    }
+
+    uploadPhoto(val: any): any {
+        return this.http.post(this.getApiUrl() + '/saveFile', val);
+    }
+
+    getPhotosUrl(): string {
+        return this.getApiUrl().replace('api/account', '') + 'ProfilePictures';
     }
 }
