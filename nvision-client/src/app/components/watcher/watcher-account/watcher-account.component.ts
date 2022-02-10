@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { UpdateWatcherRequest } from 'src/app/requests/update-watcher.request';
 import { AccountService } from 'src/app/services/account.service';
+import { WatcherDataService } from 'src/app/services/watcher-data.service';
 
 @Component({
   selector: 'app-watcher-account',
@@ -10,11 +14,17 @@ export class WatcherAccountComponent implements OnInit {
 
   public photoFilePath = "";
   public collapsedSidebar = true;
+  public watcher: UpdateWatcherRequest;
   private readonly watcherId = Number(localStorage.getItem('nvision-userId'));
 
-  constructor(private accountService: AccountService) { }
+  constructor(private accountService: AccountService, private watcherDataService: WatcherDataService, 
+              private toastr: ToastrService, private router: Router) { }
 
   ngOnInit(): void {
+    this.watcherDataService.getWatcherProfilePictureUrl(this.watcherId).subscribe(w => {
+      this.watcher = w;
+      this.photoFilePath = w.profilePictureSrc;
+    });
   }
 
   onSidebarChanged(sidebarOption: {collapsed: boolean}): void {
@@ -30,5 +40,18 @@ export class WatcherAccountComponent implements OnInit {
       const photoFileName = data.toString();
       this.photoFilePath = this.accountService.getPhotosUrl() + '/' + photoFileName;
     });
+  }
+
+  onSaveChanges(): void {
+    this.watcherDataService.saveChanges(this.watcher).subscribe(res => {
+      if (res) {
+        this.toastr.success('Changes saved successfully');
+        this.router.navigate(['watcher']);
+      } else {
+        this.toastr.error('Username already taken or passwords don\'t match');
+      }
+    }, _ => {
+      this.toastr.error('Invalid data submitted');
+    })
   }
 }

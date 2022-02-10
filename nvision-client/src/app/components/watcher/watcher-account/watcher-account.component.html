@@ -2,10 +2,50 @@
     <app-navigation [collapsed]="collapsedSidebar"></app-navigation>
     <div class="main" [ngClass]="{active: collapsedSidebar}">
         <app-topbar (sidebarChanged)="onSidebarChanged($event)"></app-topbar>
-
-        <div class="ml-3 bd-highlight" style="width: 40%;">
-            <img [src]=photoFilePath height="250px;" width="200px;">
-            <input type="file" (change)="uploadPhoto($event)" class="mt-2"/>
+        <div class="bd-highlight profile-wrapper container">   
+            <form class="example-form container">
+                <div class="page-title">Edit your profile</div>
+                <div class="row">
+                    <div class="col-8 profile-column">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Username</mat-label>
+                            <input matInput placeholder="Username" [(ngModel)]="watcher.username" name="username">
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Password</mat-label>
+                            <input matInput placeholder="Password" [(ngModel)]="watcher.password" type="password" name="password">
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Repeat Password</mat-label>
+                            <input matInput placeholder="Repeat Password" [(ngModel)]="watcher.repeatedPassword" type="password" name="repeatedPassword">
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>First Name</mat-label>
+                            <input matInput placeholder="First Name" [(ngModel)]="watcher.firstName" name="firstName">
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Last Name</mat-label>
+                            <input matInput placeholder="Last Name" [(ngModel)]="watcher.lastName" name="lastName">
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Birthday</mat-label>
+                            <input matInput [matDatepicker]="picker" [(ngModel)]="watcher.birthday" name="birthday">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Phone Number</mat-label>
+                            <input matInput placeholder="Phone Number" [(ngModel)]="watcher.phoneNumber" name="phoneNumber">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-4 profile-column">
+                        <img [src]=photoFilePath height="480px;" width="330px;">
+                        <input type="file" (change)="uploadPhoto($event)" class="mt-2"/>
+                    </div>
+                </div>
+                <button mat-flat-button color="warn" type="submit" class="save-btn" (click)="onSaveChanges()">Save</button>
+            </form>
         </div>
+        <div></div>
     </div>
 </div>

@@ -5,6 +5,7 @@ import { Alert } from '../models/alert.model';
 import { Subject } from '../models/subject.model';
 import { WatcherDataReply } from '../replies/watcher-data.reply';
 import { AlertAnswer } from '../requests/alert-answer.request';
+import { UpdateWatcherRequest } from '../requests/update-watcher.request';
 
 @Injectable({
     providedIn: 'root'
@@ -37,5 +38,17 @@ export class WatcherDataService {
 
     getWatcherSubjects(watcherId: number): Observable<Subject[]> {
         return this.http.get<Subject[]>(this.getApiUrl() + '/' + 'subjects' + '/' + watcherId.toString());
+    }
+
+    getWatcherProfilePictureUrl(watcherId: number): Observable<UpdateWatcherRequest> {
+        return this.http.get<UpdateWatcherRequest>(this.getApiUrl() + '/' + 'profile-data' + '/' + watcherId.toString());
+    }
+
+    saveChanges(watcher: UpdateWatcherRequest): Observable<boolean> {
+        if (watcher.profilePictureSrc.includes('/')) {
+            const domainLimit = watcher.profilePictureSrc.lastIndexOf('/');
+            watcher.profilePictureSrc = watcher.profilePictureSrc.substring(domainLimit + 1);
+        }
+        return this.http.put<boolean>(this.getApiUrl() + '/' + 'save-changes', watcher);
     }
 }
