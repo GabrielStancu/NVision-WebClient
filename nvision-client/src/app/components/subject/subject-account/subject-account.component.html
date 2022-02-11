@@ -1,3 +1,68 @@
-<div class="main-container">
-    Subject Account
+<div class="screen-container">
+    <app-navigation [collapsed]="collapsedSidebar"></app-navigation>
+    <div class="main" [ngClass]="{active: collapsedSidebar}">
+        <app-topbar (sidebarChanged)="onSidebarChanged($event)"></app-topbar>
+        <div class="bd-highlight profile-wrapper container">   
+            <form class="example-form container">
+                <div class="page-title">Edit your profile</div>
+                <div class="row">
+                    <div class="col-8 profile-column">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Username</mat-label>
+                            <input matInput placeholder="Username" [(ngModel)]="subject.username" name="username">
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Password</mat-label>
+                            <input matInput placeholder="Password" [(ngModel)]="subject.password" type="password" name="password">
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Repeat Password</mat-label>
+                            <input matInput placeholder="Repeat Password" [(ngModel)]="subject.repeatedPassword" type="password" name="repeatedPassword">
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>First Name</mat-label>
+                            <input matInput placeholder="First Name" [(ngModel)]="subject.firstName" name="firstName">
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Last Name</mat-label>
+                            <input matInput placeholder="Last Name" [(ngModel)]="subject.lastName" name="lastName">
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Birthday</mat-label>
+                            <input matInput [matDatepicker]="picker" [(ngModel)]="subject.birthday" name="birthday">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Address</mat-label>
+                            <input matInput placeholder="Address" [(ngModel)]="subject.address" name="address">
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Sex</mat-label>
+                            <mat-select [disabled]="disabledSexSelector()" [(ngModel)]="subject.sex" name="sex">
+                              <mat-option *ngFor="let sexOption of sexOptions" [value]="sexOption.value">
+                                {{sexOption.viewValue}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Watcher</mat-label>
+                            <input type="text" matInput [formControl]="watchersFilter" [matAutocomplete]="auto">
+                            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="onOptionSelected($event)"> 
+                                <mat-option *ngFor="let watcher of filteredWatchers | async" [value]="watcher">
+                                    {{watcher.fullName}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-4 profile-column">
+                        <img [src]=photoFilePath height="480px;" width="330px;">
+                        <input type="file" (change)="uploadPhoto($event)" class="mt-2"/>
+                    </div>
+                </div>
+                <button mat-flat-button color="warn" type="submit" class="save-btn" (click)="onSaveChanges()">Save</button>
+            </form>
+        </div>
+        <div></div>
+    </div>
 </div>

@@ -21,7 +21,7 @@ export class WatcherAccountComponent implements OnInit {
               private toastr: ToastrService, private router: Router) { }
 
   ngOnInit(): void {
-    this.watcherDataService.getWatcherProfilePictureUrl(this.watcherId).subscribe(w => {
+    this.watcherDataService.getWatcherProfileData(this.watcherId).subscribe(w => {
       this.watcher = w;
       this.photoFilePath = w.profilePictureSrc;
     });
@@ -38,6 +38,7 @@ export class WatcherAccountComponent implements OnInit {
 
     this.accountService.uploadPhoto(formData).subscribe((data: any) => {
       const photoFileName = data.toString();
+      this.watcher.profilePictureSrc = photoFileName;
       this.photoFilePath = this.accountService.getPhotosUrl() + '/' + photoFileName;
     });
   }

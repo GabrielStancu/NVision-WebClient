@@ -19,14 +19,12 @@ export class NavigationComponent implements OnInit {
   }
 
   initSidebarOptions(): void {
-    this.sidebarOptions = [
-      new SidebarOption('NVision', 'logo-apple', '/watcher'),
-      new SidebarOption('Dashboard', 'home-outline', '/watcher', false, true),
-      new SidebarOption('Account', 'person-outline', '/watcher-account'),
-      new SidebarOption('Subjects', 'people-outline', '/watcher-subjects'),
-      new SidebarOption('Alerts', 'call-outline', '/watcher-alerts'),
-      new SidebarOption('Log Out', 'log-out-outline', '/login', true)
-    ];
+    const userType = localStorage.getItem('nvision-userType');
+    if (userType === 'Watcher') {
+      this.initWatcherSidebarMenu();
+    } else {
+      this.initSubjectSidebarMenu();
+    }
   }
 
   onOptionMouseOver(sidebarOption: SidebarOption): void {
@@ -42,5 +40,25 @@ export class NavigationComponent implements OnInit {
       localStorage.removeItem('nvision-userType');
     } 
     this.router.navigate([sidebarOption.componentName]);
+  }
+
+  private initWatcherSidebarMenu(): void {
+    this.sidebarOptions = [
+      new SidebarOption('NVision', 'logo-apple', '/watcher'),
+      new SidebarOption('Dashboard', 'home-outline', '/watcher', false, true),
+      new SidebarOption('Account', 'person-outline', '/watcher-account'),
+      new SidebarOption('Subjects', 'people-outline', '/watcher-subjects'),
+      new SidebarOption('Alerts', 'call-outline', '/watcher-alerts'),
+      new SidebarOption('Log Out', 'log-out-outline', '/login', true)
+    ];
+  }
+
+  private initSubjectSidebarMenu(): void {
+    this.sidebarOptions = [
+      new SidebarOption('NVision', 'logo-apple', '/subject'),
+      new SidebarOption('Dashboard', 'home-outline', '/subject', false, true),
+      new SidebarOption('Account', 'person-outline', '/subject-account'),
+      new SidebarOption('Log Out', 'log-out-outline', '/login', true)
+    ];
   }
 }

@@ -40,7 +40,7 @@ export class WatcherDataService {
         return this.http.get<Subject[]>(this.getApiUrl() + '/' + 'subjects' + '/' + watcherId.toString());
     }
 
-    getWatcherProfilePictureUrl(watcherId: number): Observable<UpdateWatcherRequest> {
+    getWatcherProfileData(watcherId: number): Observable<UpdateWatcherRequest> {
         return this.http.get<UpdateWatcherRequest>(this.getApiUrl() + '/' + 'profile-data' + '/' + watcherId.toString());
     }
 

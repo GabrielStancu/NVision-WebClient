@@ -1,5 +1,46 @@
-.main-container {
-    height: 100%;
+.screen-container {
+    position: relative;
     width: 100%;
-    background-color: #343434;
+}
+
+/* main */
+.main {
+    position: absolute;
+    width: calc(100% - 300px);
+    left: 300px;
+    min-height: 100vh;
+    background: var(--white);
+    transition: 0.5s;
+}
+
+.main.active {
+    width: calc(100% - 80px);
+    left: 80px;
+}
+
+.details {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 30px; 
+}
+
+/* responsiveness */
+@media (max-width: 991px) {
+    .main {
+        width: 100%;
+        left: 0;
+    }
+
+    .main.active {
+        left: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .details {
+        grid-template-columns: repeat(1,1fr);
+    }
 }
