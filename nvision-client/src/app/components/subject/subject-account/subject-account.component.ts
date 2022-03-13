@@ -16,7 +16,7 @@ import { SubjectDataService } from 'src/app/services/subject-data.service';
 })
 export class SubjectAccountComponent implements OnInit {
 
-  public photoFilePath = "";
+  public photoFilePath = '';
   public collapsedSidebar = true;
   public subject: UpdateSubjectRequest;
   private readonly subjectId = Number(localStorage.getItem('nvision-userId'));
@@ -31,8 +31,9 @@ export class SubjectAccountComponent implements OnInit {
     this.subjectDataService.getWatcherProfileData(this.subjectId).subscribe(s => {
       this.subject = s;
       this.photoFilePath = s.profilePictureSrc;
-      if (this.subject.id !== undefined && this.subject.id !== null)
+      if (this.subject.id !== undefined && this.subject.id !== null) {
         this.watchersFilter.setValue({id: this.subject.watcherId, fullName: this.subject.watcherFullName});
+      }
     });
     this.sexOptions = [
       {value: 'M', viewValue: 'Male'},
@@ -71,7 +72,7 @@ export class SubjectAccountComponent implements OnInit {
       }
     }, _ => {
       this.toastr.error('Invalid data submitted');
-    })
+    });
   }
 
   parseSubjectSex(): string {
@@ -84,7 +85,7 @@ export class SubjectAccountComponent implements OnInit {
     }
   }
 
-  onOptionSelected(dataOption: any) {
+  onOptionSelected(dataOption: any): void {
     const selectedWatcher = dataOption.option.value;
     this.subject.watcherId = selectedWatcher.id;
     this.subject.watcherFullName = selectedWatcher.fullName;

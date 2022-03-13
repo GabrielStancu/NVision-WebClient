@@ -1,8 +1,7 @@
 export enum SensorType {
-    GSR,
-    PulseOxygenHeartRate,
-    ECG,
-    BloodPressure,
-    Temperature,
-    Airflow
+    Temperature, 
+    ECG, 
+    Pulse, 
+    OxygenSaturation,
+    GSR
 }

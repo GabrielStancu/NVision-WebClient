@@ -1,5 +1,5 @@
-import { Alert } from "src/app/models/alert.model";
-import { ISpecification } from "../specification.interface";
+import { Alert } from 'src/app/models/alert.model';
+import { ISpecification } from '../specification.interface';
 
 export class AlertSubjectSpecification implements ISpecification<Alert> {
 

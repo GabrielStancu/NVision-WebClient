@@ -53,7 +53,7 @@ export class WatcherSubjectsComponent implements OnInit {
 
   private _filter(name: string): DisplaySubjectCard[] {
     const filterValue = name.toLowerCase();
-    
+
     this.displaySubjects = [];
     this.displaySubjects = this.subjects.filter(s => s.fullName.toLowerCase().includes(filterValue));
 

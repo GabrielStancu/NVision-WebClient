@@ -1,15 +1,16 @@
-import { Alert } from "../../../models/alert.model";
-import { ISpecification } from "../specification.interface";
+import { Alert } from '../../../models/alert.model';
+import { ISpecification } from '../specification.interface';
 
 export class AlertDateSpecification implements ISpecification<Alert> {
-    
     constructor(private startDate: Date, private endDate: Date) {}
 
     isSatisfied(t: Alert): boolean {
-        if (this.startDate === null || this.startDate === undefined) 
+        if (this.startDate === null || this.startDate === undefined) {
             return true;
-        if (this.endDate === null || this.endDate === undefined) 
+        }
+        if (this.endDate === null || this.endDate === undefined) {
             return true;
+        }
         return this.isDateInRange(t.timestamp, this.startDate, this.endDate);
     }
 

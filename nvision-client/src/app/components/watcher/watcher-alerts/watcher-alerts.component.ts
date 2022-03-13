@@ -76,7 +76,7 @@ export class WatcherAlertsComponent implements OnInit {
   public chartHovered(e: any): void { }
 
   public dateRangeChange() {
-    this.alerts = this.alertsFilter.filter(this.unfilteredAlerts, this.buildAlertSpecification())
+    this.alerts = this.alertsFilter.filter(this.unfilteredAlerts, this.buildAlertSpecification());
     this.initChartData();
   }
 

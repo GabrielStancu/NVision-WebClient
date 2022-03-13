@@ -1,1 +1,26 @@
-<p>subject-data works!</p>
+<div class="screen-container">
+    <app-navigation [collapsed]="collapsedSidebar"></app-navigation>
+    <div class="main" [ngClass]="{active: collapsedSidebar}">
+        <app-topbar (sidebarChanged)="onSidebarChanged($event)"></app-topbar>
+        <div class="container">
+            <div class="filters-container">
+                <!-- <mat-form-field class="example-form-field" appearance="fill">
+                    <mat-label>Date range</mat-label>
+                    <mat-date-range-input [rangePicker]="dateRangePicker">
+                      <input matStartDate placeholder="Start date" [(ngModel)]="startDate">
+                      <input matEndDate placeholder="End date" [(ngModel)]="endDate"
+                             (dateChange)="dateRangeChange()">
+                    </mat-date-range-input>
+                    <mat-datepicker-toggle matSuffix [for]="dateRangePicker"></mat-datepicker-toggle>
+                    <mat-date-range-picker #dateRangePicker></mat-date-range-picker>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Measurement Types</mat-label>
+                    <mat-select [formControl]="alertTypesFilter" multiple (openedChange)="alertTypeComboChange($event)">
+                      <mat-option *ngFor="let alertType of alertTypes" [value]="alertType.backValue">{{alertType.displayValue}}</mat-option>
+                    </mat-select>
+                </mat-form-field> -->
+            </div>           
+        </div>
+    </div>
+</div>

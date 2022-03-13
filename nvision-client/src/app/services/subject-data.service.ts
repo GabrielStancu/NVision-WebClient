@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, isDevMode } from '@angular/core';
 import { Observable } from 'rxjs';
+import { SubjectDataReply } from '../replies/subject-data.reply';
+import { FilteredSubjectDataRequest } from '../requests/filtered-subject-data.request';
 import { UpdateSubjectRequest } from '../requests/update-subject.request';
 
 @Injectable({
@@ -31,5 +33,9 @@ export class SubjectDataService {
         }
         subject.watchers = [];
         return this.http.put<boolean>(this.getApiUrl() + '/' + 'save-changes', subject);
+    }
+
+    getMeasurementsData(request: FilteredSubjectDataRequest): Observable<SubjectDataReply> {
+        return this.http.post<SubjectDataReply>(this.getApiUrl(), request);
     }
 }
