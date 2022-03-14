@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { SensorType } from 'src/app/models/sensor-type.enum';
+import { SubjectDataReply } from 'src/app/replies/subject-data.reply';
 import { FilteredSubjectDataRequest } from 'src/app/requests/filtered-subject-data.request';
 import { SubjectDataService } from 'src/app/services/subject-data.service';
 
@@ -14,6 +16,8 @@ export class SubjectDataComponent implements OnInit {
   collapsedSidebar = true;
   public startDate: Date;
   public endDate: Date;
+  measurementTypesFilter = new FormControl();
+  public openMeasurementTypesFilterSelect: boolean;
   public measurementTypes = [
     { displayValue: 'Temperature', backValue: SensorType.Temperature},
     { displayValue: 'Electrocardiogram (ECG)', backValue: SensorType.ECG},
@@ -38,14 +42,27 @@ export class SubjectDataComponent implements OnInit {
   }
 
   public dateRangeChange() {
-    
+    this.displayFetchedData();
+  }
+
+  measurementTypeComboChange(event) {
+    this.openMeasurementTypesFilterSelect = false;
+    if(!event) {
+      this.openMeasurementTypesFilterSelect = true;
+      this.displayFetchedData();
+    }
   }
 
   private getInitialData(): void {
-    const sensorTypes = [SensorType.ECG, SensorType.Pulse];
-    var startDate = new Date(2022, 2, 12);
-    var endDate = new Date(2022, 2, 18);
-    var request = new FilteredSubjectDataRequest(this.subjectId, sensorTypes, startDate, endDate);
+    this.measurementTypesFilter.setValue([SensorType.ECG, SensorType.GSR, SensorType.OxygenSaturation, SensorType.Pulse, SensorType.Temperature]);
+    this.startDate = new Date();
+    this.endDate = new Date();
+    this.startDate.setDate(this.startDate.getDate() - 7);
+    this.displayFetchedData();
+  }
+
+  private displayFetchedData(): void {
+    var request = new FilteredSubjectDataRequest(this.subjectId, this.measurementTypesFilter.value, this.startDate, this.endDate);
     this.subjectService.getMeasurementsData(request).subscribe(rep => {
       console.log(rep);
     })
