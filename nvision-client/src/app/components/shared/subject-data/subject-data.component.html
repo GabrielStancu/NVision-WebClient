@@ -3,6 +3,18 @@
     <div class="main" [ngClass]="{active: collapsedSidebar}">
         <app-topbar (sidebarChanged)="onSidebarChanged($event)"></app-topbar>
         <div class="container">
+            <div class="personal-data">
+                <mat-card class="example-card">
+                    <mat-card-title-group>
+                      <mat-card-title>{{subject.fullName}}</mat-card-title>
+                      <mat-card-subtitle>{{subject.birthday|date:'dd/MM/yyyy'}}</mat-card-subtitle>
+                      <img mat-card-sm-image src="{{subject.profilePictureSrc}}" >
+                    </mat-card-title-group>
+                    <mat-card-content>
+                      {{subject.healthStatus}}
+                    </mat-card-content>
+                  </mat-card>
+            </div>
             <div class="filters-container">
                 <div>
                     <mat-form-field class="example-form-field" appearance="fill">
@@ -27,7 +39,13 @@
                         </mat-option>
                     </mat-select>
                 </mat-form-field> 
-            </div>           
+            </div>   
+            <div class="measurements-area">
+                <div *ngFor="let measurementSet of measurements">
+                    <app-measurement-data  [measurements]="measurementSet">
+                    </app-measurement-data>
+                </div>
+            </div>        
         </div>
     </div>
 </div>

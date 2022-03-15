@@ -36,6 +36,10 @@
     margin-top: 20px;
 }
 
+.example-card {
+    margin-bottom: 8px;
+}
+
 /* responsiveness */
 @media (max-width: 991px) {
     .main {

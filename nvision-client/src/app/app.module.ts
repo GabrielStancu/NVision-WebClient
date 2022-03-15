@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -46,6 +47,7 @@ import { SubjectCardComponent } from './components/shared/subject-card/subject-c
 import { SubjectDataComponent } from './components/shared/subject-data/subject-data.component';
 import { WatcherDataService } from './services/watcher-data.service';
 import { AuthGuard } from './guards/auth.guard';
+import { MeasurementDataComponent } from './components/shared/measurement-data/measurement-data.component';
 
 export function tokenGetter() {
   return localStorage.getItem("nvision-jwt");
@@ -69,10 +71,12 @@ export function tokenGetter() {
     WatcherAlertsComponent,
     AnswerAlertModalComponent,
     SubjectCardComponent,
-    SubjectDataComponent
+    SubjectDataComponent,
+    MeasurementDataComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
