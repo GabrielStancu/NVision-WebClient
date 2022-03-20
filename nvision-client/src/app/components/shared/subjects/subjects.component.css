@@ -1,11 +1,13 @@
 .recentCustomers {
     position: relative;
-    display: grid;
-    min-height: 600px !important; 
+    display: flex;
+    min-height: 450px !important; 
     padding: 20px;
-    background: var(--gray);
+    background: var(--container);
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
+    flex-direction: column;
+    justify-content: start;
 }
 
 .cardHeader {
@@ -16,8 +18,9 @@
 
 .cardHeader h2 {
     font-weight: 600;
-    color: var(--blue);
+    color: var(--accent);
     font-size: 30px;
+    font-weight: bold;
 }
 
 .recentCustomers .imgBx {
@@ -38,8 +41,8 @@
 }
 
 .recentCustomers table tr:hover {
-    background: var(--blue);
-    color: var(--white);
+    background: var(--accent);
+    color: var(--background);
 }
 
 .recentCustomers table tr td {
@@ -61,14 +64,14 @@
 }
 
 .recentCustomers table tr:hover {
-    background: var(--blue);
-    color: var(--white);
+    background: var(--accent);
+    color: var(--background);
 }
 
 .recentCustomers table tr:hover h4 {
-    color: var(--white);
+    color: var(--background);
 }
 
 .recentCustomers table tr:hover td h4 span {
-    color: var(--white);
+    color: var(--background);
 }

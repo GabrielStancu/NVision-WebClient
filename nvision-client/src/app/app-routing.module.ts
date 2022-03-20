@@ -20,7 +20,8 @@ const routes: Routes = [
   { path: 'subject-account', component: SubjectAccountComponent, canActivate: [AuthGuard], data: { roles: 'Subject' } },
   { path: 'watcher-subjects', component: WatcherSubjectsComponent, canActivate: [AuthGuard], data: { roles: 'Watcher' }},
   { path: 'watcher-alerts', component: WatcherAlertsComponent, canActivate: [AuthGuard], data: { roles: 'Watcher' }},
-  { path: 'subject-data/:id', component: SubjectDataComponent, canActivate: [AuthGuard]}
+  { path: 'subject-data/:id', component: SubjectDataComponent, canActivate: [AuthGuard]},
+  { path: '', component: LoginComponent}
 ];
 
 @NgModule({

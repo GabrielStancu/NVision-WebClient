@@ -1,11 +1,13 @@
 .alerts {
     position: relative;
-    display: grid;
-    min-height: 600px; 
-    background: var(--gray);
+    display: flex;
+    min-height: 450px;
+    background: var(--container);
     padding: 20px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
-    border-radius: 20px
+    border-radius: 20px;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .cardHeader {
@@ -16,16 +18,16 @@
 
 .cardHeader h2 {
     font-weight: 600;
-    color: var(--blue);
+    color: var(--accent);
     font-size: 30px;
 }
 
 .btn {
     position: relative;
     padding: 5px 10px;
-    background: var(--blue);
+    background: var(--container-accent);
     text-decoration: none;
-    color: var(--white);
+    color: var(--grey);
     border-radius: 6px;
     font-size: 20px;
 }
@@ -51,8 +53,8 @@ table thead td {
 }
 
 .alerts table tbody tr:hover {
-    background: var(--blue);
-    color: var(--white);
+    background: var(--accent);
+    color: var(--background);
 }
 
 .alerts table tr td {
@@ -78,7 +80,7 @@ table thead td {
 .status.delivered {
     padding: 2px 4px;
     background: var(--green);
-    color: var(--white);
+    color: var(--background);
     border-radius: 4px;
     font-size: 20px;
     font-weight: 500;
@@ -87,7 +89,7 @@ table thead td {
 .status.pending {
     padding: 2px 4px;
     background: #f9ca3f;
-    color: var(--white);
+    color: var(--background);
     border-radius: 4px;
     font-size: 20px;
     font-weight: 500;
@@ -95,8 +97,8 @@ table thead td {
 
 .status.return {
     padding: 2px 4px;
-    background: var(--blue);
-    color: var(--white);
+    background: var(--accent);
+    color: var(--background);
     border-radius: 4px;
     font-size: 20px;
     font-weight: 500;
@@ -105,7 +107,7 @@ table thead td {
 .status.inprogress {
     padding: 2px 4px;
     background: #1795ce;
-    color: var(--white);
+    color: var(--background);
     border-radius: 4px;
     font-size: 14px;
     font-weight: 500;

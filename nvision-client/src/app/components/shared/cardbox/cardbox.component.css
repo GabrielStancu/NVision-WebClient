@@ -1,48 +1,87 @@
+.content-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
 .cardBox {
     position: relative;
-    width: 100%;
+    width: 60%;
     padding: 20px;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(2,2fr);
     display: grid;
     grid-gap: 30px;
 }
 
+.picture-holder {
+    width: 40%;
+    background: var(--container);
+    margin-top: 5px;
+    padding: 20px;
+    height: 350px;
+    border-radius: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    margin: 20px;
+}
+
+.hero-image {
+    height: 100%;
+    width: 100%;
+}
+
 .cardBox .card {
     position: relative;
-    background: var(--gray);
+    background: var(--container);
     padding: 30px;
     border-radius: 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    flex-direction: row;
+    align-items: center;
 }
 
 .cardBox .card .numbers {
     position: relative;
     font-weight: 500;
-    font-size: 2.5em;
-    color: var(--blue);
+    font-size: 4em;
+    font-weight: bold;
+    color: var(--accent);
 }
 
 .cardBox .card .cardName {
     color: var(--black2);
-    font-size: 1.1em;
-    margin-top: 10px;
+    font-size: 1.75em;
+    margin-left: 15px;
 }
 
 .cardBox .card .iconBx{
     font-size: 3.5em;
     color: var(--black2);
+    background: var(--background);
+    border-radius: 35px;
+    width: 70px;
+    height: 70px;
+    padding: 10px;
+}
+
+.icon-header {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    margin-left: 20px;
 }
 
 .cardBox .card:hover {
-    background: var(--blue);
+    background: var(--container-accent);
 }
 
-.cardBox .card:hover .numbers, 
-.cardBox .card:hover .cardName,
-.cardBox .card:hover .iconBx {
-    color: var(--white);
+.cardBox .card:hover .cardName{
+    color: var(--background);
+}
+
+.cardBox .card:hover .numbers {
+    color: var(--grey);
 }
 
 @media (max-width: 991px) {

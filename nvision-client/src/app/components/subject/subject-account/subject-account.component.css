@@ -9,7 +9,7 @@
     width: calc(100% - 300px);
     left: 300px;
     min-height: 100vh;
-    background: var(--white);
+    background: var(--background);
     transition: 0.5s;
     display: flex;
     flex-direction: column;

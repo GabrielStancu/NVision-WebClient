@@ -1,11 +1,18 @@
-<div class="cardBox">
-    <div class="card" *ngFor="let dashboardCard of dashboardCards">
-        <div>
-            <div class="numbers">{{dashboardCard.numericValue}}</div>
-            <div class="cardName">{{dashboardCard.cardName}}</div>
-        </div>
-        <div class="iconBx">
-            <ion-icon name="{{dashboardCard.iconName}}"></ion-icon>
+<div class="content-container">
+    <div class="cardBox">
+        <div class="card" *ngFor="let dashboardCard of dashboardCards">
+            <div class="iconBx">
+                <ion-icon name="{{dashboardCard.iconName}}"></ion-icon>
+            </div>
+            <div class="icon-header">
+                <div class="numbers">{{dashboardCard.numericValue}}</div>
+                <div class="cardName">{{dashboardCard.cardName}}</div>
+            </div>
+            
         </div>
     </div>
+    <div class="picture-holder">
+        <img src="./assets/NVision.png" class="hero-image"/>
+    </div>
 </div>
+
