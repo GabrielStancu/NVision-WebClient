@@ -49,6 +49,19 @@
     font-size: 1.2em;
 }
 
+.user-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.user-greeting {
+    font-size: 24px;
+    color: var(--grey);
+    font-weight: bold;
+    margin-right: 10px;
+}
+
 .user {
     position: relative;
     min-width: 40px;

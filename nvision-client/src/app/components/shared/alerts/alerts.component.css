@@ -32,6 +32,12 @@
     font-size: 20px;
 }
 
+.btn:hover {
+    background: var(--container);
+    color: var(--grey);
+    border: 1px solid var(--grey);
+}
+
 table {
     width: 100%;
     border-collapse: collapse;

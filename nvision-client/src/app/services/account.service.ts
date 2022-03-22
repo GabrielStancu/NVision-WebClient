@@ -2,8 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, isDevMode } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LoginUserReply } from '../replies/login-user.reply';
+import { UserDisplayDataReply } from '../replies/user-display-data.reply';
 import { LoginUserRequest } from '../requests/login-user.request';
 import { RegisterUserRequest } from '../requests/register-user.request';
+import { UserDisplayDataRequest } from '../requests/user-display-data.request';
 
 @Injectable({
     providedIn: 'root'
@@ -30,16 +32,12 @@ export class AccountService {
         return this.http.post<boolean>(this.getApiUrl() + '/register', registerUser);
     }
 
-    updateWatcherData(): void {
-        // receive all data about watcher
-    }
-
-    updateSujectData(): void {
-        // receive all data about subject
-    }
-
     uploadPhoto(val: any): any {
         return this.http.post(this.getApiUrl() + '/saveFile', val);
+    }
+
+    getUserDisplayData(userDisplayDataRequest: UserDisplayDataRequest): Observable<UserDisplayDataReply> {
+        return this.http.post<UserDisplayDataReply>(this.getApiUrl() + '/displayData', userDisplayDataRequest);
     }
 
     getPhotosUrl(): string {

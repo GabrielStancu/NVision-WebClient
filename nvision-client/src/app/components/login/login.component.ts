@@ -5,6 +5,7 @@ import { UserType } from 'src/app/models/user-type.enum';
 import { AccountService } from 'src/app/services/account.service';
 import { LoginUserRequest } from 'src/app/requests/login-user.request';
 import { ToastrService } from 'ngx-toastr';
+import { Resources } from 'src/app/helpers/resources/resources.constants';
 
 @Component({
   selector: 'app-login',
@@ -33,18 +34,18 @@ export class LoginComponent implements OnInit {
   }
 
   private loginWatcher(loggedUser: LoginUserReply): void {
-    localStorage.setItem('nvision-user', loggedUser.username);
-    localStorage.setItem('nvision-userId', loggedUser.id.toString());
-    localStorage.setItem('nvision-jwt', loggedUser.token);
-    localStorage.setItem('nvision-userType', UserType[loggedUser.userType].toString());
+    localStorage.setItem(Resources.localStorageKeys.userNameKey, loggedUser.username);
+    localStorage.setItem(Resources.localStorageKeys.userIdKey, loggedUser.id.toString());
+    localStorage.setItem(Resources.localStorageKeys.userTokenKey, loggedUser.token);
+    localStorage.setItem(Resources.localStorageKeys.userTypeKey, UserType[loggedUser.userType].toString());
     this.router.navigate(['watcher']);
   }
 
   private loginSubject(loggedUser: LoginUserReply): void {
-    localStorage.setItem('nvision-user', loggedUser.username);
-    localStorage.setItem('nvision-userId', loggedUser.id.toString());
-    localStorage.setItem('nvision-jwt', loggedUser.token);
-    localStorage.setItem('nvision-userType', UserType[loggedUser.userType].toString());
+    localStorage.setItem(Resources.localStorageKeys.userNameKey, loggedUser.username);
+    localStorage.setItem(Resources.localStorageKeys.userIdKey, loggedUser.id.toString());
+    localStorage.setItem(Resources.localStorageKeys.userTokenKey, loggedUser.token);
+    localStorage.setItem(Resources.localStorageKeys.userTypeKey, UserType[loggedUser.userType].toString());
     this.router.navigate(['subject']);
   }
 }

@@ -11,6 +11,7 @@
     grid-template-columns: repeat(2,2fr);
     display: grid;
     grid-gap: 30px;
+    cursor: pointer;
 }
 
 .picture-holder {

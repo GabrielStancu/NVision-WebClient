@@ -2,8 +2,14 @@
     <div class="toggle"(click)="toggleSidebar()">
         <ion-icon name="menu-outline"></ion-icon>
     </div>
-    <!-- user image -->
-    <div class="user">
-        <img src="./../../../../assets/grandfather.png"/>
+    <div class="user-container">
+        <div class="user-greeting">
+            Hello, {{displayUser.firstName}}!
+        </div>
+        <!-- user image -->
+        <div class="user">
+            <img src="{{displayUser.profilePictureSrc}}"/>
+        </div>
     </div>
+    
 </div>
