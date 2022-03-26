@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { CommonModule } from '@angular/common'
+import { CommonModule, DatePipe  } from '@angular/common'
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -108,7 +108,7 @@ export function tokenGetter() {
     }),
     ToastrModule.forRoot()
   ],
-  providers: [AccountService, WatcherDataService, AuthGuard],
+  providers: [AccountService, WatcherDataService, AuthGuard, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,3 +1,5 @@
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { DatePipe } from '@angular/common';
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { WatcherAlertReply } from 'src/app/replies/watcher-data.reply';
@@ -9,15 +11,32 @@ import { AnswerAlertModalComponent } from './answer-alert-modal/answer-alert-mod
 @Component({
   selector: 'app-alerts',
   templateUrl: './alerts.component.html',
-  styleUrls: ['./alerts.component.css']
+  styleUrls: ['./alerts.component.css'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({height: '0px', minHeight: '0'})),
+      state('expanded', style({height: '*'})),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class AlertsComponent implements OnInit, OnChanges {
 
-  constructor(public dialog: MatDialog, private watcherDataService: WatcherDataService) { }
+  constructor(public dialog: MatDialog, private watcherDataService: WatcherDataService,
+              private datePipe: DatePipe) { }
 
   @Input() alerts: WatcherAlertReply[];
   @Input() displayHeader = true;
   public displayAlerts: DisplayAlert[] = [];
+
+  public columnsToDisplay = ['subjectName', 'shortMessage', 'displayDate', 'status'];
+  public columnsDisplayValues: {[key: string]: string} = {
+    subjectName: 'Subject Name',
+    shortMessage: 'Message',
+    displayDate: 'Date',
+    status: 'Was Accurate'
+  };
+  expandedElement: DisplayAlert | null;
 
   ngOnInit(): void {
     this.initTable();
@@ -30,9 +49,16 @@ export class AlertsComponent implements OnInit, OnChanges {
   initTable(): void {
     this.displayAlerts = [];
     this.alerts.forEach(a => {
+        let shortMessage = a.message;
+        if (shortMessage.length > 30) {
+          shortMessage = shortMessage.substring(0, 30) + '...'
+        };
+
+        let displayDate = this.datePipe.transform(a.timestamp, 'dd.MM.yyyy HH:mm:ss');
         this.displayAlerts.push(
           new DisplayAlert(a.id, a.subjectName, a.message, a.timestamp,
-                             this.getAlertStatus(a.wasTrueAlert), this.getClassNameByAccuracy(a.wasTrueAlert))
+                           this.getAlertStatus(a.wasTrueAlert), this.getClassNameByAccuracy(a.wasTrueAlert),
+                           shortMessage, displayDate)
         );
     });
   }

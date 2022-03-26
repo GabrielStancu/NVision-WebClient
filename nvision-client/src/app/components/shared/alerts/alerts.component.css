@@ -3,7 +3,8 @@
     display: flex;
     min-height: 450px;
     background: var(--container);
-    padding: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
     flex-direction: column;
@@ -20,6 +21,7 @@
     font-weight: 600;
     color: var(--accent);
     font-size: 30px;
+    margin-left: 20px;
 }
 
 .btn {
@@ -27,15 +29,16 @@
     padding: 5px 10px;
     background: var(--container-accent);
     text-decoration: none;
-    color: var(--grey);
+    color: var(--background);
     border-radius: 6px;
     font-size: 20px;
+    margin-right: 20px;
 }
 
 .btn:hover {
-    background: var(--container);
+    background: transparent;
     color: var(--grey);
-    border: 1px solid var(--grey);
+    border: 1px solid var(--accent);
 }
 
 table {
@@ -127,4 +130,29 @@ table thead td {
     .status.inprogress {
         white-space: nowrap;
     }
+}
+
+table {
+    width: 100%;
+}
+
+tr.example-detail-row {
+    height: 0;
+}
+
+tr.example-element-row:not(.example-expanded-row):hover {
+    background: whitesmoke;
+}
+
+tr.example-element-row:not(.example-expanded-row):active {
+    background: #efefef;
+}
+
+.example-element-row td {
+    border-bottom-width: 0;
+}
+
+.example-element-detail {
+    overflow: hidden;
+    display: flex;
 }

@@ -3,22 +3,35 @@
         <h2>Alerts</h2>
         <a routerLink="/watcher-alerts" class="btn">View All</a>
     </div>
-    <table>
-        <thead>
-            <tr>
-                <td>Subject Name</td>
-                <td>Message</td>
-                <td>Date</td>
-                <td>Was Accurate</td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let alert of displayAlerts" (click)="onRowClick(alert)">
-                <td>{{alert.subjectName}}</td>
-                <td>{{alert.message}}</td>
-                <td>{{alert.timestamp | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
-                <td><span class="status {{alert.className}}">{{alert.status}}</span></td>
-            </tr>
-        </tbody>
-    </table>
+    
+    <table mat-table
+       [dataSource]="displayAlerts" multiTemplateDataRows
+       class="mat-elevation-z8">
+  <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+    <th mat-header-cell *matHeaderCellDef> {{columnsDisplayValues[column]}} </th>
+    <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+  </ng-container>
+
+  <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+      <div class="example-element-detail"
+           [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+        <div class="example-element-diagram">
+          <div>{{element.message}}</div>
+        </div>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let element; columns: columnsToDisplay;"
+      class="example-element-row"
+      [class.example-expanded-row]="expandedElement === element"
+      (click)="expandedElement = expandedElement === element ? null : element">
+  </tr>
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+</table>
+
+
 </div>
