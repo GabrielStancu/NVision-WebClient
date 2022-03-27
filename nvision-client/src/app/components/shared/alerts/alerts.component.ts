@@ -1,12 +1,14 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { DatePipe } from '@angular/common';
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { WatcherAlertReply } from 'src/app/replies/watcher-data.reply';
 import { AlertAnswer } from 'src/app/requests/alert-answer.request';
 import { WatcherDataService } from 'src/app/services/watcher-data.service';
 import { DisplayAlert } from '../display-models/display-alert.model';
 import { AnswerAlertModalComponent } from './answer-alert-modal/answer-alert-modal.component';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-alerts',
@@ -20,14 +22,16 @@ import { AnswerAlertModalComponent } from './answer-alert-modal/answer-alert-mod
     ]),
   ],
 })
-export class AlertsComponent implements OnInit, OnChanges {
+export class AlertsComponent implements OnInit, OnChanges, AfterViewInit {
 
   constructor(public dialog: MatDialog, private watcherDataService: WatcherDataService,
               private datePipe: DatePipe) { }
 
   @Input() alerts: WatcherAlertReply[];
   @Input() displayHeader = true;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   public displayAlerts: DisplayAlert[] = [];
+  public dataSource = new MatTableDataSource<DisplayAlert>(this.displayAlerts);
 
   public columnsToDisplay = ['subjectName', 'shortMessage', 'displayDate', 'status'];
   public columnsDisplayValues: {[key: string]: string} = {
@@ -40,6 +44,10 @@ export class AlertsComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.initTable();
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
   }
 
   ngOnChanges(): void {
@@ -61,6 +69,7 @@ export class AlertsComponent implements OnInit, OnChanges {
                            shortMessage, displayDate)
         );
     });
+    this.dataSource = new MatTableDataSource<DisplayAlert>(this.displayAlerts);
   }
 
   onRowClick(displayAlert: DisplayAlert): void {

@@ -5,7 +5,7 @@
     </div>
     
     <table mat-table
-       [dataSource]="displayAlerts" multiTemplateDataRows
+       [dataSource]="dataSource" multiTemplateDataRows
        class="mat-elevation-z8">
   <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
     <th mat-header-cell *matHeaderCellDef> {{columnsDisplayValues[column]}} </th>
@@ -33,5 +33,9 @@
   <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
 </table>
 
+<mat-paginator [pageSizeOptions]="[5]"
+                 showFirstLastButtons 
+                 aria-label="Select page of periodic elements">
+  </mat-paginator>
 
 </div>

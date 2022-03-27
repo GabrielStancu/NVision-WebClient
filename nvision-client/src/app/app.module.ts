@@ -26,6 +26,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -97,6 +98,7 @@ export function tokenGetter() {
     MatCardModule,
     ReactiveFormsModule,
     MatAutocompleteModule,
+    MatPaginatorModule,
     IonicModule.forRoot(),
     MDBBootstrapModule.forRoot(),
     JwtModule.forRoot({
