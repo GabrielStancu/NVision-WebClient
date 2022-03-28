@@ -2,10 +2,17 @@
     <app-navigation [collapsed]="collapsedSidebar"></app-navigation>
     <div class="main" [ngClass]="{active: collapsedSidebar}">
         <app-topbar (sidebarChanged)="onSidebarChanged($event)"></app-topbar>
-        <app-cardbox [cards]="watcherData.cards"></app-cardbox>
+        <div *ngIf="watcherData?.cards?.length > 0">
+            <app-cardbox [cards]="watcherData.cards"></app-cardbox>
+        </div>
+        
         <div class="details">
-            <app-alerts [alerts]="watcherData.alerts" [displayHeader]="true"></app-alerts>
-            <app-subjects [subjects]="watcherData.subjects"></app-subjects>
+            <div *ngIf="watcherData?.alerts?.length > 0">
+                <app-alerts [alerts]="watcherData.alerts" [displayHeader]="true"></app-alerts>
+            </div>
+            <div *ngIf="watcherData?.subjects?.length > 0">
+                <app-subjects [subjects]="watcherData.subjects"></app-subjects>
+            </div>
         </div>
     </div>
 </div>

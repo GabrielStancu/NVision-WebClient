@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, DoCheck, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { WatcherCardReply } from 'src/app/replies/watcher-data.reply';
 import { DashboardCard } from '../display-models/display-numeric-card.model';
 
@@ -12,11 +12,11 @@ export class CardboxComponent implements OnInit {
   constructor() { }
 
   public dashboardCards: DashboardCard[] = [];
-  @Input() cards: WatcherCardReply[];
+  @Input() cards: WatcherCardReply[] = [];
   private iconNames = [
     'eye-outline', 'thermometer-outline', 'alert-circle-outline', 'calendar-outline'
   ];
-
+  
   ngOnInit(): void {
     this.initNumericCards();
   }

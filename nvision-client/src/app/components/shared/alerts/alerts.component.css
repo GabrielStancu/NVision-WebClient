@@ -66,10 +66,6 @@ table thead td {
     color: var(--background);
 }
 
-.alerts table tr td {
-    padding: 10px;
-}
-
 .alerts table tr td:last-child {
     text-align: center;
 }

@@ -2,7 +2,7 @@
     <div class="toggle"(click)="toggleSidebar()">
         <ion-icon name="menu-outline"></ion-icon>
     </div>
-    <div class="user-container">
+    <div class="user-container" *ngIf="displayUser !== undefined">
         <div class="user-greeting">
             Hello, {{displayUser.firstName}}!
         </div>
