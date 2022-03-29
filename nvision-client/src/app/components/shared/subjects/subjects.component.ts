@@ -3,6 +3,7 @@ import { WatcherSubjectReply } from 'src/app/replies/watcher-data.reply';
 import { DashboardSubject } from '../display-models/display-subject.model';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-subjects',
@@ -11,7 +12,7 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class SubjectsComponent implements OnInit, AfterViewInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   @Input() subjects: WatcherSubjectReply[];
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -30,10 +31,14 @@ export class SubjectsComponent implements OnInit, AfterViewInit {
   initPeople(): void {
     this.subjects.forEach(s => {
         this.dashboardSubjects.push(
-          new DashboardSubject(s.name, s.healthStatus)
+          new DashboardSubject(s.id, s.name, s.healthStatus, s.profilePictureSrc)
         );
     });
     this.dataSource = new MatTableDataSource<DashboardSubject>(this.dashboardSubjects);
     console.log(this.dataSource);
+  }
+
+  onSubjectClick(id: number): void {
+    this.router.navigate(['/subject-data/' + id.toString()]);
   }
 }

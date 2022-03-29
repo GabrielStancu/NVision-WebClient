@@ -1,18 +1,19 @@
 <div class="recentCustomers">
     <div class="cardHeader">
         <h2>Subjects</h2>
+        <a routerLink="/watcher-subjects" class="btn">View All</a>
     </div>
-    <div class="mat-elevation-z8">
+    <div>
         <table mat-table [dataSource]="dataSource">
           <ng-container matColumnDef="picture">
             <th mat-header-cell *matHeaderCellDef></th>
-            <td mat-cell *matCellDef="let element"> 
-                <div class="imgBx"><img src="./../../../assets/patient.png"/></div>    
+            <td mat-cell *matCellDef="let element" (click)="onSubjectClick(element.id)"> 
+                <div class="imgBx"><img src="{{element.profilePictureSrc}}"/></div>    
             </td>
           </ng-container>
           <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef></th>
-            <td mat-cell *matCellDef="let element"> 
+            <td mat-cell *matCellDef="let element" (click)="onSubjectClick(element.id)"> 
                 <h4>{{element.name}}<br><span>{{element.healthStatus}}</span></h4>    
             </td>
           </ng-container>

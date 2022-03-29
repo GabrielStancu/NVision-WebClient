@@ -9,7 +9,8 @@ export class WatcherCardReply {
 }
 
 export class WatcherSubjectReply {
-    constructor(public name: string, public healthStatus: string) { }
+    constructor(public id: number, public name: string, public healthStatus: string, 
+                public profilePictureSrc: string) { }
 }
 
 export class WatcherAlertReply {

@@ -55,6 +55,7 @@ table thead td {
 .alerts table tr {
     color: var(--black2);
     border-bottom: 1px solid rgba(248, 243, 243, 0.431);
+    cursor: pointer;
 }
 
 .alerts table tr:last-child {
@@ -132,6 +133,13 @@ table {
     width: 100%;
 }
 
+table th {
+    text-align: center;
+    font-size: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
 tr.example-detail-row {
     height: 0;
 }
@@ -151,4 +159,8 @@ tr.example-element-row:not(.example-expanded-row):active {
 .example-element-detail {
     overflow: hidden;
     display: flex;
+}
+
+::ng-deep .mat-form-field-flex {
+    background: var(--grey) !important;
 }

@@ -24,6 +24,23 @@
     margin-left: 20px;
 }
 
+.btn {
+    position: relative;
+    padding: 5px 10px;
+    background: var(--container-accent);
+    text-decoration: none;
+    color: var(--background);
+    border-radius: 6px;
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+.btn:hover {
+    background: transparent;
+    color: var(--grey);
+    border: 1px solid var(--accent);
+}
+
 .recentCustomers .imgBx {
     position: relative;
     width: 40px;
@@ -64,23 +81,24 @@
     font-size: 16px;
     font-weight: 500;
     line-height: 0.8em;
-    color: var(--black2);
+    color: var(--container);
     font-size: 20px;
     margin-top: 18px;
 }
 
 .recentCustomers table tr td h4 span {
     font-size: 14px;
-    color: var(--black2)
+    color: var(--container)
 }
 
 .recentCustomers table tr:hover {
     background: var(--accent);
     color: var(--background);
+    cursor: pointer;
 }
 
 .recentCustomers table tr:hover h4 {
-    color: var(--background);
+    color: var(--container);
 }
 
 .recentCustomers table tr:hover td h4 span {

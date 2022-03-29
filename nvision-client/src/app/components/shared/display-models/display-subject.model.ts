@@ -1,4 +1,5 @@
 export class DashboardSubject{
-    constructor(public name: string, public healthStatus: string) {
+    constructor(public id: number, public name: string, 
+                public healthStatus: string, public profilePictureSrc: string) {
     }
 }
