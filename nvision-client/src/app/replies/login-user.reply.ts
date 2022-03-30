@@ -7,4 +7,5 @@ export class LoginUserReply {
     public username: string;
     public userType: UserType;
     public token: string;
+    public completeProfile: boolean;
 }

@@ -91,10 +91,6 @@ export class SubjectAccountComponent implements OnInit {
     this.subject.watcherFullName = selectedWatcher.fullName;
   }
 
-  disabledSexSelector(): boolean {
-    return this.subject.sex !== undefined && this.subject.sex !== null;
-  }
-
   displayFn(watcher: WatcherOption): string {
     return watcher && watcher.fullName ? watcher.fullName : '';
   }

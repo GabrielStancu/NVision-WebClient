@@ -38,7 +38,12 @@ export class LoginComponent implements OnInit {
     localStorage.setItem(Resources.localStorageKeys.userIdKey, loggedUser.id.toString());
     localStorage.setItem(Resources.localStorageKeys.userTokenKey, loggedUser.token);
     localStorage.setItem(Resources.localStorageKeys.userTypeKey, UserType[loggedUser.userType].toString());
-    this.router.navigate(['watcher']);
+
+    if (loggedUser.completeProfile) {
+      this.router.navigate(['watcher']);
+    } else {
+      this.router.navigate(['watcher-account']);
+    }
   }
 
   private loginSubject(loggedUser: LoginUserReply): void {
@@ -46,6 +51,11 @@ export class LoginComponent implements OnInit {
     localStorage.setItem(Resources.localStorageKeys.userIdKey, loggedUser.id.toString());
     localStorage.setItem(Resources.localStorageKeys.userTokenKey, loggedUser.token);
     localStorage.setItem(Resources.localStorageKeys.userTypeKey, UserType[loggedUser.userType].toString());
-    this.router.navigate(['subject']);
+
+    if (loggedUser.completeProfile) {
+      this.router.navigate(['subject']);
+    } else {
+      this.router.navigate(['subject-account']);
+    }
   }
 }

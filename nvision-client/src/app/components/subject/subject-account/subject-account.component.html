@@ -39,7 +39,7 @@
                         </mat-form-field>
                         <mat-form-field class="example-full-width" appearance="fill">
                             <mat-label>Sex</mat-label>
-                            <mat-select [disabled]="disabledSexSelector()" [(ngModel)]="subject.sex" name="sex">
+                            <mat-select [(ngModel)]="subject.sex" name="sex">
                               <mat-option *ngFor="let sexOption of sexOptions" [value]="sexOption.value">
                                 {{sexOption.viewValue}}
                               </mat-option>
