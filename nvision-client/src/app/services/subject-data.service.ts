@@ -3,6 +3,7 @@ import { Injectable, isDevMode } from '@angular/core';
 import { Observable } from 'rxjs';
 import { SubjectDataReply } from '../replies/subject-data.reply';
 import { FilteredSubjectDataRequest } from '../requests/filtered-subject-data.request';
+import { UpdateDeviceSerialNumberRequest } from '../requests/update-device-serial-number.request';
 import { UpdateSubjectRequest } from '../requests/update-subject.request';
 
 @Injectable({
@@ -37,5 +38,9 @@ export class SubjectDataService {
 
     getMeasurementsData(request: FilteredSubjectDataRequest): Observable<SubjectDataReply> {
         return this.http.post<SubjectDataReply>(this.getApiUrl(), request);
+    }
+
+    updateDeviceSerialNumber(request: UpdateDeviceSerialNumberRequest): Observable<boolean> {
+        return this.http.post<boolean>(this.getApiUrl() + '/' + 'serial-number', request);
     }
 }

@@ -6,14 +6,19 @@
             <div class="personal-data" *ngIf="subject">
                 <mat-card class="example-card">
                     <mat-card-title-group>
-                      <mat-card-title>{{subject.fullName}}</mat-card-title>
-                      <mat-card-subtitle>{{subject.birthday|date:'dd/MM/yyyy'}}</mat-card-subtitle>
-                      <img mat-card-sm-image src="{{subject.profilePictureSrc}}" >
+                        <mat-card-title>{{subject.fullName}}</mat-card-title>
+                        <mat-card-subtitle>{{subject.birthday|date:'dd/MM/yyyy'}}</mat-card-subtitle>
+                        <img mat-card-sm-image src="{{subject.profilePictureSrc}}" >
                     </mat-card-title-group>
                     <mat-card-content>
-                      {{subject.healthStatus}}
+                        {{subject.healthStatus}}
                     </mat-card-content>
-                  </mat-card>
+                    <mat-form-field class="example-full-width" appearance="fill" style="width: 300px !important;">
+                        <mat-label>Device Serial Number</mat-label>
+                        <input matInput name="device-serial" (focusout)="onSerialNumberFocusOut($event)"
+                                [(ngModel)]="subject.deviceSerialNumber" [disabled]="disabledDeviceSerialNumber()">
+                      </mat-form-field>
+                </mat-card>
             </div>
             <div class="filters-container">
                 <div>
