@@ -35,7 +35,6 @@ export class SubjectsComponent implements OnInit, AfterViewInit {
         );
     });
     this.dataSource = new MatTableDataSource<DashboardSubject>(this.dashboardSubjects);
-    console.log(this.dataSource);
   }
 
   onSubjectClick(id: number): void {

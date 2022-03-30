@@ -100,6 +100,9 @@ export class AlertsComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   private answerAlert(alertData: WatcherAlertReply): void {
+    if (!alertData)
+      return;
+
     const alert = this.displayAlerts.find(a => a.id === alertData.id);
     alert.status = this.getAlertStatus(alertData.wasTrueAlert);
     alert.className = this.getClassNameByAccuracy(alertData.wasTrueAlert);

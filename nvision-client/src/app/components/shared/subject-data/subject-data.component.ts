@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Resources } from 'src/app/helpers/resources/resources.constants';
 import { SensorType } from 'src/app/models/sensor-type.enum';
+import { UserType } from 'src/app/models/user-type.enum';
 import { MeasurementReply } from 'src/app/replies/measurement.reply';
 import { SummarizedSubjectReply } from 'src/app/replies/summarized-subject.reply';
 import { FilteredSubjectDataRequest } from 'src/app/requests/filtered-subject-data.request';
@@ -34,9 +36,23 @@ export class SubjectDataComponent implements OnInit {
   constructor(private route: ActivatedRoute, private subjectService: SubjectDataService) { }
 
   ngOnInit(): void {
+    const userType = localStorage.getItem(Resources.localStorageKeys.userTypeKey);
+    if (userType === UserType[UserType.Watcher]) {
+      this.initWatcherView();
+    } else if (userType === UserType[UserType.Subject]) {
+      this.initSubjectView();
+    }
+  }
+
+  private initWatcherView(): void {
     this.route.params.subscribe(params => {
       this.subjectId = params['id'];
     });
+    this.getInitialData();
+  }
+
+  private initSubjectView(): void {
+    this.subjectId = Number(localStorage.getItem(Resources.localStorageKeys.userIdKey));
     this.getInitialData();
   }
 
@@ -71,6 +87,7 @@ export class SubjectDataComponent implements OnInit {
   private displayFetchedData(): void {
     var request = new FilteredSubjectDataRequest(this.subjectId, this.measurementTypesFilter.value, this.startDate, this.endDate);
     this.subjectService.getMeasurementsData(request).subscribe(rep => {
+      this.measurements = [];
       this.displaySubjectSummarizedData(rep.summarizedDataDto);
       this.measurementTypesFilter.value.forEach(sensorType => {
         const filteredMeasurements = rep.measurements.filter(m => m.sensorType == sensorType);

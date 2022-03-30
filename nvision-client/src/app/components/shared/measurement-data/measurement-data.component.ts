@@ -29,12 +29,26 @@ export class MeasurementDataComponent implements OnInit {
   }
 
   displayData(): void {
+    if (!this.measurements || this.measurements.length === 0) {
+      this.setEmptyData();
+      return;
+    }
+      
     const measurementValues = this.measurements.map(m => m.value);
-    console.log(measurementValues);
     this.chartDatasets = [{
       data: measurementValues, label: this.measurements[0].sensorName
     }];
     this.chartLabels = this.measurements.map(m => m.timestamp);
+    this.chartColors = [
+      { backgroundColor: this.generateColor(), borderWidth: 0 }
+    ];
+  }
+
+  private setEmptyData(): void {
+    this.chartDatasets = [{
+      data: [], label: ''
+    }];
+    this.chartLabels = [];
     this.chartColors = [
       { backgroundColor: this.generateColor(), borderWidth: 0 }
     ];
