@@ -11,7 +11,7 @@ import { UserDisplayDataRequest } from '../requests/user-display-data.request';
     providedIn: 'root'
 })
 export class AccountService {
-    private readonly APIUrlDev = 'https://localhost:5001/api/account';
+    private readonly APIUrlDev = 'https://192.168.241.247:5001/api/account';
     private readonly APIUrlProd = '';
 
     private getApiUrl(): string {
