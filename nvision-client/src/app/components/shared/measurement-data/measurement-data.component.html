@@ -1,12 +1,26 @@
+<div class="measurements-container">
+  <div class="headline">
+    Displaying {{measurementsCount()}} measurements 
+  </div>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Show from</mat-label>
+    <input matInput placeholder="{{fromIndex}}" [(ngModel)]="{{fromIndex}}" (focusout)="displayData()">
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>To</mat-label>
+    <input matInput placeholder="{{toIndex}}" [(ngModel)]="{{toIndex}}" (focusout)="displayData()">
+  </mat-form-field>
+</div>
+
 <div style="display: block">
-    <canvas mdbChart
-      [chartType]="chartType"
-      [datasets]="chartDatasets"
-      [labels]="chartLabels"
-      [colors]="chartColors"
-      [options]="chartOptions"
-      (chartHover)="chartHovered($event)"
-      (chartClick)="chartClicked($event)"
-      [legend]="true">
-    </canvas>
+  <canvas mdbChart
+    [chartType]="chartType"
+    [datasets]="chartDatasets"
+    [labels]="chartLabels"
+    [colors]="chartColors"
+    [options]="chartOptions"
+    (chartHover)="chartHovered($event)"
+    (chartClick)="chartClicked($event)"
+    [legend]="true">
+  </canvas>
 </div>

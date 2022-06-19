@@ -10,7 +10,7 @@ import { UpdateSubjectRequest } from '../requests/update-subject.request';
     providedIn: 'root'
 })
 export class SubjectDataService {
-    private readonly APIUrlDev = 'https://192.168.241.247:5001/api/subject';
+    private readonly APIUrlDev = 'https://192.168.220.247:5001/api/subject';
     private readonly APIUrlProd = '';
 
     private getApiUrl(): string {

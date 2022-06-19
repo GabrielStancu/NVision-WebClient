@@ -11,7 +11,7 @@ import { UpdateWatcherRequest } from '../requests/update-watcher.request';
     providedIn: 'root'
 })
 export class WatcherDataService {
-    private readonly APIUrlDev = 'https://192.168.241.247:5001/api/watcher';
+    private readonly APIUrlDev = 'https://192.168.220.247:5001/api/watcher';
     private readonly APIUrlProd = '';
 
     private getApiUrl(): string {

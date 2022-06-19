@@ -21,10 +21,14 @@ export class MeasurementDataComponent implements OnInit {
     responsive: true
   };
   public chartType = 'line';
+  public fromIndex: number;
+  public toIndex: number;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.fromIndex = 1;
+    this.toIndex = this.measurements.length;
     this.displayData();
   }
 
@@ -33,24 +37,30 @@ export class MeasurementDataComponent implements OnInit {
       this.setEmptyData();
       return;
     }
-      
-    const measurementValues = this.measurements.map(m => m.value);
+    
+    const color = this.generateColor();
+    const start = this.fromIndex - 1;
+    debugger;
+    const measurementValues = this.measurements.slice(start, this.measurementsCount()).map(m => m.value);
     this.chartDatasets = [{
-      data: measurementValues, label: this.measurements[0].sensorName
+      data: measurementValues, label: this.measurements[0].sensorName, 
+      fill: false, pointRadius: 2, borderColor: color
     }];
-    this.chartLabels = this.measurements.map(m => m.timestamp);
+    this.chartLabels = this.measurements.slice(start, this.measurementsCount())
+      .map(m => m.timestamp.toString().replace("T", " "));
     this.chartColors = [
-      { backgroundColor: this.generateColor(), borderWidth: 0 }
+      { backgroundColor: color, borderWidth: 0 }
     ];
   }
 
   private setEmptyData(): void {
+    const color = this.generateColor();
     this.chartDatasets = [{
-      data: [], label: ''
+      data: [], label: '', fill: false, pointRadius: 2, borderColor: color
     }];
     this.chartLabels = [];
     this.chartColors = [
-      { backgroundColor: this.generateColor(), borderWidth: 0 }
+      { backgroundColor: color, borderWidth: 0 }
     ];
   }
 
@@ -67,5 +77,9 @@ export class MeasurementDataComponent implements OnInit {
 
   private getRandomArbitrary(min, max): number {
     return Math.floor((Math.random() * (max - min) + min));
+  }
+
+  public measurementsCount(): number {
+    return this.toIndex - this.fromIndex + 1;
   }
 }
