@@ -99,6 +99,7 @@ export class SubjectDataComponent implements OnInit {
 
   public onDateRangeReset() {
     this.setDate();
+    this.dateRangeChange();
   }
 
   measurementTypeComboChange(event) {

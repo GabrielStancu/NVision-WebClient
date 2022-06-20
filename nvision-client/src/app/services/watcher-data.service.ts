@@ -6,6 +6,7 @@ import { Subject } from '../models/subject.model';
 import { WatcherDataReply } from '../replies/watcher-data.reply';
 import { AlertAnswer } from '../requests/alert-answer.request';
 import { UpdateWatcherRequest } from '../requests/update-watcher.request';
+import { WatcherTime } from '../requests/watcher-time.request';
 
 @Injectable({
     providedIn: 'root'
@@ -24,8 +25,8 @@ export class WatcherDataService {
 
     constructor(private http: HttpClient) {}
 
-    getWatcherData(watcherId: number): Observable<WatcherDataReply> {
-        return this.http.get<WatcherDataReply>(this.getApiUrl() + '/' + watcherId.toString());
+    getWatcherData(watcherTime: WatcherTime): Observable<WatcherDataReply> {
+        return this.http.post<WatcherDataReply>(this.getApiUrl() + '/dashboard', watcherTime);
     }
 
     getWatcherAlerts(watcherId: number): Observable<Alert[]> {

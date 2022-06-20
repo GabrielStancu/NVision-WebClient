@@ -4,11 +4,11 @@
   </div>
   <mat-form-field class="example-full-width" appearance="fill">
     <mat-label>Show from</mat-label>
-    <input matInput placeholder="{{fromIndex}}" [(ngModel)]="{{fromIndex}}" (focusout)="displayData()">
+    <input matInput placeholder="{{fromIndex}}" [(ngModel)]="fromIndex" (focusout)="displayData()" type="number">
   </mat-form-field>
   <mat-form-field class="example-full-width" appearance="fill">
     <mat-label>To</mat-label>
-    <input matInput placeholder="{{toIndex}}" [(ngModel)]="{{toIndex}}" (focusout)="displayData()">
+    <input matInput placeholder="{{toIndex}}" [(ngModel)]="toIndex" (focusout)="displayData()" type="number">
   </mat-form-field>
 </div>
 

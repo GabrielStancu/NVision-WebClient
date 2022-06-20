@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MeasurementReply } from 'src/app/replies/measurement.reply';
+import { DatePipe } from '@angular/common'
 
 @Component({
   selector: 'app-measurement-data',
@@ -24,7 +25,7 @@ export class MeasurementDataComponent implements OnInit {
   public fromIndex: number;
   public toIndex: number;
 
-  constructor() { }
+  constructor(private datePipe: DatePipe) { }
 
   ngOnInit(): void {
     this.fromIndex = 1;
@@ -40,14 +41,17 @@ export class MeasurementDataComponent implements OnInit {
     
     const color = this.generateColor();
     const start = this.fromIndex - 1;
-    debugger;
-    const measurementValues = this.measurements.slice(start, this.measurementsCount()).map(m => m.value);
+    const end = this.toIndex - 1;
+    const measurementValues = this.measurements.slice(start, end).map(m => m.value);
     this.chartDatasets = [{
       data: measurementValues, label: this.measurements[0].sensorName, 
       fill: false, pointRadius: 2, borderColor: color
     }];
-    this.chartLabels = this.measurements.slice(start, this.measurementsCount())
-      .map(m => m.timestamp.toString().replace("T", " "));
+    this.chartLabels = this.measurements.slice(start, end)
+      .map(m => {
+        const date = new Date(m.timestamp.toString().replace("T", " ") + ' UTC');
+        return this.datePipe.transform(date, 'yyyy-MM-dd HH:mm:ss:SSSS');
+      }); 
     this.chartColors = [
       { backgroundColor: color, borderWidth: 0 }
     ];
@@ -80,6 +84,7 @@ export class MeasurementDataComponent implements OnInit {
   }
 
   public measurementsCount(): number {
-    return this.toIndex - this.fromIndex + 1;
+    const len = this.toIndex - this.fromIndex + 1; 
+    return len;
   }
 }
