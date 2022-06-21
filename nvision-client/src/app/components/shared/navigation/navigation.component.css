@@ -2,7 +2,7 @@
     position: fixed;
     width: 300px;
     height: 100%;
-    background: var(--container-accent);
+    background: var(--flat-dark);
     border-left: 10px solid transparent;
     transition: 0.5s;
     overflow: hidden;
@@ -53,7 +53,7 @@
 
 .navigation ul li:hover a,
 .navigation ul li.hovered a {
-    color: var(--accent);
+    color: var(--flat-dark);
 }
 
 .navigation ul li a .icon {
@@ -122,17 +122,16 @@
 }
 
 .logo-name {
-    color: white;
     font-size: 40px;
     font-weight: 600;
 }
 
 .first-word {
-    color: black;
+    color: var(--accent);
 }
 
 .second-word {
-    color: black;
+    color: var(--background);
 }
 
 @media (max-width: 991px) {

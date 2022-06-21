@@ -2,26 +2,30 @@
     position: relative;
     display: flex;
     min-height: 450px;
-    background: var(--container);
-    padding-top: 20px;
-    padding-bottom: 20px;
-    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
-    border-radius: 20px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.78);
     flex-direction: column;
     justify-content: flex-start;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 10px;
+    border-radius: 5px;
+    background-image: linear-gradient(315deg, #000000 0%, #313131 98%);
+    border-radius: 5px;
 }
 
 .cardHeader {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
+    padding-top: 10px;
 }
 
 .cardHeader h2 {
-    font-weight: 600;
+    font-weight: 550;
     color: var(--accent);
-    font-size: 30px;
-    margin-left: 20px;
+    font-size: 40px;
+    padding-top: 15px;
 }
 
 .btn {
@@ -32,7 +36,6 @@
     color: var(--background);
     border-radius: 6px;
     font-size: 20px;
-    margin-right: 20px;
 }
 
 .btn:hover {
@@ -44,17 +47,10 @@
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 10px;
-}
-
-table thead td {
-    font-weight: 600;
-    font-size: 20px;
 }
 
 .alerts table tr {
-    color: var(--black2);
-    border-bottom: 1px solid rgba(248, 243, 243, 0.431);
+    border: none;
     cursor: pointer;
 }
 
@@ -129,15 +125,23 @@ table thead td {
     }
 }
 
-table {
-    width: 100%;
-}
-
 table th {
     text-align: center;
     font-size: 30px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 22px;
+    padding-bottom: 22px;
+    color: var(--flat-dark);
+    background-color: var(--background);
+}
+
+table th:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+table th:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 tr.example-detail-row {
@@ -163,4 +167,8 @@ tr.example-element-row:not(.example-expanded-row):active {
 
 ::ng-deep .mat-form-field-flex {
     background: var(--grey) !important;
+}
+
+::ng-deep .mat-table {
+    background-color: transparent !important;
 }

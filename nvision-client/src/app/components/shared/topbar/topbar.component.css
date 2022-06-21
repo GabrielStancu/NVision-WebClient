@@ -17,7 +17,7 @@
     align-items: center;
     font-size: 2.5em;
     cursor: pointer;
-    color: var(--accent);
+    color: var(--flat-dark);
 }
 
 .search {
@@ -57,7 +57,7 @@
 
 .user-greeting {
     font-size: 24px;
-    color: var(--grey);
+    color: var(--flat-dark);
     font-weight: bold;
     margin-right: 10px;
 }

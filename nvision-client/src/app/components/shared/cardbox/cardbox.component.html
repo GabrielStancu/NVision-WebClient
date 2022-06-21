@@ -1,8 +1,10 @@
 <div class="content-container">
     <div class="cardBox">
         <div class="card" *ngFor="let dashboardCard of dashboardCards">
-            <div class="iconBx">
-                <ion-icon name="{{dashboardCard.iconName}}"></ion-icon>
+            <div class="icon-wrapper">
+                <div class="iconBx">
+                    <ion-icon name="{{dashboardCard.iconName}}"></ion-icon>
+                </div>
             </div>
             <div class="icon-header">
                 <div class="numbers">{{dashboardCard.numericValue}}</div>

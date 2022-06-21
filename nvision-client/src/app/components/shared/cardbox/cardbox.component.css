@@ -7,22 +7,21 @@
 .cardBox {
     position: relative;
     width: 60%;
-    padding: 20px;
+    padding: 10px;
     grid-template-columns: repeat(2,2fr);
     display: grid;
-    grid-gap: 30px;
     cursor: pointer;
 }
 
 .picture-holder {
     width: 40%;
-    background: var(--container);
-    margin-top: 5px;
     padding: 20px;
     height: 350px;
-    border-radius: 20px;
-    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
-    margin: 20px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.78);
+    margin: 30px;
+    background-color: #000000;
+    background-image: linear-gradient(315deg, #000000 0%, #313131 98%);
+    border-radius: 5px;
 }
 
 .hero-image {
@@ -32,14 +31,16 @@
 
 .cardBox .card {
     position: relative;
-    background: var(--container);
-    padding: 30px;
-    border-radius: 20px;
+    padding-right: 30px;
     display: flex;
     justify-content: flex-start;
-    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.78);
     flex-direction: row;
     align-items: center;
+    margin: 20px;
+    background-color: #000000;
+    background-image: linear-gradient(315deg, #000000 0%, #313131 98%);
+    border-radius: 5px;
 }
 
 .cardBox .card .numbers {
@@ -56,9 +57,20 @@
     margin-left: 15px;
 }
 
+.cardBox .card .icon-wrapper{
+    height: 100%;
+    background: var(--container-accent);
+    min-width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+}
+
 .cardBox .card .iconBx{
     font-size: 3.5em;
-    color: var(--black2);
+    color: var(--flat-dark);
     background: var(--background);
     border-radius: 35px;
     width: 70px;
@@ -71,18 +83,16 @@
     flex-direction: row;
     margin: 10px;
     margin-left: 20px;
+    align-items: center;
 }
 
 .cardBox .card:hover {
-    background: var(--container-accent);
+    background-color: #111111;
+    background-image: linear-gradient(315deg, #212121 0%, #414141 98%);
 }
 
 .cardBox .card:hover .cardName{
     color: var(--background);
-}
-
-.cardBox .card:hover .numbers {
-    color: var(--grey);
 }
 
 @media (max-width: 991px) {

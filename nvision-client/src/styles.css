@@ -18,15 +18,17 @@ body {
 :root {
     --accent: #db3f3f;
     --bordeaux: #a93f55;
-    --background: #2e2b28;
+    /* --background: #2e2b28; */
+    --background: #eaeaea;
     --grey: #f5f5f5;
     --black1: #222;
     --black2: #eaeaea;
-    --container: radial-gradient( circle farthest-corner at -4.5% 34.3%,  rgba(93,89,84,1) 0%, rgba(63, 59, 56, 1) 90% );
+    --container: radial-gradient( circle farthest-corner at -4.5% 34.3%,  rgba(163,149,154,1) 0%, rgba(133, 129, 126, 1) 90% );
     --container-accent: radial-gradient( circle farthest-corner at -4.5% 34.3%,  rgba(219,63,63,1) 0%, rgba(169, 63, 85, 1) 90% );
     --light-gray: #787878;
     --green: #52b788;
     --primary: #cd2027;
     --primary-acc: #a51d22;
     --secondary: #2f1210;
+    --flat-dark: #191919;
 }
