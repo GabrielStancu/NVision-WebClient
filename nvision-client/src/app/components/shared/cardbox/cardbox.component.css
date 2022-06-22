@@ -2,6 +2,9 @@
     width: 100%;
     display: flex;
     flex-direction: row;
+    background: var(--background);
+    border-top-left-radius: 22px;
+    border-top-right-radius: 22px;
 }
 
 .cardBox {
