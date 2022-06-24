@@ -15,10 +15,11 @@ export class SubjectsComponent implements OnInit, AfterViewInit {
   constructor(private router: Router) { }
 
   @Input() subjects: WatcherSubjectReply[];
+  @Input() displayPaginator = false;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   public dashboardSubjects: DashboardSubject[] = [];
   public dataSource = new MatTableDataSource<DashboardSubject>(this.dashboardSubjects);
-  public displayedColumns = ['picture', 'name'];
+  public displayedColumns = ['picture', 'name', 'status'];
 
   ngOnInit(): void {
     this.initPeople();
@@ -31,7 +32,7 @@ export class SubjectsComponent implements OnInit, AfterViewInit {
   initPeople(): void {
     this.subjects.forEach(s => {
         this.dashboardSubjects.push(
-          new DashboardSubject(s.id, s.name, s.healthStatus, s.profilePictureSrc)
+          new DashboardSubject(s.id, s.name, s.healthStatus, s.profilePictureSrc, s.healthScore)
         );
     });
     this.dataSource = new MatTableDataSource<DashboardSubject>(this.dashboardSubjects);
@@ -39,5 +40,13 @@ export class SubjectsComponent implements OnInit, AfterViewInit {
 
   onSubjectClick(id: number): void {
     this.router.navigate(['/subject-data/' + id.toString()]);
+  }
+
+  subjectHealthIcon(healthScore: number): string {
+    if (healthScore > 0)
+      return 'add_circle';
+    if (healthScore < 0) 
+      return 'remove_circle';
+    return 'help';
   }
 }

@@ -18,15 +18,18 @@ body {
 :root {
     --accent: #db3f3f;
     --bordeaux: #a93f55;
-    --background: #eaeaea;
+    --background: #cccccc;
     --grey: #f5f5f5;
     --black1: #222;
     --black2: #eaeaea;
     --container: radial-gradient( circle farthest-corner at -4.5% 34.3%,  rgba(163,149,154,1) 0%, rgba(133, 129, 126, 1) 90% );
     --container-accent: radial-gradient( circle farthest-corner at -4.5% 34.3%,  rgba(219,63,63,1) 0%, rgba(169, 63, 85, 1) 90% );
+    --container-accent-hover: radial-gradient( circle farthest-corner at -4.5% 34.3%,  rgba(169,13,13,1) 0%, rgba(119, 13, 35, 1) 90% );
     --light-gray: #787878;
     --green: #52b788;
     --primary: #cd2027;
+    --yellow: #fef160;
+    --red: #e74c3c;
     --primary-acc: #a51d22;
     --secondary: #2f1210;
     --flat-dark: #191919;

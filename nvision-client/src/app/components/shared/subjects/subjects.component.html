@@ -1,6 +1,6 @@
 <div class="recentCustomers">
     <div class="cardHeader">
-        <h2>Subjects</h2>
+        <h2 style="font-weight: 550 !important;">Subjects</h2>
         <a routerLink="/watcher-subjects" class="btn">View All</a>
     </div>
     <div>
@@ -17,6 +17,15 @@
                 <h4>{{element.name}}<br><span>{{element.healthStatus}}</span></h4>    
             </td>
           </ng-container>
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element" (click)="onSubjectClick(element.id)"> 
+              <mat-icon [ngClass]="element.healthScore > 0 ? 'status-icon-plus' :
+                                   (element.healthScore === 0) ? 'status-icon-zero' : 'status-icon-minus'" class="status-icon">
+                {{subjectHealthIcon(element.healthScore)}}
+              </mat-icon>
+            </td>
+          </ng-container>
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -24,7 +33,8 @@
       
         <mat-paginator [pageSizeOptions]="[5]"
                        showFirstLastButtons 
-                       aria-label="Select page of periodic elements">
+                       aria-label="Select page of periodic elements"
+                       *ngIf="displayPaginator">
         </mat-paginator>
     </div>
 </div>

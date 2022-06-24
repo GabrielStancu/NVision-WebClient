@@ -29,6 +29,7 @@ export class AlertsComponent implements OnInit, OnChanges, AfterViewInit {
 
   @Input() alerts: WatcherAlertReply[];
   @Input() displayHeader = true;
+  @Input() displayPaginator = true;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   public displayAlerts: DisplayAlert[] = [];
   public dataSource = new MatTableDataSource<DisplayAlert>(this.displayAlerts);
@@ -58,8 +59,8 @@ export class AlertsComponent implements OnInit, OnChanges, AfterViewInit {
     this.displayAlerts = [];
     this.alerts.forEach(a => {
         let shortMessage = a.message;
-        if (shortMessage.length > 30) {
-          shortMessage = shortMessage.substring(0, 30) + '...'
+        if (shortMessage.length > 40) {
+          shortMessage = shortMessage.substring(0, 40) + '...'
         };
 
         let displayDate = this.datePipe.transform(a.timestamp, 'dd.MM.yyyy HH:mm:ss');
@@ -83,6 +84,14 @@ export class AlertsComponent implements OnInit, OnChanges, AfterViewInit {
         this.answerAlert(alertAnswer);
       });
     }
+  }
+
+  alertStatusIcon(alertStatus: string): string {
+    if (alertStatus === 'Yes')
+      return 'check_circle';
+    if (alertStatus === 'No')
+      return 'cancel';
+    return 'watch_later';
   }
 
   private getAlertStatus(wasTrueAlert: boolean|undefined): string {

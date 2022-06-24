@@ -24,7 +24,7 @@
 }
 
 .cardHeader h2 {
-    font-weight: 550;
+    font-weight: 300 !important;
     color: var(--accent);
     font-size: 40px;
     padding-top: 15px;
@@ -37,14 +37,15 @@
     background: var(--container-accent);
     text-decoration: none;
     color: var(--background);
-    border-radius: 6px;
-    font-size: 20px;
+    border-radius: 100px;
+    font-size: 25px;
+    margin: 10px;
+    width: 175px;
 }
 
 .btn:hover {
-    background: transparent;
+    background: var(--container-accent-hover);
     color: var(--grey);
-    border: 1px solid var(--accent);
 }
 
 table {
@@ -80,6 +81,10 @@ table {
 
 .alerts table tr td:nth-child(3) {
     text-align: center;
+}
+
+.alerts table tr:hover td {
+    color: var(--black1);
 }
 
 .status.delivered {
@@ -147,16 +152,25 @@ table th:last-child {
     border-bottom-right-radius: 5px;
 }
 
+table tr td {
+    color: var(--background);
+    font-size: 18px;
+}
+
+table tr:hover .status-icon {
+    color: var(--black1);
+}
+
 tr.example-detail-row {
     height: 0;
 }
 
-tr.example-element-row:not(.example-expanded-row):hover {
-    background: whitesmoke;
+tr.example-element-row.example-expanded-row:hover {
+    background: var(--background);
 }
 
-tr.example-element-row:not(.example-expanded-row):active {
-    background: #efefef;
+tr.example-element-row:not(.example-expanded-row):hover {
+    background: var(--background);
 }
 
 .example-element-row td {
@@ -168,10 +182,31 @@ tr.example-element-row:not(.example-expanded-row):active {
     display: flex;
 }
 
+.example-element-detail:hover {
+    background: var(--background);
+    color: var(--black1);
+}
+
 ::ng-deep .mat-form-field-flex {
     background: var(--grey) !important;
 }
 
 ::ng-deep .mat-table {
     background-color: transparent !important;
+}
+
+.status-icon {
+    font-size: 40px;
+}
+
+.status-icon-plus {
+    color: var(--green);
+}
+
+.status-icon-minus {
+    color: var(--red);
+}
+
+.status-icon-zero {
+    color: var(--yellow);
 }

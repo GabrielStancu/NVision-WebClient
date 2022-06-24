@@ -7,10 +7,10 @@
         </div>
         <div class="details">
             <div *ngIf="watcherData?.alerts?.length > 0">
-                <app-alerts [alerts]="watcherData.alerts" [displayHeader]="true"></app-alerts>
+                <app-alerts [alerts]="watcherData.alerts" [displayHeader]="true" [displayPaginator]="false"></app-alerts>
             </div>
             <div *ngIf="watcherData?.subjects?.length > 0">
-                <app-subjects [subjects]="watcherData.subjects"></app-subjects>
+                <app-subjects [subjects]="watcherData.subjects" [displayPaginator]="false"></app-subjects>
             </div>
         </div>
     </div>
