@@ -3,17 +3,25 @@
     width: 100%;
 }
 
+.content-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--background);
+    border-top-left-radius: 22px;
+    border-top-right-radius: 22px;
+    height: 100%;
+    justify-content: space-around;
+}
+
 /* main */
 .main {
     position: absolute;
     width: calc(100% - 300px);
     left: 300px;
-    min-height: 100vh;
-    background: var(--background);
+    height: 100vh;
+    background: var(--flat-dark);
     transition: 0.5s;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 }
 
 .main.active {
@@ -40,6 +48,7 @@
     border-radius: 20px;
     padding-top: 50px;
     padding-bottom: 50px;
+    margin-bottom: 60px;
 }
 
 .profile-column {
