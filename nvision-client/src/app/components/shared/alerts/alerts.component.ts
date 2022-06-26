@@ -63,9 +63,10 @@ export class AlertsComponent implements OnInit, OnChanges, AfterViewInit {
           shortMessage = shortMessage.substring(0, 40) + '...'
         };
 
-        let displayDate = this.datePipe.transform(a.timestamp, 'dd.MM.yyyy HH:mm:ss');
+        var utcDate = new Date(a.timestamp.toString().replace('T', ' ') + ' UTC');
+        let displayDate = this.datePipe.transform(utcDate, 'dd.MM.yyyy HH:mm:ss');
         this.displayAlerts.push(
-          new DisplayAlert(a.id, a.subjectName, a.message, a.timestamp,
+          new DisplayAlert(a.id, a.subjectName, a.message, utcDate,
                            this.getAlertStatus(a.wasTrueAlert), this.getClassNameByAccuracy(a.wasTrueAlert),
                            shortMessage, displayDate)
         );

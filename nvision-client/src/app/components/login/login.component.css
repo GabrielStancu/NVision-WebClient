@@ -19,7 +19,7 @@ section .imgBx:before {
     width: 100%;
     z-index: 1;
     mix-blend-mode: screen;
-    background: radial-gradient( circle farthest-corner at -4.5% 34.3%,  rgba(13,20,174,1) 0%, rgba(243,165,140,1) 90% );
+    background: radial-gradient( circle farthest-corner at -4.5% 34.3%, rgba(243,165,140,1) 0%, rgba(13,20,174,1) 90% );
 }
 
 section .imgBx img {
@@ -37,7 +37,7 @@ section .contentBx {
     align-items: center;
     width: 50%;
     height: 100%;
-    background-color: var(--background);
+    background-color: var(--black2);
     z-index: 1;
 }
 
@@ -117,7 +117,7 @@ section .contentBx .formBx .inputBx input {
 }
 
 section .contentBx .formBx .inputBx input[type="submit"]{
-    background: var(--primary);
+    background: var(--container-accent);
     color: #fff;
     outline: none;
     border: none;
@@ -129,7 +129,8 @@ section .contentBx .formBx .inputBx input[type="submit"]{
 }
 
 section .contentBx .formBx .inputBx input[type="submit"]:hover {
-    background: var(--primary-acc);
+    background: var(--container-accent-hover);
+    color: var(--grey);
 }
 
 section .contentBx .formBx .remember {

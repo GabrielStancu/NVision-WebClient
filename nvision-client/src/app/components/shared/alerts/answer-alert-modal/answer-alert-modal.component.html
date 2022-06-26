@@ -1,20 +1,20 @@
-<h1 mat-dialog-title>Alert Accuracy</h1>
-<div mat-dialog-content>
-    <p>Was the alert accurate?</p>
-</div>
-<div mat-dialog-actions>
-    <!-- <div class="example-button-container"> -->
-    <div class="buttons-container row">
-        <div class="options-buttons-container">
-            <button mat-flat-button color="primary" aria-label="Example icon button with a check icon"
-                (click)="onAnswerAlert(true)" [mat-dialog-close]="data" cdkFocusInitial>
-                <mat-icon>check</mat-icon>
-            </button>
-            <button mat-flat-button color="warn" aria-label="Example icon button with a close icon"
-                    (click)="onAnswerAlert(false)" [mat-dialog-close]="data" cdkFocusInitial>
-                <mat-icon>close</mat-icon>
-            </button>
+<div id="modal-wrapper">
+    <h1 mat-dialog-title class="title">Alert Accuracy</h1>
+    <div mat-dialog-content>
+        <p class="question">Was the alert accurate?</p>
+    </div>
+    <div mat-dialog-actions>
+        <div class="buttons-container">
+            <div class="options-buttons-container">
+                <btn (click)="onAnswerAlert(true)" [mat-dialog-close]="data" cdkFocusInitial class="btn">
+                    <mat-icon style="color: white !important;">check</mat-icon>
+                </btn>
+                <btn (click)="onAnswerAlert(false)" [mat-dialog-close]="data" cdkFocusInitial class="btn">
+                    <mat-icon style="color: white !important;">close</mat-icon>
+                </btn>
+            </div>
+            <button mat-button (click)="onCancelClick()" class="cancel-button">Cancel</button>
         </div>
-        <button mat-button (click)="onCancelClick()" class="cancel-button">Cancel</button>
     </div>
 </div>
+
