@@ -3,9 +3,8 @@ import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { WatcherDataService } from 'src/app/services/watcher-data.service';
 import { DisplaySubjectCard } from '../../shared/display-models/display-subject-card.model';
-import { filter, map, startWith } from 'rxjs/operators';
+import { map, startWith } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-watcher-subjects',

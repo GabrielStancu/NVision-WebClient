@@ -20,7 +20,7 @@ export class DisplaySubjectCard {
         this.isPatient = subject.isPatient ? 'Yes' : 'No';
         this.sex = subject.sex === 'M' ? 'Male' : 'Female';
         this.healthStatus = subject.healthStatus;
-        this.profilePictureSrc = subject.isPatient ? "./assets/patient.png" : "./assets/grandfather.png";
+        this.profilePictureSrc = subject.profilePictureSrc;
 
         return this;
     }

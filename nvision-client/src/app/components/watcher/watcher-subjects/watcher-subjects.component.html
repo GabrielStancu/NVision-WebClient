@@ -2,22 +2,25 @@
     <app-navigation [collapsed]="collapsedSidebar"></app-navigation>
     <div class="main" [ngClass]="{active: collapsedSidebar}">
         <app-topbar (sidebarChanged)="onSidebarChanged($event)"></app-topbar>
-
-        <div class="search-container">
-            <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Subject</mat-label>
-                <input type="text" matInput [formControl]="subjectsFilter" [matAutocomplete]="auto">
-                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-                  <mat-option *ngFor="let subject of filteredSubjects | async" [value]="subject">
-                    {{subject.fullName}}
-                  </mat-option>
-                </mat-autocomplete>
-            </mat-form-field>
-        </div>
-
-        <div class="users-container">
-            <app-subject-card *ngFor="let subject of displaySubjects" [subject]="subject"
-                              (click)="onSubjectClicked(subject)"></app-subject-card>
+        <div class="content-container">
+            <div class="wrapper">
+                <div class="search-container">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Subject</mat-label>
+                        <input type="text" matInput [formControl]="subjectsFilter" [matAutocomplete]="auto">
+                        <mat-icon matSuffix>search</mat-icon>
+                        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                          <mat-option *ngFor="let subject of filteredSubjects | async" [value]="subject">
+                            {{subject.fullName}}
+                          </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+                </div>
+                <div class="users-container">
+                    <app-subject-card *ngFor="let subject of displaySubjects" [subject]="subject"
+                                      (click)="onSubjectClicked(subject)"></app-subject-card>
+                </div>
+            </div>
         </div>
     </div>
 </div>
