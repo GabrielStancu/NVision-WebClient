@@ -24,10 +24,14 @@ export class MeasurementDataComponent implements OnInit {
   public chartType = 'line';
   public fromIndex: number;
   public toIndex: number;
+  public label = '';
 
   constructor(private datePipe: DatePipe) { }
 
   ngOnInit(): void {
+    if (this.measurements.length > 5000) {
+      this.measurements = this.measurements.splice(this.measurements.length-5000);
+    }
     this.fromIndex = 1;
     this.toIndex = this.measurements.length;
     this.displayData();
@@ -38,13 +42,15 @@ export class MeasurementDataComponent implements OnInit {
       this.setEmptyData();
       return;
     }
+
+    this.label = this.measurements[0].sensorName;
     
-    const color = this.generateColor();
+    const color = '#db3f3f';
     const start = this.fromIndex - 1;
     const end = this.toIndex - 1;
     const measurementValues = this.measurements.slice(start, end).map(m => m.value);
     this.chartDatasets = [{
-      data: measurementValues, label: this.measurements[0].sensorName, 
+      data: measurementValues, label: this.label, 
       fill: false, pointRadius: 2, borderColor: color
     }];
     this.chartLabels = this.measurements.slice(start, end)
@@ -58,7 +64,7 @@ export class MeasurementDataComponent implements OnInit {
   }
 
   private setEmptyData(): void {
-    const color = this.generateColor();
+    const color = '#db3f3f';
     this.chartDatasets = [{
       data: [], label: '', fill: false, pointRadius: 2, borderColor: color
     }];
@@ -70,18 +76,6 @@ export class MeasurementDataComponent implements OnInit {
 
   public chartClicked(e: any): void { }
   public chartHovered(e: any): void { }
-
-  private generateColor(): string {
-    const red = this.getRandomArbitrary(0, 255);
-    const green = this.getRandomArbitrary(0, 255);
-    const blue = this.getRandomArbitrary(0,255);
-
-    return 'rgba(' + red + ',' + green + ',' + blue + ',1)';
-  }
-
-  private getRandomArbitrary(min, max): number {
-    return Math.floor((Math.random() * (max - min) + min));
-  }
 
   public measurementsCount(): number {
     const len = this.toIndex - this.fromIndex + 1; 

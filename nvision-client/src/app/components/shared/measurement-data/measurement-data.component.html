@@ -1,18 +1,19 @@
 <div class="measurements-container">
-  <div class="headline">
-    Displaying {{measurementsCount()}} measurements 
-  </div>
-  <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Show from</mat-label>
-    <input matInput placeholder="{{fromIndex}}" [(ngModel)]="fromIndex" (focusout)="displayData()" type="number">
-  </mat-form-field>
-  <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>To</mat-label>
-    <input matInput placeholder="{{toIndex}}" [(ngModel)]="toIndex" (focusout)="displayData()" type="number">
-  </mat-form-field>
+    <div class="headline">
+      <div class="title">{{label}}</div>
+      <div class="subtitle">Displaying {{measurementsCount()}} measurements</div> 
+    </div>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Show from</mat-label>
+      <input matInput placeholder="{{fromIndex}}" [(ngModel)]="fromIndex" (focusout)="displayData()" type="number">
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>To</mat-label>
+      <input matInput placeholder="{{toIndex}}" [(ngModel)]="toIndex" (focusout)="displayData()" type="number">
+    </mat-form-field>
 </div>
 
-<div style="display: block">
+<div class="chart">
   <canvas mdbChart
     [chartType]="chartType"
     [datasets]="chartDatasets"
