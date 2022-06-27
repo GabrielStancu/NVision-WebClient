@@ -35,9 +35,9 @@ section .contentBx {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 35%;
     height: 100%;
-    background-color: var(--black2);
+    background-color: white;
     z-index: 1;
 }
 

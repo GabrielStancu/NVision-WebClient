@@ -3,17 +3,25 @@
     width: 100%;
 }
 
+.content-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--background);
+    border-top-left-radius: 22px;
+    border-top-right-radius: 22px;
+    height: calc(100% - 60px);
+    justify-content: space-around;
+}
+
 /* main */
 .main {
     position: absolute;
     width: calc(100% - 300px);
     left: 300px;
-    min-height: 100vh;
-    background: var(--background);
+    height: 100vh;
+    background: var(--flat-dark);
     transition: 0.5s;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 }
 
 .main.active {
@@ -30,6 +38,7 @@
 
 .example-full-width {
     width: 100%;
+    font-size: 22px;
 }
 
 .profile-wrapper {
@@ -37,9 +46,15 @@
     background: #fff;
     padding: 20px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
-    border-radius: 20px;
+    border-radius: 5px;
     padding-top: 50px;
     padding-bottom: 50px;
+}
+
+.column-title {
+    font-size: 30px;
+    text-decoration: underline;
+    margin-bottom: 20px;
 }
 
 .profile-column {
@@ -52,10 +67,28 @@
 .example-form {
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+.img-input {
+    width: 60%;
 }
 
 .save-btn {
-    width: 300px;
+    position: relative;
+    padding: 10px;
+    background: var(--container-accent);
+    text-decoration: none;
+    color: white !important;
+    border-radius: 100px;
+    font-size: 30px;
+    margin: 10px;
+    width: 250px;
+}
+
+.save-btn:hover {
+    background: var(--container-accent-hover);
+    color: var(--grey);
 }
 
 .page-title {
@@ -63,17 +96,6 @@
     font-weight: bold;
     margin-bottom: 50px;
 }
-
-.example-section {
-    display: flex;
-    align-content: center;
-    align-items: center;
-    height: 60px;
-  }
-  
-  .example-margin {
-    margin: 0 10px;
-  }
 
 /* responsiveness */
 @media (max-width: 991px) {
@@ -91,4 +113,14 @@
     .details {
         grid-template-columns: repeat(1,1fr);
     }
+}
+
+::ng-deep .mat-form-field-flex {
+    border-radius: 50px !important;
+    border: 1px solid var(--flat-dark) !important;
+    background: #fff !important;
+}
+
+::ng-deep .mat-form-field-underline {
+    display: none;
 }
