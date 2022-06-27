@@ -35,9 +35,9 @@ section .contentBx {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 35%;
     height: 100%;
-    background-color: var(--black2);
+    background-color: white;
     z-index: 1;
 }
 
@@ -59,7 +59,7 @@ section .contentBx .header img {
 section .contentBx .header .title {
     display: flex;
     flex-direction: row;
-    font-size: 40px;
+    font-size: 50px;
     font-weight: 600;
     margin-top: 25px;
     margin-bottom: 75px;
@@ -124,8 +124,10 @@ section .contentBx .formBx .inputBx input[type="submit"]{
     font-weight: 500;
     cursor: pointer;
     font-size: 30px;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 200px;
+    margin-left: calc(50% - 100px);
 }
 
 section .contentBx .formBx .inputBx input[type="submit"]:hover {
