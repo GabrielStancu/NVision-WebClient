@@ -39,13 +39,14 @@
 .example-full-width {
     width: 100%;
     font-size: 22px;
+    background: #fff !important;
 }
 
 .profile-wrapper {
     position: relative;
     background: #fff;
     padding: 20px;
-    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.78);
     border-radius: 5px;
     padding-top: 50px;
     padding-bottom: 50px;
@@ -118,7 +119,6 @@
 ::ng-deep .mat-form-field-flex {
     border-radius: 50px !important;
     border: 1px solid var(--flat-dark) !important;
-    background: #fff !important;
 }
 
 ::ng-deep .mat-form-field-underline {

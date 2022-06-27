@@ -2,55 +2,52 @@
     <app-navigation [collapsed]="collapsedSidebar"></app-navigation>
     <div class="main" [ngClass]="{active: collapsedSidebar}">
         <app-topbar (sidebarChanged)="onSidebarChanged($event)"></app-topbar>
-        <div class="container">
-            <div class="personal-data" *ngIf="subject">
-                <mat-card class="example-card">
-                    <mat-card-title-group>
-                        <mat-card-title>{{subject.fullName}}</mat-card-title>
-                        <mat-card-subtitle>{{subject.birthday|date:'dd/MM/yyyy'}}</mat-card-subtitle>
-                        <img mat-card-sm-image src="{{subject.profilePictureSrc}}" >
-                    </mat-card-title-group>
-                    <mat-card-content>
-                        {{subject.healthStatus}}
-                    </mat-card-content>
-                    <mat-form-field class="example-full-width" appearance="fill" style="width: 300px !important;">
-                        <mat-label>Device Serial Number</mat-label>
-                        <input matInput name="device-serial" (focusout)="onSerialNumberFocusOut($event)"
-                                [(ngModel)]="subject.deviceSerialNumber" [disabled]="disabledDeviceSerialNumber()">
-                      </mat-form-field>
-                </mat-card>
-            </div>
-            <div class="filters-container">
-                <div>
-                    <mat-form-field class="example-form-field" appearance="fill">
-                        <mat-label>Date range</mat-label>
-                        <mat-date-range-input [rangePicker]="dateRangePicker">
-                          <input matStartDate placeholder="Start date" [(ngModel)]="startDate">
-                          <input matEndDate placeholder="End date" [(ngModel)]="endDate"
-                                 (dateChange)="dateRangeChange()">
-                        </mat-date-range-input>
-                        <mat-datepicker-toggle matSuffix [for]="dateRangePicker"></mat-datepicker-toggle>
-                        <mat-date-range-picker #dateRangePicker></mat-date-range-picker>
-                    </mat-form-field>
-                    <button mat-flat-button color="warn" (click)="onDateRangeReset()">
-                        <mat-icon>replay</mat-icon>
-                    </button>
-                </div>      
-                <mat-form-field appearance="fill">
-                    <mat-label>Measurement Types</mat-label>
-                    <mat-select [formControl]="measurementTypesFilter" multiple (openedChange)="measurementTypeComboChange($event)">
-                        <mat-option *ngFor="let measurementType of measurementTypes" [value]="measurementType.backValue">
-                            {{measurementType.displayValue}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field> 
-            </div>   
-            <div class="measurements-area">
-                <div *ngFor="let measurementSet of measurements">
-                    <app-measurement-data *ngIf="measurementSet && measurementSet.length > 0" [measurements]="measurementSet">
-                    </app-measurement-data>
+        <div class="content-container">
+            <div class="wrapper">
+                <div class="personal-data" *ngIf="subject">
+                    <mat-card class="example-card">
+                        <mat-card-title-group>
+                            <mat-card-title class="title">{{subject.fullName}}</mat-card-title>
+                            <mat-card-subtitle class="subtitle">{{subject.birthday|date:'dd/MM/yyyy'}}</mat-card-subtitle>
+                            <img mat-card-sm-image src="{{subject.profilePictureSrc}}">
+                        </mat-card-title-group>
+                        <mat-card-content class="content">
+                            {{subject.healthStatus}}
+                        </mat-card-content>
+                        <div class="header-content">
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Device Serial Number</mat-label>
+                                <input matInput name="device-serial" (focusout)="onSerialNumberFocusOut($event)"
+                                        [(ngModel)]="subject.deviceSerialNumber" [disabled]="disabledDeviceSerialNumber()">
+                            </mat-form-field>
+                            <mat-form-field class="example-form-field example-full-width" appearance="fill">
+                                <mat-label>Date range</mat-label>
+                                <mat-date-range-input [rangePicker]="dateRangePicker">
+                                  <input matStartDate placeholder="Start date" [(ngModel)]="startDate">
+                                  <input matEndDate placeholder="End date" [(ngModel)]="endDate"
+                                         (dateChange)="dateRangeChange()">
+                                </mat-date-range-input>
+                                <mat-datepicker-toggle matSuffix [for]="dateRangePicker"></mat-datepicker-toggle>
+                                <mat-date-range-picker #dateRangePicker></mat-date-range-picker>
+                            </mat-form-field>
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Measurement Types</mat-label>
+                                <mat-select [formControl]="measurementTypesFilter" multiple (openedChange)="measurementTypeComboChange($event)">
+                                    <mat-option *ngFor="let measurementType of measurementTypes" [value]="measurementType.backValue">
+                                        {{measurementType.displayValue}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field> 
+                        </div>
+                    </mat-card>
                 </div>
-            </div>        
+                <div class="measurements-area">
+                    <div *ngFor="let measurementSet of measurements">
+                        <app-measurement-data *ngIf="measurementSet && measurementSet.length > 0" [measurements]="measurementSet">
+                        </app-measurement-data>
+                    </div>
+                </div>        
+            </div>
         </div>
     </div>
 </div>

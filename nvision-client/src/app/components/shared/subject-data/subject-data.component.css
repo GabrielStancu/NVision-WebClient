@@ -3,6 +3,10 @@
     width: 100%;
 }
 
+.content-container {
+    background: var(--flat-dark);
+}
+
 /* main */
 .main {
     position: absolute;
@@ -16,6 +20,16 @@
 .main.active {
     width: calc(100% - 80px);
     left: 80px;
+}
+
+.wrapper {
+    background: var(--background);
+    width: 100% !important;
+    border-top-left-radius: 22px;
+    border-top-right-radius: 22px;
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-top: 30px;
 }
 
 .users-container {
@@ -38,6 +52,13 @@
 
 .example-card {
     margin-bottom: 8px;
+    background: var(--flat-dark);
+    color: white !important;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.78);
+}
+
+.example-full-width {
+    width: 410px !important;
 }
 
 /* responsiveness */
@@ -60,4 +81,38 @@
 
 ::ng-deep .mat-form-field-flex {
     background: var(--grey) !important;
+}
+
+.title {
+    font-size: 35px !important;
+    color: white !important;
+}
+
+.subtitle {
+    font-size: 22px !important;
+    color: white !important;
+}
+
+.content {
+    font-size: 19px !important;
+    color: white !important;
+}
+
+::ng-deep .mat-form-field-flex {
+    border-radius: 50px !important;
+    border: 1px solid var(--flat-dark) !important;
+    background: #fff !important;
+    color: black !important;
+    font-size: 18px !important;
+}
+
+::ng-deep .mat-form-field-underline {
+    display: none;
+}
+
+.header-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }

@@ -97,11 +97,6 @@ export class SubjectDataComponent implements OnInit {
     return UserType[userType] === UserType.Subject;
   }
 
-  public onDateRangeReset() {
-    this.setDate();
-    this.dateRangeChange();
-  }
-
   measurementTypeComboChange(event) {
     this.openMeasurementTypesFilterSelect = false;
     if(!event) {
