@@ -222,7 +222,18 @@ tr.example-element-row:not(.example-expanded-row):hover {
     border-radius: 100px !important;
 }
 
-.mat-paginator {
+::ng-deep .mat-paginator {
     background: transparent !important;
-    color: white !important
+    color: var(--background) !important;
+    font-size: 20px;
+}
+
+::ng-deep .mat-icon-button span {
+    color: var(--background);
+    font-size: 20px;
+}
+
+::ng-deep .mat-icon-button:disabled span {
+    color: var(--gray);
+    font-size: 20px;
 }
