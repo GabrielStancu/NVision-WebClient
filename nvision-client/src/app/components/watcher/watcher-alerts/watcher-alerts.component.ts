@@ -75,7 +75,7 @@ export class WatcherAlertsComponent implements OnInit {
   public chartHovered(e: any): void { }
 
   public dateRangeChange() {
-    this.alerts = this.alertsFilter.filter(this.unfilteredAlerts, this.buildAlertSpecification()).slice(0, 5);
+    this.alerts = this.alertsFilter.filter(this.unfilteredAlerts, this.buildAlertSpecification());
     this.initChartData();
   }
 
@@ -83,7 +83,7 @@ export class WatcherAlertsComponent implements OnInit {
     this.openSubjectNamesFilterSelect = false;
     if(!event) {
       this.openSubjectNamesFilterSelect = true;
-      this.alerts = this.alertsFilter.filter(this.unfilteredAlerts, this.buildAlertSpecification()).slice(0, 5);
+      this.alerts = this.alertsFilter.filter(this.unfilteredAlerts, this.buildAlertSpecification());
       this.initChartData();
     }
   }
@@ -92,7 +92,7 @@ export class WatcherAlertsComponent implements OnInit {
     this.openAlertTypesFilterSelect = false;
     if(!event) {
       this.openAlertTypesFilterSelect = true;
-      this.alerts = this.alertsFilter.filter(this.unfilteredAlerts, this.buildAlertSpecification()).slice(0, 5);
+      this.alerts = this.alertsFilter.filter(this.unfilteredAlerts, this.buildAlertSpecification());
       this.initChartData();
     }
   }

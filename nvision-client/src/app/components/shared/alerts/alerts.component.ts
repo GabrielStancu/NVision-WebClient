@@ -57,6 +57,7 @@ export class AlertsComponent implements OnInit, OnChanges, AfterViewInit {
 
   initTable(): void {
     this.displayAlerts = [];
+  
     this.alerts.forEach(a => {
         let shortMessage = a.message;
         if (shortMessage.length > 40) {
@@ -72,7 +73,7 @@ export class AlertsComponent implements OnInit, OnChanges, AfterViewInit {
         );
     });
     this.dataSource = new MatTableDataSource<DisplayAlert>(this.displayAlerts);
-    this.paginator.length = this.alerts.length;
+    this.dataSource.paginator = this.paginator;
   }
 
   onRowClick(displayAlert: DisplayAlert): void {
