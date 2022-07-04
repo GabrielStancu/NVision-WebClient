@@ -72,6 +72,7 @@ export class AlertsComponent implements OnInit, OnChanges, AfterViewInit {
         );
     });
     this.dataSource = new MatTableDataSource<DisplayAlert>(this.displayAlerts);
+    this.paginator.length = this.alerts.length;
   }
 
   onRowClick(displayAlert: DisplayAlert): void {

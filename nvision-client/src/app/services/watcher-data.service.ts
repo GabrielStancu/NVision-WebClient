@@ -12,7 +12,7 @@ import { WatcherTime } from '../requests/watcher-time.request';
     providedIn: 'root'
 })
 export class WatcherDataService {
-    private readonly APIUrlDev = 'https://192.168.243.247:5001/api/watcher';
+    private readonly APIUrlDev = 'https://192.168.208.247:5001/api/watcher';
     private readonly APIUrlProd = '';
 
     private getApiUrl(): string {

@@ -55,9 +55,8 @@
       <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
     </table>
 
-    <mat-paginator [pageSizeOptions]="[5]"
+    <mat-paginator [pageSizeOptions]="[10]"
         showFirstLastButtons 
-        aria-label="Select page of periodic elements"
         *ngIf="displayPaginator">
     </mat-paginator>
 

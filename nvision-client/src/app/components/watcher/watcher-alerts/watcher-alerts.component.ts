@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Alert } from 'src/app/models/alert.model';
-import { WatcherAlertReply } from 'src/app/replies/watcher-data.reply';
 import { WatcherDataService } from 'src/app/services/watcher-data.service';
-import {FormGroup, FormControl} from '@angular/forms';
+import { FormControl} from '@angular/forms';
 import { Filter } from 'src/app/helpers/filters/filter.implem';
 import { MultiFieldSpecification } from 'src/app/helpers/specifications/multi-field.specification';
 import { ISpecification } from 'src/app/helpers/specifications/specification.interface';
@@ -76,14 +75,7 @@ export class WatcherAlertsComponent implements OnInit {
   public chartHovered(e: any): void { }
 
   public dateRangeChange() {
-    this.alerts = this.alertsFilter.filter(this.unfilteredAlerts, this.buildAlertSpecification());
-    this.initChartData();
-  }
-
-  public onDateRangeReset(): void {
-    this.startDate = null;
-    this.endDate = null;
-    this.alerts = this.alertsFilter.filter(this.unfilteredAlerts, this.buildAlertSpecification());
+    this.alerts = this.alertsFilter.filter(this.unfilteredAlerts, this.buildAlertSpecification()).slice(0, 5);
     this.initChartData();
   }
 
@@ -91,7 +83,7 @@ export class WatcherAlertsComponent implements OnInit {
     this.openSubjectNamesFilterSelect = false;
     if(!event) {
       this.openSubjectNamesFilterSelect = true;
-      this.alerts = this.alertsFilter.filter(this.unfilteredAlerts, this.buildAlertSpecification());
+      this.alerts = this.alertsFilter.filter(this.unfilteredAlerts, this.buildAlertSpecification()).slice(0, 5);
       this.initChartData();
     }
   }
@@ -100,7 +92,7 @@ export class WatcherAlertsComponent implements OnInit {
     this.openAlertTypesFilterSelect = false;
     if(!event) {
       this.openAlertTypesFilterSelect = true;
-      this.alerts = this.alertsFilter.filter(this.unfilteredAlerts, this.buildAlertSpecification());
+      this.alerts = this.alertsFilter.filter(this.unfilteredAlerts, this.buildAlertSpecification()).slice(0, 5);
       this.initChartData();
     }
   }
@@ -129,7 +121,7 @@ export class WatcherAlertsComponent implements OnInit {
   private initColors(): void {
     const subjectNames = this.getSubjectNames();
     const colors: string[] = [];
-    subjectNames.forEach(_ => colors.push(this.generateColor()));
+    subjectNames.forEach((_, i) => colors.push(this.generateColor(i)));
     const chartColors = { backgroundColor: colors, borderWidth: 0};
     this.chartColors = [chartColors];
   }
@@ -138,16 +130,15 @@ export class WatcherAlertsComponent implements OnInit {
     return this.alerts.map(a => a.subjectName).filter((el, i, a) => i === a.indexOf(el));
   }
 
-  private generateColor(): string {
-    const red = this.getRandomArbitrary(0, 255);
-    const green = this.getRandomArbitrary(0, 255);
-    const blue = this.getRandomArbitrary(0,255);
-
-    return 'rgba(' + red + ',' + green + ',' + blue + ',1)';
-  }
-
-  private getRandomArbitrary(min, max): number {
-    return Math.floor((Math.random() * (max - min) + min));
+  private generateColor(index: number): string {
+    const window = index % 4;
+    if (window === 0)
+      return 'rgba(25, 25, 25, 1)';
+    if (window === 1)
+      return 'rgba(219, 63, 63, 1)';
+    if (window === 2)
+      return 'rgba(82, 183, 136, 1)';
+    return 'rgba(254, 241, 96, 1)';
   }
 
   private buildAlertSpecification(): MultiFieldSpecification<Alert> {

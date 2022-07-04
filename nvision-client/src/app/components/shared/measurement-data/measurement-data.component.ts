@@ -29,9 +29,6 @@ export class MeasurementDataComponent implements OnInit {
   constructor(private datePipe: DatePipe) { }
 
   ngOnInit(): void {
-    if (this.measurements.length > 5000) {
-      this.measurements = this.measurements.splice(this.measurements.length-5000);
-    }
     this.fromIndex = 1;
     this.toIndex = this.measurements.length;
     this.displayData();

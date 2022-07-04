@@ -2,7 +2,7 @@
     position: relative;
     display: flex;
     min-height: 450px;
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.78);
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.78); 
     flex-direction: column;
     justify-content: flex-start;
     padding-left: 20px;
@@ -13,6 +13,13 @@
     border-radius: 5px;
     background-image: linear-gradient(315deg, #000000 0%, #313131 98%);
     border-radius: 5px;
+    height: 100%;
+}
+
+.all-alerts {
+    margin-top: 30px;
+    box-shadow: none;
+    width: 100%;
 }
 
 .cardHeader {
@@ -213,4 +220,9 @@ tr.example-element-row:not(.example-expanded-row):hover {
 
 .option-btn {
     border-radius: 100px !important;
+}
+
+.mat-paginator {
+    background: transparent !important;
+    color: white !important
 }

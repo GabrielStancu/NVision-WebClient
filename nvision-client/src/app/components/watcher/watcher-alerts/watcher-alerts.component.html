@@ -2,55 +2,55 @@
     <app-navigation [collapsed]="collapsedSidebar"></app-navigation>
     <div class="main" [ngClass]="{active: collapsedSidebar}">
         <app-topbar (sidebarChanged)="onSidebarChanged($event)"></app-topbar>
-        <div class="filters-container">
-          <div>
-            <mat-form-field class="example-form-field" appearance="fill">
-              <mat-label>Date range</mat-label>
-              <mat-date-range-input [rangePicker]="dateRangePicker">
-                <input matStartDate placeholder="Start date" [(ngModel)]="startDate">
-                <input matEndDate placeholder="End date" [(ngModel)]="endDate"
-                       (dateChange)="dateRangeChange()">
-              </mat-date-range-input>
-              <mat-datepicker-toggle matSuffix [for]="dateRangePicker"></mat-datepicker-toggle>
-              <mat-date-range-picker #dateRangePicker></mat-date-range-picker>
-            </mat-form-field>
-            <button mat-flat-button color="warn" (click)="onDateRangeReset()">
-              <mat-icon>replay</mat-icon>
-            </button>
+        <div class="content-container">
+          <div class="wrapper">
+            <div class="filters-container">
+              <div>
+                <mat-form-field class="example-form-field example-full-width" appearance="fill">
+                  <mat-label>Date range</mat-label>
+                  <mat-date-range-input [rangePicker]="dateRangePicker">
+                    <input matStartDate placeholder="Start date" [(ngModel)]="startDate">
+                    <input matEndDate placeholder="End date" [(ngModel)]="endDate"
+                           (dateChange)="dateRangeChange()">
+                  </mat-date-range-input>
+                  <mat-datepicker-toggle matSuffix [for]="dateRangePicker"></mat-datepicker-toggle>
+                  <mat-date-range-picker #dateRangePicker></mat-date-range-picker>
+                </mat-form-field>
+              </div>
+              <mat-form-field appearance="fill" class="example-full-width">
+                <mat-label>Subjects</mat-label>
+                <mat-select [formControl]="subjectNamesFilter" multiple (openedChange)="subjectNameComboChange($event)">
+                  <mat-option *ngFor="let subjectName of subjectNames" [value]="subjectName">{{subjectName}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="fill" class="example-full-width">
+                <mat-label>Alert Types</mat-label>
+                <mat-select [formControl]="alertTypesFilter" multiple (openedChange)="alertTypeComboChange($event)">
+                  <mat-option *ngFor="let alertType of alertTypes" [value]="alertType.backValue">{{alertType.displayValue}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="graphBox">
+              <div class="box" style="background: white;">
+                <canvas mdbChart
+                    [chartType]="chartType"
+                    [datasets]="chartDatasets"
+                    [labels]="chartLabels"
+                    [colors]="chartColors"
+                    [options]="chartOptions"
+                    [legend]="true"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)"
+                    *ngIf="alertsDataReady">
+                </canvas>
+              </div>
+              <div class="box alerts-box" style="padding: 0px; padding-top: 30px;">
+                  <ng-container *ngIf="!!alerts">
+                    <app-alerts [alerts]="alerts" [displayHeader]="false"></app-alerts>
+                  </ng-container>
+              </div>
+            </div>
           </div>
-          <mat-form-field appearance="fill">
-            <mat-label>Subjects</mat-label>
-            <mat-select [formControl]="subjectNamesFilter" multiple (openedChange)="subjectNameComboChange($event)">
-              <mat-option *ngFor="let subjectName of subjectNames" [value]="subjectName">{{subjectName}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>Alert Types</mat-label>
-            <mat-select [formControl]="alertTypesFilter" multiple (openedChange)="alertTypeComboChange($event)">
-              <mat-option *ngFor="let alertType of alertTypes" [value]="alertType.backValue">{{alertType.displayValue}}</mat-option>
-            </mat-select>
-          </mat-form-field>
         </div>
-          <div class="graphBox">
-            <div class="box">
-              <canvas mdbChart
-                  [chartType]="chartType"
-                  [datasets]="chartDatasets"
-                  [labels]="chartLabels"
-                  [colors]="chartColors"
-                  [options]="chartOptions"
-                  [legend]="true"
-                  (chartHover)="chartHovered($event)"
-                  (chartClick)="chartClicked($event)"
-                  *ngIf="alertsDataReady">
-              </canvas>
-            </div>
-            <div class="box" style="padding: 0px;">
-                <ng-container *ngIf="!!alerts">
-                  <app-alerts [alerts]="alerts" [displayHeader]="false"></app-alerts>
-                </ng-container>
-            </div>
-          </div>
-        
     </div>
 </div>

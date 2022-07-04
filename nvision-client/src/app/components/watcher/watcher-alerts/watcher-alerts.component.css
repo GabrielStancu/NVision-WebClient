@@ -18,6 +18,18 @@
     left: 80px;
 }
 
+.content-container {
+    background: var(--flat-dark);
+    top: 0;
+}
+
+.wrapper {
+    background: var(--background);
+    border-top-left-radius: 22px;
+    border-top-right-radius: 22px;
+    padding-top: 30px;
+}
+
 .details {
     position: relative;
     width: 100%;
@@ -32,6 +44,14 @@
     padding: 25px !important;
 }
 
+.alerts-box {
+    padding-top: 30px;
+}
+
+.alerts-box .alerts {
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.78);
+}
+
 .graphBox {
     position: relative;
     width: 100%;
@@ -44,17 +64,28 @@
 
 .graphBox .box {
     position: relative;
-    background: #fff;
+    background-image: linear-gradient(315deg, #000000 0%, #313131 98%);
     padding: 20px;
     width: 100%;
-    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
-    border-radius: 20px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.78);
+    border-radius: 5px;
 }
 
 .filters-container {
     display: flex;
     justify-content: space-evenly;
-    margin-top: 20px;
+    align-items: center;
+    background-image: linear-gradient(315deg, #000000 0%, #313131 98%);
+    padding-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 5px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.78);
+}
+
+.example-full-width {
+    width: 400px !important;
+    font-size: 15px;
 }
 
 /* responsiveness */
@@ -78,4 +109,14 @@
     .details {
         grid-template-columns: repeat(1,1fr);
     }
+}
+
+::ng-deep .mat-form-field-flex {
+    border-radius: 50px !important;
+    border: 1px solid var(--flat-dark) !important;
+    background: #fff !important;
+}
+
+::ng-deep .mat-form-field-underline {
+    display: none;
 }
